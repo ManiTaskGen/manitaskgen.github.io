@@ -1,0 +1,506 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    max-width: 60em;
+    margin: 0 auto;
+    color: #333;
+    background-color: white;
+}
+
+p {
+    margin: 0;
+}
+
+#title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+}
+
+#paper-title {
+    font-family: 'Lato', sans-serif;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+}
+
+#authors{
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.author {
+    margin-right: 0.6em;
+    font-weight: 600;
+    color: #666;
+    font-size: large;
+    text-decoration: none;
+}
+
+.ack-author {
+    text-decoration: none;
+}
+
+.author:hover {
+    text-decoration: underline;
+}
+
+#authors .author:last-child {
+    margin-right: 0;
+}
+
+.author sup {
+    font-size: small;
+    font-weight: normal;
+    color: #999;
+}
+
+#affiliations {
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.affiliation {
+    margin-right: 0.6em;
+    font-size: medium;
+    color: #333;
+}
+
+#affiliations .affiliation:last-child {
+    margin-right: 0;
+}
+
+
+#affiliations .affiliation:first-child {
+    flex: 1 100%;
+    text-align: center;
+}
+
+.affiliation sup {
+    font-size: small;
+    font-weight: normal;
+    color: #999;
+}
+
+#conference-name {
+    margin-top: 1em;
+    font-size: medium;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+#social-buttons {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+}
+
+.social-button {
+    margin-right: 1.6em;
+    font-size: medium;
+    color: #333;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border: 1px solid #333;
+    padding: 0.3em 1.8em;
+    border-radius: 0.6em;
+    cursor: pointer;
+}
+
+.social-button:hover {
+    box-shadow: 0 0 0 0.1em #333;
+}
+
+.social-button:last-child {
+    margin-right: 0;
+}
+
+.social-button i {
+    margin-right: 0.4em;
+}
+
+#tldr-container {
+    margin-top: 2em;
+    text-align: center;
+    font-style: italic;
+}
+
+#tldr-first {
+    font-weight: bold;
+}
+
+.section-container {
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-header {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.section-sub-header {
+    font-size: larger;
+    font-weight: bold;
+    align-self: normal;
+    margin-top: 2em;
+}
+
+.section-text {
+    margin-top: 1em;
+}
+
+.section-text a {
+    color: #333;
+}
+
+.highlighted-text {
+    color: #c49329;
+    font-weight: bold;
+}
+
+.section-image {
+    margin-top: 2em;
+    max-width: 100%;
+    margin-bottom: 1em;
+}
+
+.section-image:last-child {
+    margin-bottom: 2em;
+}
+
+.section-gif-container {
+    display: flex;
+}
+
+.section-gif {
+    width: 9vw;
+    margin-bottom: -1em;
+}
+
+.gif-text-morphology-class{
+    font-size: large;
+    font-weight: bold;
+    align-content: center;
+    width: 9vw;
+    text-align: center;
+}
+
+.section-gif-header-container {
+    display: flex;
+}
+
+.section-gif-header {
+    font-size: large;
+    font-weight: bold;
+    width: 9vw;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.section-video {
+    margin-top: 1em;
+    max-width: 100%;
+}
+
+.section-deployment-video-container {
+    width: 100%;
+}
+
+.section-deployment-video-container-header {
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+}
+
+.section-deployment-video-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0em;
+}
+
+.section-deployment-video-container:last-child  {
+    margin-top: 3em;
+}
+
+.deployment-video-header {
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0.5em;
+}
+
+.deployment-video {
+    margin-top: 0.5em;
+    max-width: 300px;
+    border-radius: 0.6em;
+}
+
+.youtube-iframe {
+    margin-top: 1em;
+    width: 940.8px;
+    height: 529.2px;
+    border-radius: 0.6em;
+}
+
+.demo-video {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    object-fit: cover;  /* 保持完整视频内容 */
+    background: #f8f9fa;  /* 浅色背景替代黑色 */
+}
+
+/* custom.css */
+.fixed-size-gif {
+  width: 448px;
+  height: 252px;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
+  object-fit: cover; /* 防止GIF变形 */
+}
+
+@media (max-width: 768px) {
+    .demo-video {
+        height: 300px;
+    }
+}
+
+.citation-container {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.citation-content {
+  font-family: monospace;
+  white-space: pre-wrap; /* 保留换行和空格，但允许自动换行 */
+  max-width: 60%;
+  overflow-x: auto; /* 添加水平滚动条，以防内容仍然溢出 */
+}
+
+
+
+#website-inspiration {
+    margin-top: 3em;
+    text-align: center;
+    margin-bottom: 3em;
+    font-size: small;
+}
+
+#website-inspiration a {
+    color: #333;
+}
+
+
+/* 演示容器 */
+.demo-container {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #333;
+    background-color: #1e1e1e;
+    color: #eee;
+    max-width: 1000px;
+    margin: 20px 0;
+}
+
+/* 任务面板 */
+.task-panel {
+    width: 200px;
+    background-color: #1e1e1e;
+    padding: 15px;
+}
+
+.task-panel h3 {
+    margin-top: 0;
+    color: white;
+    font-size: 1.2em;
+}
+
+.task-item {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.task-item.selected {
+    background-color: #444;
+}
+
+.task-item p {
+    margin: 0;
+}
+
+.task-description {
+    font-size: 0.9em;
+    color: #aaa;
+    margin-top: 5px !important;
+}
+
+/* 聊天界面 */
+.chat-interface {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 控制面板 */
+.control-panel {
+    background-color: #1e1e1e;
+    padding: 15px;
+    display: flex;
+    border-bottom: 1px solid #444;
+}
+
+.control-group {
+    margin-right: 20px;
+}
+
+.control-group label {
+    margin-right: 5px;
+}
+
+.control-select {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+
+
+/* 或者如果你想要固定尺寸 */
+.control-video {
+    width: 432px;          /* 固定宽度 */
+    height: 243px;         /* 固定高度 */
+    object-fit: cover;     /* 填充整个区域，可能会裁剪一部分内容 */
+}
+/* 聊天内容 */
+.chat-content {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.chat-message {
+    margin-bottom: 20px;
+}
+
+.robot-message {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.human-message {
+    background-color: #303030;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.message-image {
+    margin-bottom: 15px;
+}
+
+.message-image img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+/* 可折叠内容 */
+.expandable {
+    margin: 10px 0;
+}
+
+.expandable summary {
+    cursor: pointer;
+    color: #aaa;
+}
+
+.expanded-content {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+.expanded-text-content {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+/* 章节容器 */
+.section-container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.section-header {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.section-text {
+    margin-bottom: 15px;
+}
+
+/* YouTube 嵌入视频 */
+.youtube-iframe {
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .demo-container {
+        flex-direction: column;
+    }
+
+    .task-panel {
+        width: 100%;
+    }
+
+    .control-panel {
+        flex-wrap: wrap;
+    }
+
+    .control-group {
+        margin-bottom: 10px;
+        width: 50%;
+    }
+
+    .youtube-iframe {
+        height: 300px;
+    }
+}

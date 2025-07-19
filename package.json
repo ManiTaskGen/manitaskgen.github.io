@@ -1,0 +1,20 @@
+{
+  "name": "embodiment-scaling-laws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/embodiment-scaling-laws/embodiment-scaling-laws.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/embodiment-scaling-laws/embodiment-scaling-laws.github.io/issues"
+  },
+  "homepage": "https://github.com/embodiment-scaling-laws/embodiment-scaling-laws.github.io#readme"
+}

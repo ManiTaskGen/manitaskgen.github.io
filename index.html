@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+     <title>ManiTaskGen: A Comprehensive Task Generator for
+Benchmarking and Improving Vision-Language
+Agents on Embodied Decision-Making</title>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+</head>
+
+<body>
+    <h1 hidden></h1>
+
+    <script src="https://kit.fontawesome.com/02e2ed10b8.js" crossorigin="anonymous"></script>
+
+    <div>
+        <div id="title-container">
+            <p id="paper-title">ManiTaskGen: A Comprehensive Task Generator for
+Benchmarking and Improving Vision-Language
+Agents on Embodied Decision-Making</p>
+
+            <div id="authors">
+                <div>
+                    <a class="author" href="https://liudai.notion.site/" target="_blank">Liu Dai<sup>1*</sup></a>
+                    <a class="author" href="https://www.linkedin.com/in/haina-wang-58b91032b/" target="_blank">Haina Wang<sup>1*</sup></a>
+                    <a class="author" href="https://www.ias.informatik.tu-darmstadt.de/Team/NicoBohlinger"
+                        target="_blank">Weikang Wan<sup>1</sup></a>
+                    <a class="author" href="https://cseweb.ucsd.edu/~haosu/" target="_blank">Hao Su<sup>1</sup></a>
+                </div>
+            </div>
+
+            <div id="affiliations">
+                <p class="affiliation"><sup>*</sup>Equal contribution</p>
+                <p class="affiliation"><sup>1</sup>University of California San Diego, USA</p>
+            </div>
+        </div>
+
+        <div id="social-buttons">
+            <a href="https://arxiv.org/abs/2505.20726" target="_blank" class="social-button">
+                <i class="fa fa-file-pdf"></i>
+                <p>Paper</p>
+            </a>
+            <a href="https://youtu.be/62OBDgrQYw4" target="_blank" class="social-button">
+                <i class="fa fa-youtube"></i>
+                <p>[TALK (coming soon)]</p>
+            </a>
+        </div>
+
+        <div id="tldr-container">
+            <p id="tldr-text"><span id="tldr-first">TLDR:</span> We presents a universal task generation framework for arbitrary scenes, facilitating
+both benchmarking and improvement of embodied decision-making agents. </p>
+        </div>
+
+        
+        <div class="section-container">
+            <p class="section-header">Overview</p>
+            
+            <!-- 插入图片 -->
+            <div class="section-image-container">
+                <img src="images/ManiTaskGen_framework.png" alt="Task Generation Framework Overview" class="section-image">
+            </div>
+
+            <p class="section-text">
+               ManiTaskGen is a universal system that generates a comprehensive set of feasible mobile manipulation tasks given arbitrary scene. These tasks facilitate automatic benchmarking and the improvement of embodied decision-making agents.
+            </p>
+        </div>
+
+        
+        <div class="section-container">
+            <p class="section-header" style="text-align: center;">ManiTaskGen: Comprehensive Task Generation </p>
+            <!-- <p class="section-text">
+                The first part of this project is a new methodology for generating comprehensive sets of process- and outcome-based tasks.
+            </p> -->
+             <video class="demo-video" controls>
+                <source src="videos/task_gen.mp4" type="video/mp4">
+            </video>
+            
+        </div>
+
+        <div class="section-container">
+            <p class="section-sub-header" style="text-align: center;">Receptacle-Aware 3D Scene Graph Construction</p>
+            <p class="section-text">
+                We build a scene graph 𝒮 that captures the spatial and functional relationships between objects and their receptacles. To support retrieving multiple refined receptacles, the merging-receptacle technique is also applied.
+                This method spells the generated tasks covering more objects and locations.
+            </p>
+            <div class="section-image-container">
+                <img src="images/receptacles.png" alt="Task Generation Framework Overview" class="section-image">
+                <img src="images/heatmap.png" alt="Task Generation Framework Overview" class="section-image">
+            </div>
+        </div>
+
+        <div class="section-container">
+            <p class="section-sub-header" style="text-align: center;">Generating Tasks</p>
+            <p class="section-text">
+                For process-based tasks, we generate them through the use of our scene graph and some patterns.
+                For outcome-based tasks, we employ a hybrid approach combining template-based generation and VLM-based filtering.
+            </p>
+            <div class="section-image-container">
+                <img src="images/atomic_task.png" alt="Task Generation Framework Overview" class="section-image">
+                <img src="images/outcome_based_tasks.png" alt="Task Generation Framework Overview" class="section-image">
+            </div>
+        </div>
+
+        
+
+        <div class="section-container">
+            <p class="section-header">Benchmarking VLM Agents and improving embodied decision-making</p>
+
+            We'd like to showcase two important applications of ManiTaskGen: benchmarking and improving embodied decision-making agents.
+            <video class="demo-video" controls>
+                <source src="videos/benchmark.mp4" type="video/mp4">
+            </video>
+        </div>
+
+       
+
+        
+
+        <div class="section-container">
+           <p class="section-header" style="text-align: center;">Benchmarking</p>
+            <p class="section-text">
+                We define a discrete, abstracted action space that the VLM-based agent selects from at each timestep. The agent is equipped with abstracted navigation (go_to, change_view), grasping (pick) and placing (show_receptacle, place) skills.
+            </p>
+
+            <div class="section-deployment-video-container">
+            <p class="section-deployment-video-container-header">Agents' Action Space</p>
+                
+                <div class="section-deployment-video-row">
+                    <div class="deployment-video-block">
+                        <p class="deployment-video-header">Goto</p>
+                        <div class="video-container">
+                            <video class="control-video">
+                                <source src="videos/goto_mp4.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video
+                            </video>
+                            <div class="video-controls">
+                                <button class="play-button">play</button>
+                                <div class="speed-control">
+                                    <label>speed:</label>
+                                    <select class="speed-selector">
+                                        <option value="0.5">0.5×</option>
+                                        <option value="0.75">0.75×</option>
+                                        <option value="1" selected>1.0×</option>
+                                        <option value="1.5">1.5×</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="deployment-video-block">
+                        <p class="deployment-video-header">Change View</p>
+                        <div class="video-container">
+                            <video class="control-video">
+                                <source src="videos/change_view_mp4.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video
+                            </video>
+                            <div class="video-controls">
+                                <button class="play-button">Play</button>
+                                <div class="speed-control">
+                                    <label>Speed:</label>
+                                    <select class="speed-selector">
+                                        <option value="0.5">0.5×</option>
+                                        <option value="0.75">0.75×</option>
+                                        <option value="1" selected>1.0×</option>
+                                        <option value="1.5">1.5×</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-deployment-video-row">
+                    <div class="deployment-video-block">
+                        <p class="deployment-video-header">Pick</p>
+                        <div class="video-container">
+                            <video class="control-video">
+                                <source src="videos/pick_mp4.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video
+                            </video>
+                            <div class="video-controls">
+                                <button class="play-button">play</button>
+                                <div class="speed-control">
+                                    <label>speed:</label>
+                                    <select class="speed-selector">
+                                        <option value="0.5">0.5×</option>
+                                        <option value="0.75">0.75×</option>
+                                        <option value="1" selected>1.0×</option>
+                                        <option value="1.5">1.5×</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="deployment-video-block">
+                        <p class="deployment-video-header">Show Receptacle</p>
+                        <div class="video-container">
+                            <video class="control-video">
+                                <source src="videos/show_receptacle_mp4.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video
+                            </video>
+                            <div class="video-controls">
+                                <button class="play-button">Play</button>
+                                <div class="speed-control">
+                                    <label>Speed:</label>
+                                    <select class="speed-selector">
+                                        <option value="0.5">0.5×</option>
+                                        <option value="0.75">0.75×</option>
+                                        <option value="1" selected>1.0×</option>
+                                        <option value="1.5">1.5×</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-deployment-video-row">
+                    <div class="deployment-video-block">
+                        <p class="deployment-video-header">Place_r</p>
+                        <div class="video-container">
+                            <video class="control-video">
+                                <source src="videos/place_r_mp4.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video
+                            </video>
+                            <div class="video-controls">
+                                <button class="play-button">play</button>
+                                <div class="speed-control">
+                                    <label>speed:</label>
+                                    <select class="speed-selector">
+                                        <option value="0.5">0.5×</option>
+                                        <option value="0.75">0.75×</option>
+                                        <option value="1" selected>1.0×</option>
+                                        <option value="1.5">1.5×</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="deployment-video-block">
+                        <p class="deployment-video-header">Place_s</p>
+                        <div class="video-container">
+                            <video class="control-video">
+                                <source src="videos/place_s_mp4.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video
+                            </video>
+                            <div class="video-controls">
+                                <button class="play-button">Play</button>
+                                <div class="speed-control">
+                                    <label>Speed:</label>
+                                    <select class="speed-selector">
+                                        <option value="0.5">0.5×</option>
+                                        <option value="0.75">0.75×</option>
+                                        <option value="1" selected>1.0×</option>
+                                        <option value="1.5">1.5×</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+
+
+            </div>
+
+            <p class="section-text">
+               At each timestep, the agent receives multimodal observations from the system, including rendered images (with tags for objects or, after "show_receptacle", for receptacles), and text information. The system executes the given actions, updates the environment, and provides the next observation. An episode terminates when the agent executes "CALL_END" or a preset timestep limit is reached. After termination, the benchmark automatically evaluates the episode, following the criteria illustrated in the next section.
+            </p>
+            <div class="section-image-container">
+                <img src="images/testflow.png" alt="Task Generation Framework Overview" class="section-image">
+            </div>
+
+             <p class="section-sub-header" style="text-align: center;">Task Difficulty and Evaluation Criteria</p>
+            <p class="section-text">
+                To better evaluate the VLMs, we divide the task into 3 levels and define the evaluation criteria for each level.
+                
+            </p>
+            
+                
+            
+
+            <div class="section-image-container">
+                <img src="images/task_judgement.png" alt="task_judgement_method" class="section-image">
+            </div>
+
+            <p class="section-text" style="text-align: left;">
+                 Some real Episode is displayed below: 
+                </p>
+            
+           <div class="demo-container">
+            <div class="task-panel">
+                <h3>Examples</h3>
+                <div class="task-item selected" data-episode="claude-success">
+                    <p>Move kitchenware_white_paper_towel_holder between lighting_blue_base_table_lamp and lighting_blue_base_table_lamp</p>
+                    <p class="task-description">(Success Episode by Claude-3.7-sonnet)</p>
+                </div>
+                <div class="task-item" data-episode="gemini-failure">
+                    <p>Move Remote to Bowl's rear-left receptacles</p>
+                    <p class="task-description">(Unsuccessful Episode by Gemini-2.5-pro)</p>
+                </div>
+            </div>
+            
+            <div class="chat-interface">
+                <div class="control-panel">
+                    <div class="control-group">
+                        <label>VLM:</label>
+                        <select class="control-select" id="vlm-selector">
+                            <option value="claude" selected>Claude-3.7-sonnet</option>
+                            <option value="gemini">Gemini-2.5-pro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="chat-content" id="claude-episode-0" style="display: none;">
+                    <div class="chat-message robot-message">
+                        <div class="message-text">
+                            <p>You are a household assistant robot equipped with a vision system and manipulation capabilities. You need to complete a task in a 3D environment, mainly involving moving, picking up, and placing objects. Your goal is to move an object from one place to another correctly according to instructions. Please strictly follow the given Action Space for operations.</p>
+                            
+                            <p>At the beginning of each task, you will be informed of a specific task to complete. Throughout the task execution, you will transition between multiple states and have access to a set of possible actions (action space).</p>
+
+                            <p>You may receive one of the following task types involving one object and another object or a platform. ({an object/another object/a platform} are the name of objects or platforms, {dir} is one of the 8 directions):</p>
+                            
+                            <ul>
+                                <li>move {an object} to {a platform}.</li>
+                                <li>move {an object} to the {dir} of {a platform}.</li>
+                                <li>move {an object} around {another object}.</li>
+                                <li>move {an object} to the {dir} of {another object}.</li>
+                                <li>move {an object} between {another object} and {yet another object}.</li>
+                            </ul>
+
+                            <details class="expandable">
+                                <summary>[expand - Understanding directions]</summary>
+                                <div class="expanded-content">
+                                    <p><strong>Understanding directions:</strong></p>
+                                    <p>Directions like 'front', 'rear', 'left', and 'right' are defined relative to the robot's perspective and the heading of the object or platform you are interacting with. The heading of a ground object is not fixed and depends on where the robot is standing and facing.</p>
+                                    
+                                    <p><strong>Empty Surfaces (Platforms):</strong> When interacting with an empty platform, imagine it divided into a 3x3 grid. The direction aligned with the heading (also, the FARTHEST middle space to you, NOT THE NEAREST MIDDLE SPACE) is labeled "front," with the remaining regions proceeding counterclockwise as "front-left," "left," "rear-left," "rear," "rear-right," "right," and "front-right." The grid is conceptually numbered as follows, based on these directions:</p>
+                                    
+                                    <p>[front-left, front, front-right],<br>
+                                    [left, center, right],<br>
+                                    [rear-left, rear, rear-right]</p>
+                                    
+                                    <p><strong>Occupied Surfaces (Objects on Platforms):</strong> For objects on platforms, imagine extending the edges of the object's bounding box to the platform's boundaries. The resulting regions define the object's 8 receptacles, and the direction is defined similarly.</p>
+                                </div>
+                            </details>
+
+                            <details class="expandable">
+                                <summary>[expand - Task success criteria]</summary>
+                                <div class="expanded-content">
+                                    <ul>
+                                        <li><strong>move {an object} to {a platform}:</strong> The task is considered successful only when {an object} is placed anywhere on the specified platform.</li>
+                                        <li><strong>move {an object} to the {dir} of {a platform}:</strong> The task is considered successful only when {an object} is placed on the platform and the geometric center of the placement is in the {dir} direction relative to the platform.</li>
+                                        <li><strong>move {an object} around {another object}:</strong> The task is considered successful only when {an object} is placed in any of the receptacles surrounding {another object}.</li>
+                                        <li><strong>move {an object} to the {dir} of {another object}:</strong> The task is considered successful only when {an object} is placed in the receptacles surrounding {another object} and overlaps with the {dir} direction.</li>
+                                        <li><strong>move {an object} between {another object} and {yet another object}:</strong> The task is considered successful only when {an object} is placed such that it intersects with receptacles in a pair of opposite directions between {another object} and {yet another object}.</li>
+                                    </ul>
+                                </div>
+                            </details>
+
+                            <div class="message-image">
+                                <img src="images/episodes/claude_success_0/success_step0.png" alt="Initial scene">
+                            </div>
+
+                            <p><strong>The task involves identical objects. To help you distinguish them, we have provided images of the relevant objects.</strong></p>
+
+                            
+
+                            <p><strong>Current task:</strong><br>
+                            Move kitchenware_white_paper_towel_holder between lighting_blue_base_table_lamp and lighting_blue_base_table_lamp</p>
+
+                            <p>Initially, kitchenware_white_paper_towel_holder is on object_kitchen_counter_1_body_platform_1, and lighting_blue_base_table_lamp is on object_table_02_40_platform_2, together with lighting_blue_base_table_lamp.</p>
+
+                            <p>Steps used: 0/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>End action:</strong> CALL_END (Call end - terminate the task)</li>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_sofa_10_platform_0', 'go_to_object_sofa_10_platform_1', 'go_to_object_sofa_10_platform_2', 'go_to_object_table_04_13_platform_0', 'go_to_object_chair_04_46_platform_0', 'go_to_object_chair_04_47_platform_0', 'go_to_object_chair_05_7_platform_0', 'go_to_object_chair_05_8_platform_0', 'go_to_object_stool_02_18_platform_0', 'go_to_object_stool_02_6_platform_0', 'go_to_object_rack_01_75_platform_0', 'go_to_object_rack_01_75_platform_1', 'go_to_object_rack_01_75_platform_2', 'go_to_object_kitchen_counter_1_body_platform_0', 'go_to_object_kitchen_counter_1_body_platform_1', 'go_to_object_fridge_0_body_platform_1', 'go_to_object_fridge_0_body_platform_3', 'go_to_object_fridge_0_body_platform_4', 'go_to_object_fridge_0_body_platform_5', 'go_to_object_fridge_0_body_platform_6', 'go_to_object_fridge_0_body_platform_7', 'go_to_object_bin_03_3_platform_0', 'go_to_object_wall_cabinet_01_4_platform_0', 'go_to_object_wall_cabinet_01_4_platform_1', 'go_to_object_wall_cabinet_01_4_platform_2', 'go_to_object_wall_cabinet_01_4_platform_3', 'go_to_object_wall_cabinet_01_4_platform_4', 'go_to_object_wall_cabinet_01_4_platform_5', 'go_to_object_wall_cabinet_01_4_platform_6', 'go_to_object_table_03_14_platform_1', 'go_to_object_table_01_48_platform_0', 'go_to_object_wall_cabinet_02_21_platform_0', 'go_to_object_wall_cabinet_02_21_platform_1', 'go_to_object_wall_cabinet_02_21_platform_2', 'go_to_object_wall_cabinet_02_21_platform_3', 'go_to_object_wall_cabinet_02_21_platform_4', 'go_to_object_wall_cabinet_02_21_platform_5', 'go_to_object_wall_cabinet_02_21_platform_6', 'go_to_object_chestOfDrawers_01_2_body_platform_0', 'go_to_object_chestOfDrawers_01_2_body_platform_1', 'go_to_object_chestOfDrawers_01_2_body_platform_2', 'go_to_object_chestOfDrawers_01_2_body_platform_3', 'go_to_object_chestOfDrawers_01_2_body_platform_4', 'go_to_object_chestOfDrawers_01_2_body_platform_5', 'go_to_object_chestOfDrawers_01_2_body_platform_6', 'go_to_object_table_02_40_platform_0', 'go_to_object_table_02_40_platform_1', 'go_to_object_table_02_40_platform_2', 'go_to_object_tvstand_88_platform_0', 'go_to_object_cabinet_3_body_platform_0', 'go_to_object_cabinet_3_body_platform_1']</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> go_to_object_kitchen_counter_1_body_platform_1</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step1.png" alt="Step 1 - At kitchen counter">
+                        </div>
+                        <div class="message-text">
+                            <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
+                            <p>And you are holding nothing.</p>
+                            <p>Steps used: 1/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_sofa_10_platform_0', 'go_to_object_sofa_10_platform_1', 'go_to_object_sofa_10_platform_2', 'go_to_object_table_04_13_platform_0', 'go_to_object_chair_04_46_platform_0', 'go_to_object_chair_04_47_platform_0', 'go_to_object_chair_05_7_platform_0', 'go_to_object_chair_05_8_platform_0', 'go_to_object_stool_02_18_platform_0', 'go_to_object_stool_02_6_platform_0', 'go_to_object_rack_01_75_platform_0', 'go_to_object_rack_01_75_platform_1', 'go_to_object_rack_01_75_platform_2', 'go_to_object_kitchen_counter_1_body_platform_0', 'go_to_object_kitchen_counter_1_body_platform_1', 'go_to_object_fridge_0_body_platform_1', 'go_to_object_fridge_0_body_platform_3', 'go_to_object_fridge_0_body_platform_4', 'go_to_object_fridge_0_body_platform_5', 'go_to_object_fridge_0_body_platform_6', 'go_to_object_fridge_0_body_platform_7', 'go_to_object_bin_03_3_platform_0', 'go_to_object_wall_cabinet_01_4_platform_0', 'go_to_object_wall_cabinet_01_4_platform_1', 'go_to_object_wall_cabinet_01_4_platform_2', 'go_to_object_wall_cabinet_01_4_platform_3', 'go_to_object_wall_cabinet_01_4_platform_4', 'go_to_object_wall_cabinet_01_4_platform_5', 'go_to_object_wall_cabinet_01_4_platform_6', 'go_to_object_table_03_14_platform_1', 'go_to_object_table_01_48_platform_0', 'go_to_object_wall_cabinet_02_21_platform_0', 'go_to_object_wall_cabinet_02_21_platform_1', 'go_to_object_wall_cabinet_02_21_platform_2', 'go_to_object_wall_cabinet_02_21_platform_3', 'go_to_object_wall_cabinet_02_21_platform_4', 'go_to_object_wall_cabinet_02_21_platform_5', 'go_to_object_wall_cabinet_02_21_platform_6', 'go_to_object_chestOfDrawers_01_2_body_platform_0', 'go_to_object_chestOfDrawers_01_2_body_platform_1', 'go_to_object_chestOfDrawers_01_2_body_platform_2', 'go_to_object_chestOfDrawers_01_2_body_platform_3', 'go_to_object_chestOfDrawers_01_2_body_platform_4', 'go_to_object_chestOfDrawers_01_2_body_platform_5', 'go_to_object_chestOfDrawers_01_2_body_platform_6', 'go_to_object_table_02_40_platform_0', 'go_to_object_table_02_40_platform_1', 'go_to_object_table_02_40_platform_2', 'go_to_object_tvstand_88_platform_0', 'go_to_object_cabinet_3_body_platform_0', 'go_to_object_cabinet_3_body_platform_1']</li>
+                                    <li><strong>Pick object actions:</strong> ['pick_object_1_of_current_platform', 'pick_object_2_of_current_platform', 'pick_object_3_of_current_platform', 'pick_object_4_of_current_platform', 'pick_object_5_of_current_platform', 'pick_object_6_of_current_platform', 'pick_object_7_of_current_platform', 'pick_object_8_of_current_platform', 'pick_object_9_of_current_platform', 'pick_object_10_of_current_platform', 'pick_object_11_of_current_platform', 'pick_object_12_of_current_platform', 'pick_object_13_of_current_platform', 'pick_object_14_of_current_platform', 'pick_object_15_of_current_platform', 'pick_object_16_of_current_platform', 'pick_object_17_of_current_platform', 'pick_object_18_of_current_platform', 'pick_object_19_of_current_platform', 'pick_object_20_of_current_platform', 'pick_object_21_of_current_platform', 'pick_object_22_of_current_platform', 'pick_object_23_of_current_platform', 'pick_object_24_of_current_platform', 'pick_object_25_of_current_platform', 'pick_object_26_of_current_platform']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacle_of_object_1_of_current_platform', 'show_receptacle_of_object_2_of_current_platform', 'show_receptacle_of_object_3_of_current_platform', 'show_receptacle_of_object_4_of_current_platform', 'show_receptacle_of_object_5_of_current_platform', 'show_receptacle_of_object_6_of_current_platform', 'show_receptacle_of_object_7_of_current_platform', 'show_receptacle_of_object_8_of_current_platform', 'show_receptacle_of_object_9_of_current_platform', 'show_receptacle_of_object_10_of_current_platform', 'show_receptacle_of_object_11_of_current_platform', 'show_receptacle_of_object_12_of_current_platform', 'show_receptacle_of_object_13_of_current_platform', 'show_receptacle_of_object_14_of_current_platform', 'show_receptacle_of_object_15_of_current_platform', 'show_receptacle_of_object_16_of_current_platform', 'show_receptacle_of_object_17_of_current_platform', 'show_receptacle_of_object_18_of_current_platform', 'show_receptacle_of_object_19_of_current_platform', 'show_receptacle_of_object_20_of_current_platform', 'show_receptacle_of_object_21_of_current_platform', 'show_receptacle_of_object_22_of_current_platform', 'show_receptacle_of_object_23_of_current_platform', 'show_receptacle_of_object_24_of_current_platform', 'show_receptacle_of_object_25_of_current_platform', 'show_receptacle_of_object_26_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), change_view (Change the viewing angle to observe the scene from another perspective)</li>
+                                </ul>
+                            </div>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 4 images, named ['Idle_1_1_out_of_4.png', 'Idle_1_2_out_of_4.png', 'Idle_1_3_out_of_4.png', 'Idle_1_4_out_of_4.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: These images show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_kitchen_counter_1_body_platform_1.</p>
+                                <p style="color: purple;">If the platform has no objects, a 3x3 grid will be marked on the platform to help you place objects, with each grid marked in numbers from 1 to 9. If there are objects on the platform, guiding lines will indicate the object numbers. Note that if you see multiple images, it means the platform is too long to be captured in one image, and it's guaranteed that the same object will marked in THE SAME COLOR GUIDELINES AND THE SAME NUMBER. If you think you can't determine the number of an item in one picture, you can go through other pictures and see if this item is marked more clearly.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> change_view</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step2.png" alt="Step 2 - Unable to change view">
+                        </div>
+                        <div class="message-text">
+                            <p><strong>Unable to rotate to another view. The platform you at only have 1 walkable place for you.</strong></p>
+                            <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
+                            <p>And you are holding nothing.</p>
+                            <p>Steps used: 2/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_sofa_10_platform_0', 'go_to_object_sofa_10_platform_1', 'go_to_object_sofa_10_platform_2', 'go_to_object_table_04_13_platform_0', 'go_to_object_chair_04_46_platform_0', 'go_to_object_chair_04_47_platform_0', 'go_to_object_chair_05_7_platform_0', 'go_to_object_chair_05_8_platform_0', 'go_to_object_stool_02_18_platform_0', 'go_to_object_stool_02_6_platform_0', 'go_to_object_rack_01_75_platform_0', 'go_to_object_rack_01_75_platform_1', 'go_to_object_rack_01_75_platform_2', 'go_to_object_kitchen_counter_1_body_platform_0', 'go_to_object_kitchen_counter_1_body_platform_1', 'go_to_object_fridge_0_body_platform_1', 'go_to_object_fridge_0_body_platform_3', 'go_to_object_fridge_0_body_platform_4', 'go_to_object_fridge_0_body_platform_5', 'go_to_object_fridge_0_body_platform_6', 'go_to_object_fridge_0_body_platform_7', 'go_to_object_bin_03_3_platform_0', 'go_to_object_wall_cabinet_01_4_platform_0', 'go_to_object_wall_cabinet_01_4_platform_1', 'go_to_object_wall_cabinet_01_4_platform_2', 'go_to_object_wall_cabinet_01_4_platform_3', 'go_to_object_wall_cabinet_01_4_platform_4', 'go_to_object_wall_cabinet_01_4_platform_5', 'go_to_object_wall_cabinet_01_4_platform_6', 'go_to_object_table_03_14_platform_1', 'go_to_object_table_01_48_platform_0', 'go_to_object_wall_cabinet_02_21_platform_0', 'go_to_object_wall_cabinet_02_21_platform_1', 'go_to_object_wall_cabinet_02_21_platform_2', 'go_to_object_wall_cabinet_02_21_platform_3', 'go_to_object_wall_cabinet_02_21_platform_4', 'go_to_object_wall_cabinet_02_21_platform_5', 'go_to_object_wall_cabinet_02_21_platform_6', 'go_to_object_chestOfDrawers_01_2_body_platform_0', 'go_to_object_chestOfDrawers_01_2_body_platform_1', 'go_to_object_chestOfDrawers_01_2_body_platform_2', 'go_to_object_chestOfDrawers_01_2_body_platform_3', 'go_to_object_chestOfDrawers_01_2_body_platform_4', 'go_to_object_chestOfDrawers_01_2_body_platform_5', 'go_to_object_chestOfDrawers_01_2_body_platform_6', 'go_to_object_table_02_40_platform_0', 'go_to_object_table_02_40_platform_1', 'go_to_object_table_02_40_platform_2', 'go_to_object_tvstand_88_platform_0', 'go_to_object_cabinet_3_body_platform_0', 'go_to_object_cabinet_3_body_platform_1']</li>
+                                    <li><strong>Pick object actions:</strong> ['pick_object_1_of_current_platform', 'pick_object_2_of_current_platform', 'pick_object_3_of_current_platform', 'pick_object_4_of_current_platform', 'pick_object_5_of_current_platform', 'pick_object_6_of_current_platform', 'pick_object_7_of_current_platform', 'pick_object_8_of_current_platform', 'pick_object_9_of_current_platform', 'pick_object_10_of_current_platform', 'pick_object_11_of_current_platform', 'pick_object_12_of_current_platform', 'pick_object_13_of_current_platform', 'pick_object_14_of_current_platform', 'pick_object_15_of_current_platform', 'pick_object_16_of_current_platform', 'pick_object_17_of_current_platform', 'pick_object_18_of_current_platform', 'pick_object_19_of_current_platform', 'pick_object_20_of_current_platform', 'pick_object_21_of_current_platform', 'pick_object_22_of_current_platform', 'pick_object_23_of_current_platform', 'pick_object_24_of_current_platform', 'pick_object_25_of_current_platform', 'pick_object_26_of_current_platform']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacle_of_object_1_of_current_platform', 'show_receptacle_of_object_2_of_current_platform', 'show_receptacle_of_object_3_of_current_platform', 'show_receptacle_of_object_4_of_current_platform', 'show_receptacle_of_object_5_of_current_platform', 'show_receptacle_of_object_6_of_current_platform', 'show_receptacle_of_object_7_of_current_platform', 'show_receptacle_of_object_8_of_current_platform', 'show_receptacle_of_object_9_of_current_platform', 'show_receptacle_of_object_10_of_current_platform', 'show_receptacle_of_object_11_of_current_platform', 'show_receptacle_of_object_12_of_current_platform', 'show_receptacle_of_object_13_of_current_platform', 'show_receptacle_of_object_14_of_current_platform', 'show_receptacle_of_object_15_of_current_platform', 'show_receptacle_of_object_16_of_current_platform', 'show_receptacle_of_object_17_of_current_platform', 'show_receptacle_of_object_18_of_current_platform', 'show_receptacle_of_object_19_of_current_platform', 'show_receptacle_of_object_20_of_current_platform', 'show_receptacle_of_object_21_of_current_platform', 'show_receptacle_of_object_22_of_current_platform', 'show_receptacle_of_object_23_of_current_platform', 'show_receptacle_of_object_24_of_current_platform', 'show_receptacle_of_object_25_of_current_platform', 'show_receptacle_of_object_26_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), change_view (Change the viewing angle to observe the scene from another perspective)</li>
+                                </ul>
+                            </div>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 4 images, named ['Idle_2_1_out_of_4.png', 'Idle_2_2_out_of_4.png', 'Idle_2_3_out_of_4.png', 'Idle_2_4_out_of_4.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: These images show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_kitchen_counter_1_body_platform_1.</p>
+                                <p style="color: purple;">If the platform has no objects, a 3x3 grid will be marked on the platform to help you place objects, with each grid marked in numbers from 1 to 9. If there are objects on the platform, guiding lines will indicate the object numbers. Note that if you see multiple images, it means the platform is too long to be captured in one image, and it's guaranteed that the same object will marked in THE SAME COLOR GUIDELINES AND THE SAME NUMBER. If you think you can't determine the number of an item in one picture, you can go through other pictures and see if this item is marked more clearly.</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> pick_object_15_of_current_platform</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step3.png" alt="Step 3 - Picked up wrong object">
+                        </div>
+                        <div class="message-text">
+                            <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
+                            <p>And you are holding kitchenware_small_white_mug.</p>
+                            <p>Steps used: 3/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_sofa_10_platform_0', 'go_to_object_sofa_10_platform_1', 'go_to_object_sofa_10_platform_2', 'go_to_object_table_04_13_platform_0', 'go_to_object_chair_04_46_platform_0', 'go_to_object_chair_04_47_platform_0', 'go_to_object_chair_05_7_platform_0', 'go_to_object_chair_05_8_platform_0', 'go_to_object_stool_02_18_platform_0', 'go_to_object_stool_02_6_platform_0', 'go_to_object_rack_01_75_platform_0', 'go_to_object_rack_01_75_platform_1', 'go_to_object_rack_01_75_platform_2', 'go_to_object_kitchen_counter_1_body_platform_0', 'go_to_object_kitchen_counter_1_body_platform_1', 'go_to_object_fridge_0_body_platform_1', 'go_to_object_fridge_0_body_platform_3', 'go_to_object_fridge_0_body_platform_4', 'go_to_object_fridge_0_body_platform_5', 'go_to_object_fridge_0_body_platform_6', 'go_to_object_fridge_0_body_platform_7', 'go_to_object_bin_03_3_platform_0', 'go_to_object_wall_cabinet_01_4_platform_0', 'go_to_object_wall_cabinet_01_4_platform_1', 'go_to_object_wall_cabinet_01_4_platform_2', 'go_to_object_wall_cabinet_01_4_platform_3', 'go_to_object_wall_cabinet_01_4_platform_4', 'go_to_object_wall_cabinet_01_4_platform_5', 'go_to_object_wall_cabinet_01_4_platform_6', 'go_to_object_table_03_14_platform_1', 'go_to_object_table_01_48_platform_0', 'go_to_object_wall_cabinet_02_21_platform_0', 'go_to_object_wall_cabinet_02_21_platform_1', 'go_to_object_wall_cabinet_02_21_platform_2', 'go_to_object_wall_cabinet_02_21_platform_3', 'go_to_object_wall_cabinet_02_21_platform_4', 'go_to_object_wall_cabinet_02_21_platform_5', 'go_to_object_wall_cabinet_02_21_platform_6', 'go_to_object_chestOfDrawers_01_2_body_platform_0', 'go_to_object_chestOfDrawers_01_2_body_platform_1', 'go_to_object_chestOfDrawers_01_2_body_platform_2', 'go_to_object_chestOfDrawers_01_2_body_platform_3', 'go_to_object_chestOfDrawers_01_2_body_platform_4', 'go_to_object_chestOfDrawers_01_2_body_platform_5', 'go_to_object_chestOfDrawers_01_2_body_platform_6', 'go_to_object_table_02_40_platform_0', 'go_to_object_table_02_40_platform_1', 'go_to_object_table_02_40_platform_2', 'go_to_object_tvstand_88_platform_0', 'go_to_object_cabinet_3_body_platform_0', 'go_to_object_cabinet_3_body_platform_1']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacle_of_object_1_of_current_platform', 'show_receptacle_of_object_2_of_current_platform', 'show_receptacle_of_object_3_of_current_platform', 'show_receptacle_of_object_4_of_current_platform', 'show_receptacle_of_object_5_of_current_platform', 'show_receptacle_of_object_6_of_current_platform', 'show_receptacle_of_object_7_of_current_platform', 'show_receptacle_of_object_8_of_current_platform', 'show_receptacle_of_object_9_of_current_platform', 'show_receptacle_of_object_10_of_current_platform', 'show_receptacle_of_object_11_of_current_platform', 'show_receptacle_of_object_12_of_current_platform', 'show_receptacle_of_object_13_of_current_platform', 'show_receptacle_of_object_14_of_current_platform', 'show_receptacle_of_object_15_of_current_platform', 'show_receptacle_of_object_16_of_current_platform', 'show_receptacle_of_object_17_of_current_platform', 'show_receptacle_of_object_18_of_current_platform', 'show_receptacle_of_object_19_of_current_platform', 'show_receptacle_of_object_20_of_current_platform', 'show_receptacle_of_object_21_of_current_platform', 'show_receptacle_of_object_22_of_current_platform', 'show_receptacle_of_object_23_of_current_platform', 'show_receptacle_of_object_24_of_current_platform', 'show_receptacle_of_object_25_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), change_view (Change the viewing angle to observe the scene from another perspective)</li>
+                                    <li><strong>Place actions:</strong> place_r (Place the object in an arbitrary place on the platform), place_s_[({object_idx1},{dir_idx1})...] (Place the object in the union area of regions with indices {(object_idx1,region_idx1)}(object_idx1's region_idx1 space) etc. All available pairs are in [(1, 1), (1, 2), (1, 3), (1, 4), (2, 1), (5, 1), (6, 1), (8, 1), (10, 1), (11, 1), (11, 2), (11, 3), (12, 1), (12, 2), (12, 3), (12, 4), (12, 5), (12, 6), (12, 7), (12, 8), (13, 1), (14, 1), (14, 2), (14, 3), (14, 4), (14, 5), (16, 1), (16, 2), (16, 3), (17, 1), (17, 2), (17, 3), (17, 4), (17, 5), (17, 6), (18, 1), (19, 1), (20, 1), (20, 2), (20, 3), (20, 4), (20, 5), (21, 1), (21, 2), (21, 3), (21, 4), (21, 5), (22, 1), (22, 2), (22, 3), (23, 1), (24, 1), (24, 2), (24, 3), (24, 4), (24, 5), (24, 6), (24, 7), (24, 8), (25, 1), (25, 2)], and a valid choice should be a subset of it)</li>
+                                </ul>
+                            </div>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 4 images, named ['HoldingOccupiedPlatform3_1_out_of_4.png', 'HoldingOccupiedPlatform3_2_out_of_4.png', 'HoldingOccupiedPlatform3_3_out_of_4.png', 'HoldingOccupiedPlatform3_4_out_of_4.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: These image show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_kitchen_counter_1_body_platform_1.</p>
+                                <p style="color: purple;">If the platform has no objects, a 3x3 grid will be marked on the platform to help you place objects, with each grid marked in numbers from 1 to 9. If there are objects on the platform, guiding lines will indicate the object numbers. Note that if you see multiple images, it means the platform is too long to be captured in one image, and it's guaranteed that the same object will marked in THE SAME COLOR GUIDELINES AND THE SAME NUMBER. If you think you can't determine the number of an item in one picture, you can go through other pictures and see if this item is marked more clearly.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> place_r</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step4.png" alt="Step 4 - Platform images">
+                        </div>
+                        <div class="message-text">
+                            <p><strong>The object has been placed successfully. You can now call end if you think you've finished the task correctly, or can also pick up the object again if you think the placement is not correct.</strong></p>
+                            <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
+                            <p>And you are holding nothing.</p>
+                            <p>Steps used: 4/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+                       
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_sofa_10_platform_0', 'go_to_object_sofa_10_platform_1', 'go_to_object_sofa_10_platform_2', 'go_to_object_table_04_13_platform_0', 'go_to_object_chair_04_46_platform_0', 'go_to_object_chair_04_47_platform_0', 'go_to_object_chair_05_7_platform_0', 'go_to_object_chair_05_8_platform_0', 'go_to_object_stool_02_18_platform_0', 'go_to_object_stool_02_6_platform_0', 'go_to_object_rack_01_75_platform_0', 'go_to_object_rack_01_75_platform_1', 'go_to_object_rack_01_75_platform_2', 'go_to_object_kitchen_counter_1_body_platform_0', 'go_to_object_kitchen_counter_1_body_platform_1', 'go_to_object_fridge_0_body_platform_1', 'go_to_object_fridge_0_body_platform_3', 'go_to_object_fridge_0_body_platform_4', 'go_to_object_fridge_0_body_platform_5', 'go_to_object_fridge_0_body_platform_6', 'go_to_object_fridge_0_body_platform_7', 'go_to_object_bin_03_3_platform_0', 'go_to_object_wall_cabinet_01_4_platform_0', 'go_to_object_wall_cabinet_01_4_platform_1', 'go_to_object_wall_cabinet_01_4_platform_2', 'go_to_object_wall_cabinet_01_4_platform_3', 'go_to_object_wall_cabinet_01_4_platform_4', 'go_to_object_wall_cabinet_01_4_platform_5', 'go_to_object_wall_cabinet_01_4_platform_6', 'go_to_object_table_03_14_platform_1', 'go_to_object_table_01_48_platform_0', 'go_to_object_wall_cabinet_02_21_platform_0', 'go_to_object_wall_cabinet_02_21_platform_1', 'go_to_object_wall_cabinet_02_21_platform_2', 'go_to_object_wall_cabinet_02_21_platform_3', 'go_to_object_wall_cabinet_02_21_platform_4', 'go_to_object_wall_cabinet_02_21_platform_5', 'go_to_object_wall_cabinet_02_21_platform_6', 'go_to_object_chestOfDrawers_01_2_body_platform_0', 'go_to_object_chestOfDrawers_01_2_body_platform_1', 'go_to_object_chestOfDrawers_01_2_body_platform_2', 'go_to_object_chestOfDrawers_01_2_body_platform_3', 'go_to_object_chestOfDrawers_01_2_body_platform_4', 'go_to_object_chestOfDrawers_01_2_body_platform_5', 'go_to_object_chestOfDrawers_01_2_body_platform_6', 'go_to_object_table_02_40_platform_0', 'go_to_object_table_02_40_platform_1', 'go_to_object_table_02_40_platform_2', 'go_to_object_tvstand_88_platform_0', 'go_to_object_cabinet_3_body_platform_0', 'go_to_object_cabinet_3_body_platform_1']</li>
+                                    <li><strong>Pick object actions:</strong> ['pick_object_1_of_current_platform', 'pick_object_2_of_current_platform', 'pick_object_3_of_current_platform', 'pick_object_4_of_current_platform', 'pick_object_5_of_current_platform', 'pick_object_6_of_current_platform', 'pick_object_7_of_current_platform', 'pick_object_8_of_current_platform', 'pick_object_9_of_current_platform', 'pick_object_10_of_current_platform', 'pick_object_11_of_current_platform', 'pick_object_12_of_current_platform', 'pick_object_13_of_current_platform', 'pick_object_14_of_current_platform', 'pick_object_15_of_current_platform', 'pick_object_16_of_current_platform', 'pick_object_17_of_current_platform', 'pick_object_18_of_current_platform', 'pick_object_19_of_current_platform', 'pick_object_20_of_current_platform', 'pick_object_21_of_current_platform', 'pick_object_22_of_current_platform', 'pick_object_23_of_current_platform', 'pick_object_24_of_current_platform', 'pick_object_25_of_current_platform', 'pick_object_26_of_current_platform']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacle_of_object_1_of_current_platform', 'show_receptacle_of_object_2_of_current_platform', 'show_receptacle_of_object_3_of_current_platform', 'show_receptacle_of_object_4_of_current_platform', 'show_receptacle_of_object_5_of_current_platform', 'show_receptacle_of_object_6_of_current_platform', 'show_receptacle_of_object_7_of_current_platform', 'show_receptacle_of_object_8_of_current_platform', 'show_receptacle_of_object_9_of_current_platform', 'show_receptacle_of_object_10_of_current_platform', 'show_receptacle_of_object_11_of_current_platform', 'show_receptacle_of_object_12_of_current_platform', 'show_receptacle_of_object_13_of_current_platform', 'show_receptacle_of_object_14_of_current_platform', 'show_receptacle_of_object_15_of_current_platform', 'show_receptacle_of_object_16_of_current_platform', 'show_receptacle_of_object_17_of_current_platform', 'show_receptacle_of_object_18_of_current_platform', 'show_receptacle_of_object_19_of_current_platform', 'show_receptacle_of_object_20_of_current_platform', 'show_receptacle_of_object_21_of_current_platform', 'show_receptacle_of_object_22_of_current_platform', 'show_receptacle_of_object_23_of_current_platform', 'show_receptacle_of_object_24_of_current_platform', 'show_receptacle_of_object_25_of_current_platform', 'show_receptacle_of_object_26_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), change_view (Change the viewing angle to observe the scene from another perspective)</li>
+                                </ul>
+                            </div>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 4 images, named ['Idle_4_1_out_of_4.png', 'Idle_4_2_out_of_4.png', 'Idle_4_3_out_of_4.png', 'Idle_4_4_out_of_4.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: These images show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_kitchen_counter_1_body_platform_1.</p>
+                                <p style="color: purple;">If the platform has no objects, a 3x3 grid will be marked on the platform to help you place objects, with each grid marked in numbers from 1 to 9. If there are objects on the platform, guiding lines will indicate the object numbers. Note that if you see multiple images, it means the platform is too long to be captured in one image, and it's guaranteed that the same object will marked in THE SAME COLOR GUIDELINES AND THE SAME NUMBER. If you think you can't determine the number of an item in one picture, you can go through other pictures and see if this item is marked more clearly.</p>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> pick_object_17_of_current_platform</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step5.png" alt="Step 5 - Platform images">
+                        </div>
+                        <div class="message-text">
+                            <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
+                            <p>And you are holding kitchenware_small_white_bowl.</p>
+                            <p>Steps used: 5/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_sofa_10_platform_0', 'go_to_object_sofa_10_platform_1', 'go_to_object_sofa_10_platform_2', 'go_to_object_table_04_13_platform_0', 'go_to_object_chair_04_46_platform_0', 'go_to_object_chair_04_47_platform_0', 'go_to_object_chair_05_7_platform_0', 'go_to_object_chair_05_8_platform_0', 'go_to_object_stool_02_18_platform_0', 'go_to_object_stool_02_6_platform_0', 'go_to_object_rack_01_75_platform_0', 'go_to_object_rack_01_75_platform_1', 'go_to_object_rack_01_75_platform_2', 'go_to_object_kitchen_counter_1_body_platform_0', 'go_to_object_kitchen_counter_1_body_platform_1', 'go_to_object_fridge_0_body_platform_1', 'go_to_object_fridge_0_body_platform_3', 'go_to_object_fridge_0_body_platform_4', 'go_to_object_fridge_0_body_platform_5', 'go_to_object_fridge_0_body_platform_6', 'go_to_object_fridge_0_body_platform_7', 'go_to_object_bin_03_3_platform_0', 'go_to_object_wall_cabinet_01_4_platform_0', 'go_to_object_wall_cabinet_01_4_platform_1', 'go_to_object_wall_cabinet_01_4_platform_2', 'go_to_object_wall_cabinet_01_4_platform_3', 'go_to_object_wall_cabinet_01_4_platform_4', 'go_to_object_wall_cabinet_01_4_platform_5', 'go_to_object_wall_cabinet_01_4_platform_6', 'go_to_object_table_03_14_platform_1', 'go_to_object_table_01_48_platform_0', 'go_to_object_wall_cabinet_02_21_platform_0', 'go_to_object_wall_cabinet_02_21_platform_1', 'go_to_object_wall_cabinet_02_21_platform_2', 'go_to_object_wall_cabinet_02_21_platform_3', 'go_to_object_wall_cabinet_02_21_platform_4', 'go_to_object_wall_cabinet_02_21_platform_5', 'go_to_object_wall_cabinet_02_21_platform_6', 'go_to_object_chestOfDrawers_01_2_body_platform_0', 'go_to_object_chestOfDrawers_01_2_body_platform_1', 'go_to_object_chestOfDrawers_01_2_body_platform_2', 'go_to_object_chestOfDrawers_01_2_body_platform_3', 'go_to_object_chestOfDrawers_01_2_body_platform_4', 'go_to_object_chestOfDrawers_01_2_body_platform_5', 'go_to_object_chestOfDrawers_01_2_body_platform_6', 'go_to_object_table_02_40_platform_0', 'go_to_object_table_02_40_platform_1', 'go_to_object_table_02_40_platform_2', 'go_to_object_tvstand_88_platform_0', 'go_to_object_cabinet_3_body_platform_0', 'go_to_object_cabinet_3_body_platform_1']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacle_of_object_1_of_current_platform', 'show_receptacle_of_object_2_of_current_platform', 'show_receptacle_of_object_3_of_current_platform', 'show_receptacle_of_object_4_of_current_platform', 'show_receptacle_of_object_5_of_current_platform', 'show_receptacle_of_object_6_of_current_platform', 'show_receptacle_of_object_7_of_current_platform', 'show_receptacle_of_object_8_of_current_platform', 'show_receptacle_of_object_9_of_current_platform', 'show_receptacle_of_object_10_of_current_platform', 'show_receptacle_of_object_11_of_current_platform', 'show_receptacle_of_object_12_of_current_platform', 'show_receptacle_of_object_13_of_current_platform', 'show_receptacle_of_object_14_of_current_platform', 'show_receptacle_of_object_15_of_current_platform', 'show_receptacle_of_object_16_of_current_platform', 'show_receptacle_of_object_17_of_current_platform', 'show_receptacle_of_object_18_of_current_platform', 'show_receptacle_of_object_19_of_current_platform', 'show_receptacle_of_object_20_of_current_platform', 'show_receptacle_of_object_21_of_current_platform', 'show_receptacle_of_object_22_of_current_platform', 'show_receptacle_of_object_23_of_current_platform', 'show_receptacle_of_object_24_of_current_platform', 'show_receptacle_of_object_25_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), change_view (Change the viewing angle to observe the scene from another perspective)</li>
+                                    <li><strong>Place actions:</strong> place_r (Place the object in an arbitrary place on the platform), place_s_[({object_idx1},{dir_idx1})...] (Place the object in the union area of regions with indices {(object_idx1,region_idx1)}(object_idx1's region_idx1 space) etc. All available pairs are in [(1, 1), (1, 2), (1, 3), (1, 4), (2, 1), (5, 1), (6, 1), (8, 1), (10, 1), (11, 1), (11, 2), (11, 3), (12, 1), (12, 2), (12, 3), (12, 4), (12, 5), (12, 6), (12, 7), (12, 8), (13, 1), (13, 2), (14, 1), (14, 2), (14, 3), (14, 4), (14, 5), (16, 1), (16, 2), (16, 3), (17, 1), (18, 1), (19, 1), (19, 2), (19, 3), (19, 4), (19, 5), (20, 1), (20, 2), (20, 3), (20, 4), (20, 5), (21, 1), (21, 2), (21, 3), (22, 1), (23, 1), (23, 2), (23, 3), (23, 4), (23, 5), (23, 6), (23, 7), (23, 8), (24, 1), (24, 2), (25, 1), (25, 2), (25, 3)], and a valid choice should be a subset of it)</li>
+                                </ul>
+                            </div>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 4 images, named ['HoldingOccupiedPlatform5_1_out_of_4.png', 'HoldingOccupiedPlatform5_2_out_of_4.png', 'HoldingOccupiedPlatform5_3_out_of_4.png', 'HoldingOccupiedPlatform5_4_out_of_4.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: These image show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_kitchen_counter_1_body_platform_1.</p>
+                                <p style="color: purple;">If the platform has no objects, a 3x3 grid will be marked on the platform to help you place objects, with each grid marked in numbers from 1 to 9. If there are objects on the platform, guiding lines will indicate the object numbers. Note that if you see multiple images, it means the platform is too long to be captured in one image, and it's guaranteed that the same object will marked in THE SAME COLOR GUIDELINES AND THE SAME NUMBER. If you think you can't determine the number of an item in one picture, you can go through other pictures and see if this item is marked more clearly.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> place_r</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step6.png" alt="Step 6 - Platform images">
+                        </div>
+                        <div class="message-text">
+                            <p><strong>The object has been placed successfully. You can now call end if you think you've finished the task correctly, or can also pick up the object again if you think the placement is not correct.</strong></p>
+                            <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
+                            <p>And you are holding nothing.</p>
+                            <p>Steps used: 6/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_sofa_10_platform_0', 'go_to_object_sofa_10_platform_1', 'go_to_object_sofa_10_platform_2', 'go_to_object_table_04_13_platform_0', 'go_to_object_chair_04_46_platform_0', 'go_to_object_chair_04_47_platform_0', 'go_to_object_chair_05_7_platform_0', 'go_to_object_chair_05_8_platform_0', 'go_to_object_stool_02_18_platform_0', 'go_to_object_stool_02_6_platform_0', 'go_to_object_rack_01_75_platform_0', 'go_to_object_rack_01_75_platform_1', 'go_to_object_rack_01_75_platform_2', 'go_to_object_kitchen_counter_1_body_platform_0', 'go_to_object_kitchen_counter_1_body_platform_1', 'go_to_object_fridge_0_body_platform_1', 'go_to_object_fridge_0_body_platform_3', 'go_to_object_fridge_0_body_platform_4', 'go_to_object_fridge_0_body_platform_5', 'go_to_object_fridge_0_body_platform_6', 'go_to_object_fridge_0_body_platform_7', 'go_to_object_bin_03_3_platform_0', 'go_to_object_wall_cabinet_01_4_platform_0', 'go_to_object_wall_cabinet_01_4_platform_1', 'go_to_object_wall_cabinet_01_4_platform_2', 'go_to_object_wall_cabinet_01_4_platform_3', 'go_to_object_wall_cabinet_01_4_platform_4', 'go_to_object_wall_cabinet_01_4_platform_5', 'go_to_object_wall_cabinet_01_4_platform_6', 'go_to_object_table_03_14_platform_1', 'go_to_object_table_01_48_platform_0', 'go_to_object_wall_cabinet_02_21_platform_0', 'go_to_object_wall_cabinet_02_21_platform_1', 'go_to_object_wall_cabinet_02_21_platform_2', 'go_to_object_wall_cabinet_02_21_platform_3', 'go_to_object_wall_cabinet_02_21_platform_4', 'go_to_object_wall_cabinet_02_21_platform_5', 'go_to_object_wall_cabinet_02_21_platform_6', 'go_to_object_chestOfDrawers_01_2_body_platform_0', 'go_to_object_chestOfDrawers_01_2_body_platform_1', 'go_to_object_chestOfDrawers_01_2_body_platform_2', 'go_to_object_chestOfDrawers_01_2_body_platform_3', 'go_to_object_chestOfDrawers_01_2_body_platform_4', 'go_to_object_chestOfDrawers_01_2_body_platform_5', 'go_to_object_chestOfDrawers_01_2_body_platform_6', 'go_to_object_table_02_40_platform_0', 'go_to_object_table_02_40_platform_1', 'go_to_object_table_02_40_platform_2', 'go_to_object_tvstand_88_platform_0', 'go_to_object_cabinet_3_body_platform_0', 'go_to_object_cabinet_3_body_platform_1']</li>
+                                    <li><strong>Pick object actions:</strong> ['pick_object_1_of_current_platform', 'pick_object_2_of_current_platform', 'pick_object_3_of_current_platform', 'pick_object_4_of_current_platform', 'pick_object_5_of_current_platform', 'pick_object_6_of_current_platform', 'pick_object_7_of_current_platform', 'pick_object_8_of_current_platform', 'pick_object_9_of_current_platform', 'pick_object_10_of_current_platform', 'pick_object_11_of_current_platform', 'pick_object_12_of_current_platform', 'pick_object_13_of_current_platform', 'pick_object_14_of_current_platform', 'pick_object_15_of_current_platform', 'pick_object_16_of_current_platform', 'pick_object_17_of_current_platform', 'pick_object_18_of_current_platform', 'pick_object_19_of_current_platform', 'pick_object_20_of_current_platform', 'pick_object_21_of_current_platform', 'pick_object_22_of_current_platform', 'pick_object_23_of_current_platform', 'pick_object_24_of_current_platform', 'pick_object_25_of_current_platform', 'pick_object_26_of_current_platform']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacle_of_object_1_of_current_platform', 'show_receptacle_of_object_2_of_current_platform', 'show_receptacle_of_object_3_of_current_platform', 'show_receptacle_of_object_4_of_current_platform', 'show_receptacle_of_object_5_of_current_platform', 'show_receptacle_of_object_6_of_current_platform', 'show_receptacle_of_object_7_of_current_platform', 'show_receptacle_of_object_8_of_current_platform', 'show_receptacle_of_object_9_of_current_platform', 'show_receptacle_of_object_10_of_current_platform', 'show_receptacle_of_object_11_of_current_platform', 'show_receptacle_of_object_12_of_current_platform', 'show_receptacle_of_object_13_of_current_platform', 'show_receptacle_of_object_14_of_current_platform', 'show_receptacle_of_object_15_of_current_platform', 'show_receptacle_of_object_16_of_current_platform', 'show_receptacle_of_object_17_of_current_platform', 'show_receptacle_of_object_18_of_current_platform', 'show_receptacle_of_object_19_of_current_platform', 'show_receptacle_of_object_20_of_current_platform', 'show_receptacle_of_object_21_of_current_platform', 'show_receptacle_of_object_22_of_current_platform', 'show_receptacle_of_object_23_of_current_platform', 'show_receptacle_of_object_24_of_current_platform', 'show_receptacle_of_object_25_of_current_platform', 'show_receptacle_of_object_26_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), change_view (Change the viewing angle to observe the scene from another perspective)</li>
+                                </ul>
+                            </div>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 4 images, named ['Idle_6_1_out_of_4.png', 'Idle_6_2_out_of_4.png', 'Idle_6_3_out_of_4.png', 'Idle_6_4_out_of_4.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: These images show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_kitchen_counter_1_body_platform_1.</p>
+                                <p style="color: purple;">If the platform has no objects, a 3x3 grid will be marked on the platform to help you place objects, with each grid marked in numbers from 1 to 9. If there are objects on the platform, guiding lines will indicate the object numbers. Note that if you see multiple images, it means the platform is too long to be captured in one image, and it's guaranteed that the same object will marked in THE SAME COLOR GUIDELINES AND THE SAME NUMBER. If you think you can't determine the number of an item in one picture, you can go through other pictures and see if this item is marked more clearly.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> pick_object_7_of_current_platform</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step7.png" alt="Step 7 - Platform images">
+                        </div>
+                        <div class="message-text">
+                            <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
+                            <p>And you are holding kitchenware_spice_container.</p>
+                            <p>Steps used: 7/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_sofa_10_platform_0', 'go_to_object_sofa_10_platform_1', 'go_to_object_sofa_10_platform_2', 'go_to_object_table_04_13_platform_0', 'go_to_object_chair_04_46_platform_0', 'go_to_object_chair_04_47_platform_0', 'go_to_object_chair_05_7_platform_0', 'go_to_object_chair_05_8_platform_0', 'go_to_object_stool_02_18_platform_0', 'go_to_object_stool_02_6_platform_0', 'go_to_object_rack_01_75_platform_0', 'go_to_object_rack_01_75_platform_1', 'go_to_object_rack_01_75_platform_2', 'go_to_object_kitchen_counter_1_body_platform_0', 'go_to_object_kitchen_counter_1_body_platform_1', 'go_to_object_fridge_0_body_platform_1', 'go_to_object_fridge_0_body_platform_3', 'go_to_object_fridge_0_body_platform_4', 'go_to_object_fridge_0_body_platform_5', 'go_to_object_fridge_0_body_platform_6', 'go_to_object_fridge_0_body_platform_7', 'go_to_object_bin_03_3_platform_0', 'go_to_object_wall_cabinet_01_4_platform_0', 'go_to_object_wall_cabinet_01_4_platform_1', 'go_to_object_wall_cabinet_01_4_platform_2', 'go_to_object_wall_cabinet_01_4_platform_3', 'go_to_object_wall_cabinet_01_4_platform_4', 'go_to_object_wall_cabinet_01_4_platform_5', 'go_to_object_wall_cabinet_01_4_platform_6', 'go_to_object_table_03_14_platform_1', 'go_to_object_table_01_48_platform_0', 'go_to_object_wall_cabinet_02_21_platform_0', 'go_to_object_wall_cabinet_02_21_platform_1', 'go_to_object_wall_cabinet_02_21_platform_2', 'go_to_object_wall_cabinet_02_21_platform_3', 'go_to_object_wall_cabinet_02_21_platform_4', 'go_to_object_wall_cabinet_02_21_platform_5', 'go_to_object_wall_cabinet_02_21_platform_6', 'go_to_object_chestOfDrawers_01_2_body_platform_0', 'go_to_object_chestOfDrawers_01_2_body_platform_1', 'go_to_object_chestOfDrawers_01_2_body_platform_2', 'go_to_object_chestOfDrawers_01_2_body_platform_3', 'go_to_object_chestOfDrawers_01_2_body_platform_4', 'go_to_object_chestOfDrawers_01_2_body_platform_5', 'go_to_object_chestOfDrawers_01_2_body_platform_6', 'go_to_object_table_02_40_platform_0', 'go_to_object_table_02_40_platform_1', 'go_to_object_table_02_40_platform_2', 'go_to_object_tvstand_88_platform_0', 'go_to_object_cabinet_3_body_platform_0', 'go_to_object_cabinet_3_body_platform_1']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacle_of_object_1_of_current_platform', 'show_receptacle_of_object_2_of_current_platform', 'show_receptacle_of_object_3_of_current_platform', 'show_receptacle_of_object_4_of_current_platform', 'show_receptacle_of_object_5_of_current_platform', 'show_receptacle_of_object_6_of_current_platform', 'show_receptacle_of_object_7_of_current_platform', 'show_receptacle_of_object_8_of_current_platform', 'show_receptacle_of_object_9_of_current_platform', 'show_receptacle_of_object_10_of_current_platform', 'show_receptacle_of_object_11_of_current_platform', 'show_receptacle_of_object_12_of_current_platform', 'show_receptacle_of_object_13_of_current_platform', 'show_receptacle_of_object_14_of_current_platform', 'show_receptacle_of_object_15_of_current_platform', 'show_receptacle_of_object_16_of_current_platform', 'show_receptacle_of_object_17_of_current_platform', 'show_receptacle_of_object_18_of_current_platform', 'show_receptacle_of_object_19_of_current_platform', 'show_receptacle_of_object_20_of_current_platform', 'show_receptacle_of_object_21_of_current_platform', 'show_receptacle_of_object_22_of_current_platform', 'show_receptacle_of_object_23_of_current_platform', 'show_receptacle_of_object_24_of_current_platform', 'show_receptacle_of_object_25_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), change_view (Change the viewing angle to observe the scene from another perspective)</li>
+                                    <li><strong>Place actions:</strong> place_r (Place the object in an arbitrary place on the platform), place_s_[({object_idx1},{dir_idx1})...] (Place the object in the union area of regions with indices {(object_idx1,region_idx1)}(object_idx1's region_idx1 space) etc. All available pairs are in [(1, 1), (1, 2), (1, 3), (1, 4), (2, 1), (5, 1), (6, 1), (6, 2), (7, 1), (8, 1), (9, 1), (10, 1), (10, 2), (10, 3), (11, 1), (11, 2), (11, 3), (11, 4), (11, 5), (11, 6), (11, 7), (12, 1), (12, 2), (13, 1), (13, 2), (13, 3), (13, 4), (13, 5), (15, 1), (15, 2), (15, 3), (16, 1), (17, 1), (18, 1), (18, 2), (18, 3), (18, 4), (19, 1), (19, 2), (19, 3), (19, 4), (19, 5), (20, 1), (20, 2), (20, 3), (21, 1), (22, 1), (22, 2), (22, 3), (22, 4), (22, 5), (22, 6), (22, 7), (22, 8), (23, 1), (23, 2), (24, 1), (24, 2), (24, 3), (25, 1), (25, 2), (25, 3), (25, 4), (25, 5)], and a valid choice should be a subset of it)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> place_r</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step8.png" alt="Step 8 - Platform images">
+                        </div>
+                        <div class="message-text">
+                            <p><strong>The object has been placed successfully. You can now call end if you think you've finished the task correctly, or can also pick up the object again if you think the placement is not correct.</strong></p>
+                            <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
+                            <p>And you are holding nothing.</p>
+                            <p>Steps used: 8/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_sofa_10_platform_0', 'go_to_object_sofa_10_platform_1', 'go_to_object_sofa_10_platform_2', 'go_to_object_table_04_13_platform_0', 'go_to_object_chair_04_46_platform_0', 'go_to_object_chair_04_47_platform_0', 'go_to_object_chair_05_7_platform_0', 'go_to_object_chair_05_8_platform_0', 'go_to_object_stool_02_18_platform_0', 'go_to_object_stool_02_6_platform_0', 'go_to_object_rack_01_75_platform_0', 'go_to_object_rack_01_75_platform_1', 'go_to_object_rack_01_75_platform_2', 'go_to_object_kitchen_counter_1_body_platform_0', 'go_to_object_kitchen_counter_1_body_platform_1', 'go_to_object_fridge_0_body_platform_1', 'go_to_object_fridge_0_body_platform_3', 'go_to_object_fridge_0_body_platform_4', 'go_to_object_fridge_0_body_platform_5', 'go_to_object_fridge_0_body_platform_6', 'go_to_object_fridge_0_body_platform_7', 'go_to_object_bin_03_3_platform_0', 'go_to_object_wall_cabinet_01_4_platform_0', 'go_to_object_wall_cabinet_01_4_platform_1', 'go_to_object_wall_cabinet_01_4_platform_2', 'go_to_object_wall_cabinet_01_4_platform_3', 'go_to_object_wall_cabinet_01_4_platform_4', 'go_to_object_wall_cabinet_01_4_platform_5', 'go_to_object_wall_cabinet_01_4_platform_6', 'go_to_object_table_03_14_platform_1', 'go_to_object_table_01_48_platform_0', 'go_to_object_wall_cabinet_02_21_platform_0', 'go_to_object_wall_cabinet_02_21_platform_1', 'go_to_object_wall_cabinet_02_21_platform_2', 'go_to_object_wall_cabinet_02_21_platform_3', 'go_to_object_wall_cabinet_02_21_platform_4', 'go_to_object_wall_cabinet_02_21_platform_5', 'go_to_object_wall_cabinet_02_21_platform_6', 'go_to_object_chestOfDrawers_01_2_body_platform_0', 'go_to_object_chestOfDrawers_01_2_body_platform_1', 'go_to_object_chestOfDrawers_01_2_body_platform_2', 'go_to_object_chestOfDrawers_01_2_body_platform_3', 'go_to_object_chestOfDrawers_01_2_body_platform_4', 'go_to_object_chestOfDrawers_01_2_body_platform_5', 'go_to_object_chestOfDrawers_01_2_body_platform_6', 'go_to_object_table_02_40_platform_0', 'go_to_object_table_02_40_platform_1', 'go_to_object_table_02_40_platform_2', 'go_to_object_tvstand_88_platform_0', 'go_to_object_cabinet_3_body_platform_0', 'go_to_object_cabinet_3_body_platform_1']</li>
+                                    <li><strong>Pick object actions:</strong> ['pick_object_1_of_current_platform', 'pick_object_2_of_current_platform', 'pick_object_3_of_current_platform', 'pick_object_4_of_current_platform', 'pick_object_5_of_current_platform', 'pick_object_6_of_current_platform', 'pick_object_7_of_current_platform', 'pick_object_8_of_current_platform', 'pick_object_9_of_current_platform', 'pick_object_10_of_current_platform', 'pick_object_11_of_current_platform', 'pick_object_12_of_current_platform', 'pick_object_13_of_current_platform', 'pick_object_14_of_current_platform', 'pick_object_15_of_current_platform', 'pick_object_16_of_current_platform', 'pick_object_17_of_current_platform', 'pick_object_18_of_current_platform', 'pick_object_19_of_current_platform', 'pick_object_20_of_current_platform', 'pick_object_21_of_current_platform', 'pick_object_22_of_current_platform', 'pick_object_23_of_current_platform', 'pick_object_24_of_current_platform', 'pick_object_25_of_current_platform', 'pick_object_26_of_current_platform']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacle_of_object_1_of_current_platform', 'show_receptacle_of_object_2_of_current_platform', 'show_receptacle_of_object_3_of_current_platform', 'show_receptacle_of_object_4_of_current_platform', 'show_receptacle_of_object_5_of_current_platform', 'show_receptacle_of_object_6_of_current_platform', 'show_receptacle_of_object_7_of_current_platform', 'show_receptacle_of_object_8_of_current_platform', 'show_receptacle_of_object_9_of_current_platform', 'show_receptacle_of_object_10_of_current_platform', 'show_receptacle_of_object_11_of_current_platform', 'show_receptacle_of_object_12_of_current_platform', 'show_receptacle_of_object_13_of_current_platform', 'show_receptacle_of_object_14_of_current_platform', 'show_receptacle_of_object_15_of_current_platform', 'show_receptacle_of_object_16_of_current_platform', 'show_receptacle_of_object_17_of_current_platform', 'show_receptacle_of_object_18_of_current_platform', 'show_receptacle_of_object_19_of_current_platform', 'show_receptacle_of_object_20_of_current_platform', 'show_receptacle_of_object_21_of_current_platform', 'show_receptacle_of_object_22_of_current_platform', 'show_receptacle_of_object_23_of_current_platform', 'show_receptacle_of_object_24_of_current_platform', 'show_receptacle_of_object_25_of_current_platform', 'show_receptacle_of_object_26_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), change_view (Change the viewing angle to observe the scene from another perspective)</li>
+                                </ul>
+                            </div>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 4 images, named ['Idle_8_1_out_of_4.png', 'Idle_8_2_out_of_4.png', 'Idle_8_3_out_of_4.png', 'Idle_8_4_out_of_4.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: These images show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_kitchen_counter_1_body_platform_1.</p>
+                                <p style="color: purple;">If the platform has no objects, a 3x3 grid will be marked on the platform to help you place objects, with each grid marked in numbers from 1 to 9. If there are objects on the platform, guiding lines will indicate the object numbers. Note that if you see multiple images, it means the platform is too long to be captured in one image, and it's guaranteed that the same object will marked in THE SAME COLOR GUIDELINES AND THE SAME NUMBER. If you think you can't determine the number of an item in one picture, you can go through other pictures and see if this item is marked more clearly.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> pick_object_1_of_current_platform</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step9.png" alt="Step 9 - Picked correct object">
+                        </div>
+                        <div class="message-text">
+                            <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
+                            <p>And you are holding kitchenware_white_paper_towel_holder.</p>
+                            <p>Steps used: 9/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_sofa_10_platform_0', 'go_to_object_sofa_10_platform_1', 'go_to_object_sofa_10_platform_2', 'go_to_object_table_04_13_platform_0', 'go_to_object_chair_04_46_platform_0', 'go_to_object_chair_04_47_platform_0', 'go_to_object_chair_05_7_platform_0', 'go_to_object_chair_05_8_platform_0', 'go_to_object_stool_02_18_platform_0', 'go_to_object_stool_02_6_platform_0', 'go_to_object_rack_01_75_platform_0', 'go_to_object_rack_01_75_platform_1', 'go_to_object_rack_01_75_platform_2', 'go_to_object_kitchen_counter_1_body_platform_0', 'go_to_object_kitchen_counter_1_body_platform_1', 'go_to_object_fridge_0_body_platform_1', 'go_to_object_fridge_0_body_platform_3', 'go_to_object_fridge_0_body_platform_4', 'go_to_object_fridge_0_body_platform_5', 'go_to_object_fridge_0_body_platform_6', 'go_to_object_fridge_0_body_platform_7', 'go_to_object_bin_03_3_platform_0', 'go_to_object_wall_cabinet_01_4_platform_0', 'go_to_object_wall_cabinet_01_4_platform_1', 'go_to_object_wall_cabinet_01_4_platform_2', 'go_to_object_wall_cabinet_01_4_platform_3', 'go_to_object_wall_cabinet_01_4_platform_4', 'go_to_object_wall_cabinet_01_4_platform_5', 'go_to_object_wall_cabinet_01_4_platform_6', 'go_to_object_table_03_14_platform_1', 'go_to_object_table_01_48_platform_0', 'go_to_object_wall_cabinet_02_21_platform_0', 'go_to_object_wall_cabinet_02_21_platform_1', 'go_to_object_wall_cabinet_02_21_platform_2', 'go_to_object_wall_cabinet_02_21_platform_3', 'go_to_object_wall_cabinet_02_21_platform_4', 'go_to_object_wall_cabinet_02_21_platform_5', 'go_to_object_wall_cabinet_02_21_platform_6', 'go_to_object_chestOfDrawers_01_2_body_platform_0', 'go_to_object_chestOfDrawers_01_2_body_platform_1', 'go_to_object_chestOfDrawers_01_2_body_platform_2', 'go_to_object_chestOfDrawers_01_2_body_platform_3', 'go_to_object_chestOfDrawers_01_2_body_platform_4', 'go_to_object_chestOfDrawers_01_2_body_platform_5', 'go_to_object_chestOfDrawers_01_2_body_platform_6', 'go_to_object_table_02_40_platform_0', 'go_to_object_table_02_40_platform_1', 'go_to_object_table_02_40_platform_2', 'go_to_object_tvstand_88_platform_0', 'go_to_object_cabinet_3_body_platform_0', 'go_to_object_cabinet_3_body_platform_1']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacle_of_object_1_of_current_platform', 'show_receptacle_of_object_2_of_current_platform', 'show_receptacle_of_object_3_of_current_platform', 'show_receptacle_of_object_4_of_current_platform', 'show_receptacle_of_object_5_of_current_platform', 'show_receptacle_of_object_6_of_current_platform', 'show_receptacle_of_object_7_of_current_platform', 'show_receptacle_of_object_8_of_current_platform', 'show_receptacle_of_object_9_of_current_platform', 'show_receptacle_of_object_10_of_current_platform', 'show_receptacle_of_object_11_of_current_platform', 'show_receptacle_of_object_12_of_current_platform', 'show_receptacle_of_object_13_of_current_platform', 'show_receptacle_of_object_14_of_current_platform', 'show_receptacle_of_object_15_of_current_platform', 'show_receptacle_of_object_16_of_current_platform', 'show_receptacle_of_object_17_of_current_platform', 'show_receptacle_of_object_18_of_current_platform', 'show_receptacle_of_object_19_of_current_platform', 'show_receptacle_of_object_20_of_current_platform', 'show_receptacle_of_object_21_of_current_platform', 'show_receptacle_of_object_22_of_current_platform', 'show_receptacle_of_object_23_of_current_platform', 'show_receptacle_of_object_24_of_current_platform', 'show_receptacle_of_object_25_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), change_view (Change the viewing angle to observe the scene from another perspective)</li>
+                                    <li><strong>Place actions:</strong> place_r (Place the object in an arbitrary place on the platform), place_s_[({object_idx1},{dir_idx1})...] (Place the object in the union area of regions with indices {(object_idx1,region_idx1)}(object_idx1's region_idx1 space) etc. All available pairs are in [(1, 1), (2, 1), (2, 2), (2, 3), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (3, 7), (4, 1), (4, 2), (5, 1), (5, 2), (5, 3), (5, 4), (5, 5), (7, 1), (7, 2), (7, 3), (8, 1), (9, 1), (10, 1), (10, 2), (10, 3), (11, 1), (11, 2), (11, 3), (11, 4), (11, 5), (12, 1), (12, 2), (12, 3), (13, 1), (13, 2), (13, 3), (13, 4), (14, 1), (14, 2), (14, 3), (14, 4), (14, 5), (14, 6), (14, 7), (14, 8), (15, 1), (15, 2), (16, 1), (16, 2), (16, 3), (17, 1), (17, 2), (17, 3), (17, 4), (17, 5), (18, 1), (18, 2), (18, 3), (18, 4), (19, 1), (19, 2), (19, 3), (19, 4), (19, 5), (19, 6), (20, 1), (20, 2), (20, 3), (20, 4), (21, 1), (21, 2), (21, 3), (21, 4), (22, 1), (22, 2), (22, 3), (22, 4), (23, 1), (23, 2), (23, 3), (24, 1), (24, 2), (25, 1)], and a valid choice should be a subset of it)</li>
+                                </ul>
+                            </div>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 4 images, named ['HoldingOccupiedPlatform9_1_out_of_4.png', 'HoldingOccupiedPlatform9_2_out_of_4.png', 'HoldingOccupiedPlatform9_3_out_of_4.png', 'HoldingOccupiedPlatform9_4_out_of_4.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: These image show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_kitchen_counter_1_body_platform_1.</p>
+                                <p style="color: purple;">If the platform has no objects, a 3x3 grid will be marked on the platform to help you place objects, with each grid marked in numbers from 1 to 9. If there are objects on the platform, guiding lines will indicate the object numbers. Note that if you see multiple images, it means the platform is too long to be captured in one image, and it's guaranteed that the same object will marked in THE SAME COLOR GUIDELINES AND THE SAME NUMBER. If you think you can't determine the number of an item in one picture, you can go through other pictures and see if this item is marked more clearly.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> go_to_object_table_02_40_platform_2</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step10.png" alt="Step 10 - At table">
+                        </div>
+                        <div class="message-text">
+                            <p>You are currently at object_table_02_40_platform_2.</p>
+                            <p>And you are holding kitchenware_white_paper_towel_holder.</p>
+                            <p>Steps used: 10/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_sofa_10_platform_0', 'go_to_object_sofa_10_platform_1', 'go_to_object_sofa_10_platform_2', 'go_to_object_table_04_13_platform_0', 'go_to_object_chair_04_46_platform_0', 'go_to_object_chair_04_47_platform_0', 'go_to_object_chair_05_7_platform_0', 'go_to_object_chair_05_8_platform_0', 'go_to_object_stool_02_18_platform_0', 'go_to_object_stool_02_6_platform_0', 'go_to_object_rack_01_75_platform_0', 'go_to_object_rack_01_75_platform_1', 'go_to_object_rack_01_75_platform_2', 'go_to_object_kitchen_counter_1_body_platform_0', 'go_to_object_kitchen_counter_1_body_platform_1', 'go_to_object_fridge_0_body_platform_1', 'go_to_object_fridge_0_body_platform_3', 'go_to_object_fridge_0_body_platform_4', 'go_to_object_fridge_0_body_platform_5', 'go_to_object_fridge_0_body_platform_6', 'go_to_object_fridge_0_body_platform_7', 'go_to_object_bin_03_3_platform_0', 'go_to_object_wall_cabinet_01_4_platform_0', 'go_to_object_wall_cabinet_01_4_platform_1', 'go_to_object_wall_cabinet_01_4_platform_2', 'go_to_object_wall_cabinet_01_4_platform_3', 'go_to_object_wall_cabinet_01_4_platform_4', 'go_to_object_wall_cabinet_01_4_platform_5', 'go_to_object_wall_cabinet_01_4_platform_6', 'go_to_object_table_03_14_platform_1', 'go_to_object_table_01_48_platform_0', 'go_to_object_wall_cabinet_02_21_platform_0', 'go_to_object_wall_cabinet_02_21_platform_1', 'go_to_object_wall_cabinet_02_21_platform_2', 'go_to_object_wall_cabinet_02_21_platform_3', 'go_to_object_wall_cabinet_02_21_platform_4', 'go_to_object_wall_cabinet_02_21_platform_5', 'go_to_object_wall_cabinet_02_21_platform_6', 'go_to_object_chestOfDrawers_01_2_body_platform_0', 'go_to_object_chestOfDrawers_01_2_body_platform_1', 'go_to_object_chestOfDrawers_01_2_body_platform_2', 'go_to_object_chestOfDrawers_01_2_body_platform_3', 'go_to_object_chestOfDrawers_01_2_body_platform_4', 'go_to_object_chestOfDrawers_01_2_body_platform_5', 'go_to_object_chestOfDrawers_01_2_body_platform_6', 'go_to_object_table_02_40_platform_0', 'go_to_object_table_02_40_platform_1', 'go_to_object_table_02_40_platform_2', 'go_to_object_tvstand_88_platform_0', 'go_to_object_cabinet_3_body_platform_0', 'go_to_object_cabinet_3_body_platform_1']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacle_of_object_1_of_current_platform', 'show_receptacle_of_object_2_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), change_view (Change the viewing angle to observe the scene from another perspective)</li>
+                                    <li><strong>Place actions:</strong> place_r (Place the object in an arbitrary place on the platform), place_s_[({object_idx1},{dir_idx1})...] (Place the object in the union area of regions with indices {(object_idx1,region_idx1)}(object_idx1's region_idx1 space) etc. All available pairs are in [(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (2, 8)], and a valid choice should be a subset of it)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="platform-images">
+                                <p style="color: purple;">Here are 2 images, named ['HoldingOccupiedPlatform10_1_out_of_2.png', 'HoldingOccupiedPlatform10_2_out_of_2.png'] respectively.</p>
+                                <p style="color: purple;">Their description are as follows: These image show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_table_02_40_platform_2.</p>
+                                <p style="color: purple;">If the platform has no objects, a 3x3 grid will be marked on the platform to help you place objects, with each grid marked in numbers from 1 to 9. If there are objects on the platform, guiding lines will indicate the object numbers. Note that if you see multiple images, it means the platform is too long to be captured in one image, and it's guaranteed that the same object will marked in THE SAME COLOR GUIDELINES AND THE SAME NUMBER. If you think you can't determine the number of an item in one picture, you can go through other pictures and see if this item is marked more clearly.</p>
+                              
+                        </div>
+                    </div>
+
+                                                
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> show_receptacle_of_object_1_of_current_platform</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step11.png" alt="Receptacles around object 1">
+                        </div>
+                        <div class="message-text">
+                            <p style="color: purple;">Here are 1 images, named ['ShowReceptacle_11.png'] respectively.</p>
+                            <p style="color: purple;">Their description is as follows: This image shows the available receptacles around object 1 on the platform, you see this because you've taken "show_receptacle" action previously. The numbers from 1 to 8 indicate the available receptacles. Not all numbers from 1 to 8 may be present, as some receptacles might be too small or blocked. To use the numbers shown in the image to specify where you want to place the object you are holding, you can include (1, {receptacles_idx} (receptacles_idx in [1, 8]) in the output action.</p>
+                            
+                            <p>You are currently at object_table_02_40_platform_2.</p>
+                            <p>And you are holding kitchenware_white_paper_towel_holder.</p>
+                            <p>Steps used: 11/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 2 images, named ['HoldingOccupiedPlatform11_1_out_of_2.png', 'HoldingOccupiedPlatform11_2_out_of_2.png'] respectively.</p>
+                                <p style="color: purple;">Their description are as follows: These images show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_table_02_40_platform_2.</p>
+                                <p style="color: purple;">If the platform has no objects, a 3x3 grid will be marked on the platform to help you place objects, with each grid marked in numbers from 1 to 9. If there are objects on the platform, guiding lines will indicate the object numbers. Note that if you see multiple images, it means the platform is too long to be captured in one image, and it's guaranteed that the same object will marked in THE SAME COLOR GUIDELINES AND THE SAME NUMBER. If you think you can't determine the number of an item in one picture, you can go through other pictures and see if this item is marked more clearly.</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> show_receptacle_of_object_2_of_current_platform</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step12.png" alt="Receptacles around object 2">
+                        </div>
+                        <div class="message-text">
+                            <p style="color: purple;">Here are 1 images, named ['ShowReceptacle_12.png'] respectively.</p>
+                            <p style="color: purple;">Their description is as follows: This image shows the available receptacles around object 1 on the platform, you see this because you've taken "show_receptacle" action previously. The numbers from 1 to 8 indicate the available receptacles. Not all numbers from 1 to 8 may be present, as some receptacles might be too small or blocked. To use the numbers shown in the image to specify where you want to place the object you are holding, you can include (1, {receptacles_idx} (receptacles_idx in [1, 8]) in the output action.</p>
+                            
+                            <p>You are currently at object_table_02_40_platform_2.</p>
+                            <p>And you are holding kitchenware_white_paper_towel_holder.</p>
+                            <p>Steps used: 12/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 2 images, named ['HoldingOccupiedPlatform12_1_out_of_2.png', 'HoldingOccupiedPlatform12_2_out_of_2.png'] respectively.</p>
+                                <p style="color: purple;">Their description are as follows: These images show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_table_02_40_platform_2.</p>
+                                <p style="color: purple;">If the platform has no objects, a 3x3 grid will be marked on the platform to help you place objects, with each grid marked in numbers from 1 to 9. If there are objects on the platform, guiding lines will indicate the object numbers. Note that if you see multiple images, it means the platform is too long to be captured in one image, and it's guaranteed that the same object will marked in THE SAME COLOR GUIDELINES AND THE SAME NUMBER. If you think you can't determine the number of an item in one picture, you can go through other pictures and see if this item is marked more clearly.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> place_s_[(1,7),(1,8),(2,3),(2,4)]</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/claude_success_0/success_step13.png" alt="Step 13 - Successfully placed object">
+                        </div>
+                        <div class="message-text">
+                            <p><strong>The object has been placed successfully. You can now call end if you think you've finished the task correctly, or can also pick up the object again if you think the placement is not correct.</strong></p>
+                            <p>You are currently at object_table_02_40_platform_2.</p>
+                            <p>And you are holding nothing.</p>
+                            <p>Steps used: 13/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_sofa_10_platform_0', 'go_to_object_sofa_10_platform_1', 'go_to_object_sofa_10_platform_2', 'go_to_object_table_04_13_platform_0', 'go_to_object_chair_04_46_platform_0', 'go_to_object_chair_04_47_platform_0', 'go_to_object_chair_05_7_platform_0', 'go_to_object_chair_05_8_platform_0', 'go_to_object_stool_02_18_platform_0', 'go_to_object_stool_02_6_platform_0', 'go_to_object_rack_01_75_platform_0', 'go_to_object_rack_01_75_platform_1', 'go_to_object_rack_01_75_platform_2', 'go_to_object_kitchen_counter_1_body_platform_0', 'go_to_object_kitchen_counter_1_body_platform_1', 'go_to_object_fridge_0_body_platform_1', 'go_to_object_fridge_0_body_platform_3', 'go_to_object_fridge_0_body_platform_4', 'go_to_object_fridge_0_body_platform_5', 'go_to_object_fridge_0_body_platform_6', 'go_to_object_fridge_0_body_platform_7', 'go_to_object_bin_03_3_platform_0', 'go_to_object_wall_cabinet_01_4_platform_0', 'go_to_object_wall_cabinet_01_4_platform_1', 'go_to_object_wall_cabinet_01_4_platform_2', 'go_to_object_wall_cabinet_01_4_platform_3', 'go_to_object_wall_cabinet_01_4_platform_4', 'go_to_object_wall_cabinet_01_4_platform_5', 'go_to_object_wall_cabinet_01_4_platform_6', 'go_to_object_table_03_14_platform_1', 'go_to_object_table_01_48_platform_0', 'go_to_object_wall_cabinet_02_21_platform_0', 'go_to_object_wall_cabinet_02_21_platform_1', 'go_to_object_wall_cabinet_02_21_platform_2', 'go_to_object_wall_cabinet_02_21_platform_3', 'go_to_object_wall_cabinet_02_21_platform_4', 'go_to_object_wall_cabinet_02_21_platform_5', 'go_to_object_wall_cabinet_02_21_platform_6', 'go_to_object_chestOfDrawers_01_2_body_platform_0', 'go_to_object_chestOfDrawers_01_2_body_platform_1', 'go_to_object_chestOfDrawers_01_2_body_platform_2', 'go_to_object_chestOfDrawers_01_2_body_platform_3', 'go_to_object_chestOfDrawers_01_2_body_platform_4', 'go_to_object_chestOfDrawers_01_2_body_platform_5', 'go_to_object_chestOfDrawers_01_2_body_platform_6', 'go_to_object_table_02_40_platform_0', 'go_to_object_table_02_40_platform_1', 'go_to_object_table_02_40_platform_2', 'go_to_object_tvstand_88_platform_0', 'go_to_object_cabinet_3_body_platform_0', 'go_to_object_cabinet_3_body_platform_1']</li>
+                                    <li><strong>Pick object actions:</strong> ['pick_object_1_of_current_platform', 'pick_object_2_of_current_platform', 'pick_object_3_of_current_platform']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacle_of_object_1_of_current_platform', 'show_receptacle_of_object_2_of_current_platform', 'show_receptacle_of_object_3_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), change_view (Change the viewing angle to observe the scene from another perspective)</li>
+                                </ul>
+                            </div>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 2 images, named ['Idle_13_1_out_of_2.png', 'Idle_13_2_out_of_2.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: These image show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_table_02_40_platform_2.</p>
+                                <p style="color: purple;">If the platform has no objects, a 3x3 grid will be marked on the platform to help you place objects, with each grid marked in numbers from 1 to 9. If there are objects on the platform, guiding lines will indicate the object numbers. Note that if you see multiple images, it means the platform is too long to be captured in one image, and it's guaranteed that the same object will marked in THE SAME COLOR GUIDELINES AND THE SAME NUMBER. If you think you can't determine the number of an item in one picture, you can go through other pictures and see if this item is marked more clearly.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> CALL_END</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-text">
+                            <div class="task-result">
+                                <p><strong>(call_ended)</strong></p>
+                                <p><strong>Task result:</strong> Target object placed between two objects.</p>
+                                <p><strong>Task status:</strong> <span class="success-status">Success</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="chat-content" id="gemini-episode-0" style="display: none;">
+                    <div class="chat-message robot-message">
+                        <div class="message-text">
+                            <p>You are a household assistant robot equipped with a vision system and manipulation capabilities. You need to complete a task in a 3D environment, mainly involving moving, picking up, and placing objects. Your goal is to move an object from one place to another correctly according to instructions. Please strictly follow the given Action Space for operations.</p>
+                            
+                            <p>At the beginning of each task, you will be informed of a specific task to complete. Throughout the task execution, you will transition between multiple states and have access to a set of possible actions (action space).</p>
+
+                            <p>You may receive one of the following task types involving one object and another object or a platform. ({an object/another object/a platform} are the name of objects or platforms, {dir} is one of the 8 directions):</p>
+                            
+                            <ul>
+                                <li>move {an object} to {a platform}.</li>
+                                <li>move {an object} to the {dir} of {a platform}.</li>
+                                <li>move {an object} around {another object}.</li>
+                                <li>move {an object} to the {dir} of {another object}.</li>
+                                <li>move {an object} between {another object} and {yet another object}.</li>
+                            </ul>
+
+                            <details class="expandable">
+                                <summary>[expand - Understanding directions]</summary>
+                                <div class="expanded-content">
+                                    <p><strong>Understanding directions:</strong></p>
+                                    <p>Directions like 'front', 'rear', 'left', and 'right' are defined relative to the robot's perspective and the heading of the object or platform you are interacting with. The heading of a ground object is not fixed and depends on where the robot is standing and facing.</p>
+                                    
+                                    <p><strong>Empty Surfaces (Platforms):</strong> When interacting with an empty platform, imagine it divided into a 3x3 grid. The direction aligned with the heading (also, the FARTHEST middle space to you, NOT THE NEAREST MIDDLE SPACE) is labeled "front," with the remaining regions proceeding counterclockwise as "front-left," "left," "rear-left," "rear," "rear-right," "right," and "front-right." The grid is conceptually numbered as follows, based on these directions:</p>
+                                    
+                                    <p>[front-left, front, front-right],<br>
+                                    [left, center, right],<br>
+                                    [rear-left, rear, rear-right]</p>
+                                    
+                                    <p><strong>Occupied Surfaces (Objects on Platforms):</strong> For objects on platforms, imagine extending the edges of the object's bounding box to the platform's boundaries. The resulting regions define the object's 8 receptacles, and the direction is defined similarly.</p>
+                                </div>
+                            </details>
+
+                            <details class="expandable">
+                                <summary>[expand - Task success criteria]</summary>
+                                <div class="expanded-content">
+                                    <ul>
+                                        <li><strong>move {an object} to {a platform}:</strong> The task is considered successful only when {an object} is placed anywhere on the specified platform.</li>
+                                        <li><strong>move {an object} to the {dir} of {a platform}:</strong> The task is considered successful only when {an object} is placed on the platform and the geometric center of the placement is in the {dir} direction relative to the platform.</li>
+                                        <li><strong>move {an object} around {another object}:</strong> The task is considered successful only when {an object} is placed in any of the receptacles surrounding {another object}.</li>
+                                        <li><strong>move {an object} to the {dir} of {another object}:</strong> The task is considered successful only when {an object} is placed in the receptacles surrounding {another object} and overlaps with the {dir} direction.</li>
+                                        <li><strong>move {an object} between {another object} and {yet another object}:</strong> The task is considered successful only when {an object} is placed such that it intersects with receptacles in a pair of opposite directions between {another object} and {yet another object}.</li>
+                                    </ul>
+                                </div>
+                            </details>
+
+
+                            <p><strong>Current task:</strong><br>
+                            Move Remote to Bowl's rear-left receptacles</p>
+
+                            <p>Initially, Remote is on object_hemnes_day_bed_platform_5, and Bowl is on object_dining_table_mella_platform_0.</p>
+
+                            <p>Steps used: 0/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>End action:</strong> CALL_END (Call end - terminate the task)</li>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_hemnes_day_bed_platform_5', 'go_to_object_bin_6_platform_0', 'go_to_object_Side_Table_317_1_platform_1', 'go_to_object_side_table_strind_platform_0', 'go_to_object_side_table_strind_platform_1', 'go_to_object_Side_Table_203_1_platform_0', 'go_to_object_Side_Table_203_1_platform_1', 'go_to_object_chair_antnas_platform_0', 'go_to_object_dresser_birkeland_platform_0', 'go_to_object_dresser_birkeland_platform_1', 'go_to_object_dresser_birkeland_platform_2', 'go_to_object_dresser_birkeland_platform_3', 'go_to_object_dresser_birkeland_platform_4', 'go_to_object_dresser_birkeland_platform_5', 'go_to_object_dresser_birkeland_platform_6', 'go_to_object_Basketball_1_platform_0', 'go_to_object_dining_table_mella_platform_0', 'go_to_object_Floor_Lamp_13_platform_0', 'go_to_object_armchair_emmabo_platform_0', 'go_to_object_BaseballBat_2_platform_0']</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> go_to_object_hemnes_day_bed_platform_5</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/gemini_failed_0/failed_step1.png" alt="Step 1 - At day bed">
+                        </div>
+                        <div class="message-text">
+                            <p>You are currently at object_hemnes_day_bed_platform_5.</p>
+                            <p>And you are holding nothing.</p>
+                            <p>Steps used: 1/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_hemnes_day_bed_platform_5', 'go_to_object_bin_6_platform_0', 'go_to_object_Side_Table_317_1_platform_1', 'go_to_object_side_table_strind_platform_0', 'go_to_object_side_table_strind_platform_1', 'go_to_object_Side_Table_203_1_platform_0', 'go_to_object_Side_Table_203_1_platform_1', 'go_to_object_chair_antnas_platform_0', 'go_to_object_dresser_birkeland_platform_0', 'go_to_object_dresser_birkeland_platform_1', 'go_to_object_dresser_birkeland_platform_2', 'go_to_object_dresser_birkeland_platform_3', 'go_to_object_dresser_birkeland_platform_4', 'go_to_object_dresser_birkeland_platform_5', 'go_to_object_dresser_birkeland_platform_6', 'go_to_object_Basketball_1_platform_0', 'go_to_object_dining_table_mella_platform_0', 'go_to_object_Floor_Lamp_13_platform_0', 'go_to_object_armchair_emmabo_platform_0', 'go_to_object_BaseballBat_2_platform_0']</li>
+                                    <li><strong>Pick object actions:</strong> ['pick_object_1_of_current_platform', 'pick_object_2_of_current_platform', 'pick_object_3_of_current_platform', 'pick_object_4_of_current_platform', 'pick_object_5_of_current_platform']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacles_of_object_1_of_current_platform', 'show_receptacles_of_object_2_of_current_platform', 'show_receptacles_of_object_3_of_current_platform', 'show_receptacles_of_object_4_of_current_platform', 'show_receptacles_of_object_5_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), rotate_observation_view_of_current_platform (Change the viewing angle to observe the scene from another perspective)</li>
+                                </ul>
+                            </div>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 3 images, named ['Idle_1_1_out_of_3.png', 'Idle_1_2_out_of_3.png', 'Idle_1_3_out_of_3.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: These images show the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_hemnes_day_bed_platform_5.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> pick_object_5_of_current_platform</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/gemini_failed_0/failed_step2.png" alt="Step 1 - At day bed">
+                        </div>
+                        <div class="message-text">
+                            <p>You are currently at object_hemnes_day_bed_platform_5.</p>
+                            <p>And you are holding Remote.</p>
+                            <p>Steps used: 2/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 3 images, named ['HoldingOccupiedPlatformState_2_1_out_of_3.png', 'HoldingOccupiedPlatformState_2_2_out_of_3.png', 'HoldingOccupiedPlatformState_2_3_out_of_3.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: This image shows the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_hemnes_day_bed_platform_5.</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> go_to_object_dining_table_mella_platform_0</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/gemini_failed_0/failed_step3.png" alt="Step 3 - At dining table">
+                        </div>
+                        <div class="message-text">
+                            <p>You are currently at object_dining_table_mella_platform_0.</p>
+                            <p>And you are holding Remote.</p>
+                            <p>Steps used: 3/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_hemnes_day_bed_platform_5', 'go_to_object_bin_6_platform_0', 'go_to_object_Side_Table_317_1_platform_1', 'go_to_object_side_table_strind_platform_0', 'go_to_object_side_table_strind_platform_1', 'go_to_object_Side_Table_203_1_platform_0', 'go_to_object_Side_Table_203_1_platform_1', 'go_to_object_chair_antnas_platform_0', 'go_to_object_dresser_birkeland_platform_0', 'go_to_object_dresser_birkeland_platform_1', 'go_to_object_dresser_birkeland_platform_2', 'go_to_object_dresser_birkeland_platform_3', 'go_to_object_dresser_birkeland_platform_4', 'go_to_object_dresser_birkeland_platform_5', 'go_to_object_dresser_birkeland_platform_6', 'go_to_object_Basketball_1_platform_0', 'go_to_object_dining_table_mella_platform_0', 'go_to_object_Floor_Lamp_13_platform_0', 'go_to_object_armchair_emmabo_platform_0', 'go_to_object_BaseballBat_2_platform_0']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacles_of_object_1_of_current_platform', 'show_receptacles_of_object_2_of_current_platform', 'show_receptacles_of_object_3_of_current_platform', 'show_receptacles_of_object_4_of_current_platform', 'show_receptacles_of_object_5_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), rotate_observation_view_of_current_platform (Change the viewing angle to observe the scene from another perspective)</li>
+                                    <li><strong>Place actions:</strong> place_r (Place the object in an arbitrary place on the platform), place_s_[({object_idx1},{dir_idx1})...] (Place the object in the union area of regions with indices {(object_idx1,region_idx1)}(object_idx1's region_idx1 space) etc. All available pairs are in [(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (3, 7), (3, 8), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (4, 7), (5, 1), (5, 2), (5, 3), (5, 4), (5, 5)], and a valid choice should be a subset of it)</li>
+                                </ul>
+                            </div>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 2 images, named ['HoldingOccupiedPlatform_3_1_out_of_2.png', 'HoldingOccupiedPlatform_3_2_out_of_2.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: This image shows the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_dining_table_mella_platform_0.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> show_receptacle_of_object_5_of_current_platform</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/gemini_failed_0/failed_step4.png" alt="Step 4 - At dining table">
+                        </div>
+                        <div class="message-text">
+                            <p style="color: purple;">Here are 1 images, named ['ShowReceptacle_4.png'] respectively.</p>
+                            <p style="color: purple;">Their description is as follows: This image shows the available receptacles around object 3 on the platform, you see this because you've taken "show_receptacles" action previously. The numbers from 1 to 8 indicate the available receptacles. Not all numbers from 1 to 8 may be present, as some receptacles might be too small or blocked. To use the numbers shown in the image to specify where you want to place the object you are holding, you can include (3, {receptacles_idx} (receptacles_idx in [1, 8]) in the output action.</p>
+                            
+                            <p>You are currently at object_dining_table_mella_platform_0.</p>
+                            <p>And you are holding Remote.</p>
+                            <p>Steps used: 4/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 2 images, named ['HoldingOccupiedPlatform4_1_out_of_2.png', 'HoldingOccupiedPlatform4_2_out_of_2.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: This image shows the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_dining_table_mella_platform_0.</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> place_s_[(3,8)]</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-image">
+                            <img src="images/episodes/gemini_failed_0/failed_step5.png" alt="Step 5 - At dining table">
+                        </div>
+                        <div class="message-text">
+                            <p><strong>The object has been placed successfully. You can now call end if you think you've finished the task correctly, or can also pick up the object again if you think the placement is not correct.</strong></p>
+                            <p>You are currently at object_dining_table_mella_platform_0.</p>
+                            <p>And you are holding nothing.</p>
+                            <p>Steps used: 5/20. You can only take at most 20 steps, so hurry if you've almost used all of them!</p>
+
+                            <div class="action-space">
+                                <p><strong>Your available action space:</strong></p>
+                                <ul>
+                                    <li><strong>Navigation actions:</strong> ['go_to_object_hemnes_day_bed_platform_5', 'go_to_object_bin_6_platform_0', 'go_to_object_Side_Table_317_1_platform_1', 'go_to_object_side_table_strind_platform_0', 'go_to_object_side_table_strind_platform_1', 'go_to_object_Side_Table_203_1_platform_0', 'go_to_object_Side_Table_203_1_platform_1', 'go_to_object_chair_antnas_platform_0', 'go_to_object_dresser_birkeland_platform_0', 'go_to_object_dresser_birkeland_platform_1', 'go_to_object_dresser_birkeland_platform_2', 'go_to_object_dresser_birkeland_platform_3', 'go_to_object_dresser_birkeland_platform_4', 'go_to_object_dresser_birkeland_platform_5', 'go_to_object_dresser_birkeland_platform_6', 'go_to_object_Basketball_1_platform_0', 'go_to_object_dining_table_mella_platform_0', 'go_to_object_Floor_Lamp_13_platform_0', 'go_to_object_armchair_emmabo_platform_0', 'go_to_object_BaseballBat_2_platform_0']</li>
+                                    <li><strong>Pick object actions:</strong> ['pick_object_1_of_current_platform', 'pick_object_2_of_current_platform', 'pick_object_3_of_current_platform', 'pick_object_4_of_current_platform', 'pick_object_5_of_current_platform', 'pick_object_6_of_current_platform']</li>
+                                    <li><strong>Show receptacle actions:</strong> ['show_receptacles_of_object_1_of_current_platform', 'show_receptacles_of_object_2_of_current_platform', 'show_receptacles_of_object_3_of_current_platform', 'show_receptacles_of_object_4_of_current_platform', 'show_receptacles_of_object_5_of_current_platform', 'show_receptacles_of_object_6_of_current_platform']</li>
+                                    <li><strong>Other actions:</strong> CALL_END (Call end - terminate the task), rotate_observation_view_of_current_platform (Change the viewing angle to observe the scene from another perspective)</li>
+                                </ul>
+                            </div>
+
+                            <div class="platform-images">
+                                <p style="color: purple;">Here are 2 images, named ['Idle_5_1_out_of_2.png', 'Idle_5_2_out_of_2.png'] respectively.</p>
+                                <p style="color: purple;">Their description is as follows: This image shows the platform you are currently on in one view, with regions or objects marked with numbers for you to place objects accurately. The platform is object_dining_table_mella_platform_0.</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-message human-message">
+                        <div class="message-text">
+                            <p><strong>VLM Response:</strong> CALL_END</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message robot-message">
+                        <div class="message-text">
+                            <div class="task-result">
+                                <p><strong>(call_ended)</strong></p>
+                                <p><strong>Task result:</strong> Target object placed in wrong direction, expected: rear-left, found: rear-right.</p>
+                                <p><strong>Task status:</strong> <span class="failure-status">Failed</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            </div>
+        </div>
+                        
+        
+
+        <div class="section-container">
+            <p class="section-sub-header" style="text-align: center;">Benchmarking Results</p>
+            
+
+            
+        
+            <div class="section-container">
+               
+                <p class="section-text">
+                    We observe that all models achieve a low average SR (under 30%), significantly below human-level performance. Performance generally decreases with increasing task difficulty. Longer tasks (Level 3) lead to significantly lower performance compared to single-step tasks, highlighting the substantial challenge posed by the generated tasks.
+                    
+                </p>
+                <img src="images/result_table.png" alt="result_table" class="section-image">
+                <img src="images/sankey_diagram.png" alt="result_table" class="section-image">
+            </div>
+        </div>
+
+            
+
+        <div class="section-container">
+            <p class="section-header">Improving VLM Agents </p>
+
+            ManiTaskGen tasks can not only be used for benchmarking VLMs, but also for optimizing VLM-based agents. we adopt an inference-time RFT policy to enhance agent capabilities inspired by Reflexion and ReAct.
+
+            <img src="images/reflection_result_on_vlms.png" alt="result_table" class="section-image">
+            <img src="images/reflection_result.png" alt="result_table" class="section-image">
+
+        
+        </div>
+
+        <div class="section-container">
+            <!-- <p class="section-header">Acknowledgments</p>
+             -->
+        
+
+        
+            <p class="section-header">Citation</p>
+            <div class="citation-content">
+                <pre>@misc{dai2025manitaskgencomprehensivetaskgenerator,
+                    title={ManiTaskGen: A Comprehensive Task Generator for Benchmarking and Improving Vision-Language Agents on Embodied Decision-Making}, 
+                    author={Liu Dai and Haina Wang and Weikang Wan and Hao Su},
+                    year={2025},
+                    eprint={2505.20726},
+                    archivePrefix={arXiv},
+                    primaryClass={cs.RO},
+                    url={https://arxiv.org/abs/2505.20726}, 
+                }</pre>
+            </div>
+        </div>
+
+        <div id="website-inspiration">
+            <p>This website was inspired by <a href="https://kzakka.com/robopianist/">Kevin Zakka's</a> and <a
+                    href="https://brentyi.github.io/tilted/">Brent Yi's</a> and <a href="embodiment-scaling-laws.github.io/">  </a> Nico Bohlinger's</a>.
+            </p>
+        </div>
+    </div>
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // VLM选择器功能
+    const vlmSelector = document.getElementById('vlm-selector');
+    const claudeEpisode = document.getElementById('claude-episode-0');
+    const geminiEpisode = document.getElementById('gemini-episode-0');
+    const taskItems = document.querySelectorAll('.task-item');
+
+    // 初始状态：显示Claude episode，隐藏Gemini episode
+    claudeEpisode.style.display = 'block';
+    geminiEpisode.style.display = 'none';
+
+    vlmSelector.addEventListener('change', function() {
+        const selectedVLM = this.value;
+        
+        if (selectedVLM === 'claude') {
+            claudeEpisode.style.display = 'block';
+            geminiEpisode.style.display = 'none';
+            // 更新任务选择器
+            taskItems.forEach(item => item.classList.remove('selected'));
+            document.querySelector('[data-episode="claude-success"]').classList.add('selected');
+        } else if (selectedVLM === 'gemini') {
+            claudeEpisode.style.display = 'none';
+            geminiEpisode.style.display = 'block';
+            // 更新任务选择器
+            taskItems.forEach(item => item.classList.remove('selected'));
+            document.querySelector('[data-episode="gemini-failure"]').classList.add('selected');
+        }
+    });
+
+    // 任务选择器功能
+    taskItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const episode = this.dataset.episode;
+            
+            taskItems.forEach(task => task.classList.remove('selected'));
+            this.classList.add('selected');
+            
+            if (episode === 'claude-success') {
+                vlmSelector.value = 'claude';
+                claudeEpisode.style.display = 'block';
+                geminiEpisode.style.display = 'none';
+            } else if (episode === 'gemini-failure') {
+                vlmSelector.value = 'gemini';
+                claudeEpisode.style.display = 'none';
+                geminiEpisode.style.display = 'block';
+            }
+        });
+    });
+
+    // 视频控制功能（保持现有代码）
+    const videos = document.querySelectorAll('.control-video');
+    
+    videos.forEach(video => {
+        const container = video.closest('.video-container');
+        const playButton = container.querySelector('.play-button');
+        const speedSelector = container.querySelector('.speed-selector');
+        
+        // 播放/暂停功能
+        playButton.addEventListener('click', function() {
+            if (video.paused || video.ended) {
+                video.play();
+                playButton.textContent = 'Pause';
+            } else {
+                video.pause();
+                playButton.textContent = 'Play';
+            }
+        });
+        
+        // 速度控制功能
+        speedSelector.addEventListener('change', function() {
+            video.playbackRate = parseFloat(this.value);
+        });
+        
+        // 视频结束后重置按钮
+        video.addEventListener('ended', function() {
+            playButton.textContent = 'Play';
+        });
+        
+        // 点击视频本身也能播放/暂停
+        video.addEventListener('click', function() {
+            if (video.paused || video.ended) {
+                video.play();
+                playButton.textContent = 'Pause';
+            } else {
+                video.pause();
+                playButton.textContent = 'Play';
+            }
+        });
+    });
+});
+</script>
+
+</html> 
