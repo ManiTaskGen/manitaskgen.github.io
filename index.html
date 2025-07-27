@@ -42,87 +42,116 @@ Agents on Embodied Decision-Making</p>
                 <i class="fa fa-file-pdf"></i>
                 <p>Paper</p>
             </a>
-            <a href="https://youtu.be/62OBDgrQYw4" target="_blank" class="social-button">
-                <i class="fa fa-youtube"></i>
-                <p>[TALK (coming soon)]</p>
+            <a href="https://github.com/ManiacWallnut/NIPS-DB-25-ID749" target="_blank" class="social-button">
+                <i class="fa fa-code"></i>
+                <p>Code</p>
             </a>
         </div>
 
-        <div id="tldr-container">
-            <p id="tldr-text"><span id="tldr-first">TLDR:</span> We presents a universal task generation framework for arbitrary scenes, facilitating
-both benchmarking and improvement of embodied decision-making agents. </p>
+
+        <div class="sidebar-nav" id="sidebar-nav">
+            <div class="nav-item active" data-target="overview">
+                <div class="nav-dot"></div>
+                <div class="nav-label">Overview</div>
+            </div>
+            <div class="nav-item active" data-target="task-generation-pipeline">
+                <div class="nav-dot"></div>
+                <div class="nav-label">Task Generation Pipeline</div>
+            </div>
+            <div class="nav-item" data-target="applications">
+                <div class="nav-dot"></div>
+                <div class="nav-label">ManiTaskGen Applications</div>
+            </div>
+            <div class="nav-item" data-target="citation">
+                <div class="nav-dot"></div>
+                <div class="nav-label">Citation</div>
+            </div>
         </div>
 
+        <div class="major-section" id="overview">
+            <div class="major-section-header">
+                    <p>Overview</p>
+                </div>
+            <div class="section-container">
+                
+                
+                <p class="section-text">
+                ManiTaskGen is a universal system that generates a comprehensive set of feasible mobile manipulation tasks given arbitrary scene. These tasks facilitate automatic benchmarking and the improvement of embodied decision-making agents.
+                </p>
+                <div class="section-image-container">
+                    <img src="images/ManiTaskGen_framework.png" alt="Task Generation Framework Overview" class="section-image">
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="major-section" id="task-generation-pipeline">
+            <div class="major-section-header">
+                    <p>Task Generation Pipeline</p>
+            </div>
+
+            <div class="section-container">
+                <p class="section-header" style="text-align: center;">Pipeline Overview </p>
+                <div class="section-image-container">
+                    <img src="images/figure2.png" alt="Task Generation Framework Overview" class="section-image">
+                </div>
+                <video class="demo-video" controls>
+                    <source src="videos/task_gen.mp4" type="video/mp4">
+                </video>
+                
+            </div>
+
+            <div class="section-container">
+                <p class="section-header" style="text-align: center;">Step 1: Construct Receptacle-Aware 3D Scene Graph</p>
+                <p class="section-text">
+                    We build a scene graph 𝒮 that captures the
+                    spatial relationships between objects and receptacles around each
+                    object. Below we visualize the rules to build the scene graph.
+
+                </p>
+                <div class="section-image-container">
+                    <img src="images/receptacles.png" alt="Task Generation Framework Overview" class="section-image">
+                </div>
+            </div>
         
-        <div class="section-container">
-            <p class="section-header">Overview</p>
+            <div class="section-container">
+                <p class="section-header" style="text-align: center;">Step2: Generate Process- and Outcome-based Tasks</p>
+                
+                <p class="section-sub-header " style="text-align: center;"> Process-based Tasks</p>
+                <p class="section-text">
+                    For process-based tasks, we generate them through the use of our scene graph and some patterns.
+                </p>
+                <div class="section-image-container">
+                    <img src="images/process_based_task_b.png" alt="Task Generation Framework Overview" class="section-image">
+                </div>
+
+                <p class="section-sub-header" style="text-align: center;"> Outcome-based Tasks</p>
+                <p class="section-text">                  
+                    For outcome-based tasks, we employ a hybrid approach combining template-based generation and VLM-based filtering.
+                </p>
+                <div class="section-image-container">
+                    <img src="images/outcome_based_task_b.png" alt="Task Generation Framework Overview" class="section-image">
+                </div>
+            </div>
+
             
-            <!-- 插入图片 -->
-            <div class="section-image-container">
-                <img src="images/ManiTaskGen_framework.png" alt="Task Generation Framework Overview" class="section-image">
-            </div>
 
-            <p class="section-text">
-               ManiTaskGen is a universal system that generates a comprehensive set of feasible mobile manipulation tasks given arbitrary scene. These tasks facilitate automatic benchmarking and the improvement of embodied decision-making agents.
-            </p>
-        </div>
-
-        
-        <div class="section-container">
-            <p class="section-header" style="text-align: center;">ManiTaskGen: Comprehensive Task Generation </p>
-            <!-- <p class="section-text">
-                The first part of this project is a new methodology for generating comprehensive sets of process- and outcome-based tasks.
-            </p> -->
-             <video class="demo-video" controls>
-                <source src="videos/task_gen.mp4" type="video/mp4">
-            </video>
             
-        </div>
 
-        <div class="section-container">
-            <p class="section-sub-header" style="text-align: center;">Receptacle-Aware 3D Scene Graph Construction</p>
-            <p class="section-text">
-                We build a scene graph 𝒮 that captures the spatial and functional relationships between objects and their receptacles. To support retrieving multiple refined receptacles, the merging-receptacle technique is also applied.
-                This method spells the generated tasks covering more objects and locations.
-            </p>
-            <div class="section-image-container">
-                <img src="images/receptacles.png" alt="Task Generation Framework Overview" class="section-image">
-                <img src="images/heatmap.png" alt="Task Generation Framework Overview" class="section-image">
+       </div>
+
+       <div class="major-section" id="applications">
+            <div class="major-section-header">
+                    <p>ManiTaskGen Applications</p>
             </div>
-        </div>
-
-        <div class="section-container">
-            <p class="section-sub-header" style="text-align: center;">Generating Tasks</p>
-            <p class="section-text">
-                For process-based tasks, we generate them through the use of our scene graph and some patterns.
-                For outcome-based tasks, we employ a hybrid approach combining template-based generation and VLM-based filtering.
-            </p>
-            <div class="section-image-container">
-                <img src="images/atomic_task.png" alt="Task Generation Framework Overview" class="section-image">
-                <img src="images/outcome_based_tasks.png" alt="Task Generation Framework Overview" class="section-image">
-            </div>
-        </div>
-
-        
-
-        <div class="section-container">
-            <p class="section-header">Benchmarking VLM Agents and improving embodied decision-making</p>
-
-            We'd like to showcase two important applications of ManiTaskGen: benchmarking and improving embodied decision-making agents.
-            <video class="demo-video" controls>
-                <source src="videos/benchmark.mp4" type="video/mp4">
-            </video>
-        </div>
-
        
 
         
 
         <div class="section-container">
-           <p class="section-header" style="text-align: center;">Benchmarking</p>
-            <p class="section-text">
-                We define a discrete, abstracted action space that the VLM-based agent selects from at each timestep. The agent is equipped with abstracted navigation (go_to, change_view), grasping (pick) and placing (show_receptacle, place) skills.
-            </p>
+           <p class="section-header" style="text-align: center;">Benchmarking VLM Agents on Embodied Decision-Making</p>
+           
 
             <div class="section-deployment-video-container">
             <p class="section-deployment-video-container-header">Agents' Action Space</p>
@@ -131,44 +160,20 @@ both benchmarking and improvement of embodied decision-making agents. </p>
                     <div class="deployment-video-block">
                         <p class="deployment-video-header">Goto</p>
                         <div class="video-container">
-                            <video class="control-video">
+                            <video class="control-video" autoplay loop muted playsinline>
                                 <source src="videos/goto_mp4.mp4" type="video/mp4">
                                 Your browser does not support HTML5 video
                             </video>
-                            <div class="video-controls">
-                                <button class="play-button">play</button>
-                                <div class="speed-control">
-                                    <label>speed:</label>
-                                    <select class="speed-selector">
-                                        <option value="0.5">0.5×</option>
-                                        <option value="0.75">0.75×</option>
-                                        <option value="1" selected>1.0×</option>
-                                        <option value="1.5">1.5×</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
                     <div class="deployment-video-block">
                         <p class="deployment-video-header">Change View</p>
                         <div class="video-container">
-                            <video class="control-video">
+                            <video class="control-video" autoplay loop muted playsinline>
                                 <source src="videos/change_view_mp4.mp4" type="video/mp4">
                                 Your browser does not support HTML5 video
                             </video>
-                            <div class="video-controls">
-                                <button class="play-button">Play</button>
-                                <div class="speed-control">
-                                    <label>Speed:</label>
-                                    <select class="speed-selector">
-                                        <option value="0.5">0.5×</option>
-                                        <option value="0.75">0.75×</option>
-                                        <option value="1" selected>1.0×</option>
-                                        <option value="1.5">1.5×</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -177,44 +182,20 @@ both benchmarking and improvement of embodied decision-making agents. </p>
                     <div class="deployment-video-block">
                         <p class="deployment-video-header">Pick</p>
                         <div class="video-container">
-                            <video class="control-video">
+                            <video class="control-video" autoplay loop muted playsinline>
                                 <source src="videos/pick_mp4.mp4" type="video/mp4">
                                 Your browser does not support HTML5 video
                             </video>
-                            <div class="video-controls">
-                                <button class="play-button">play</button>
-                                <div class="speed-control">
-                                    <label>speed:</label>
-                                    <select class="speed-selector">
-                                        <option value="0.5">0.5×</option>
-                                        <option value="0.75">0.75×</option>
-                                        <option value="1" selected>1.0×</option>
-                                        <option value="1.5">1.5×</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
                     <div class="deployment-video-block">
                         <p class="deployment-video-header">Show Receptacle</p>
                         <div class="video-container">
-                            <video class="control-video">
+                            <video class="control-video" autoplay loop muted playsinline>
                                 <source src="videos/show_receptacle_mp4.mp4" type="video/mp4">
                                 Your browser does not support HTML5 video
                             </video>
-                            <div class="video-controls">
-                                <button class="play-button">Play</button>
-                                <div class="speed-control">
-                                    <label>Speed:</label>
-                                    <select class="speed-selector">
-                                        <option value="0.5">0.5×</option>
-                                        <option value="0.75">0.75×</option>
-                                        <option value="1" selected>1.0×</option>
-                                        <option value="1.5">1.5×</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -223,44 +204,20 @@ both benchmarking and improvement of embodied decision-making agents. </p>
                     <div class="deployment-video-block">
                         <p class="deployment-video-header">Place_r</p>
                         <div class="video-container">
-                            <video class="control-video">
+                            <video class="control-video" autoplay loop muted playsinline>
                                 <source src="videos/place_r_mp4.mp4" type="video/mp4">
                                 Your browser does not support HTML5 video
                             </video>
-                            <div class="video-controls">
-                                <button class="play-button">play</button>
-                                <div class="speed-control">
-                                    <label>speed:</label>
-                                    <select class="speed-selector">
-                                        <option value="0.5">0.5×</option>
-                                        <option value="0.75">0.75×</option>
-                                        <option value="1" selected>1.0×</option>
-                                        <option value="1.5">1.5×</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
                     <div class="deployment-video-block">
                         <p class="deployment-video-header">Place_s</p>
                         <div class="video-container">
-                            <video class="control-video">
+                            <video class="control-video" autoplay loop muted playsinline>
                                 <source src="videos/place_s_mp4.mp4" type="video/mp4">
                                 Your browser does not support HTML5 video
                             </video>
-                            <div class="video-controls">
-                                <button class="play-button">Play</button>
-                                <div class="speed-control">
-                                    <label>Speed:</label>
-                                    <select class="speed-selector">
-                                        <option value="0.5">0.5×</option>
-                                        <option value="0.75">0.75×</option>
-                                        <option value="1" selected>1.0×</option>
-                                        <option value="1.5">1.5×</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -269,28 +226,29 @@ both benchmarking and improvement of embodied decision-making agents. </p>
 
             </div>
 
-            <p class="section-text">
-               At each timestep, the agent receives multimodal observations from the system, including rendered images (with tags for objects or, after "show_receptacle", for receptacles), and text information. The system executes the given actions, updates the environment, and provides the next observation. An episode terminates when the agent executes "CALL_END" or a preset timestep limit is reached. After termination, the benchmark automatically evaluates the episode, following the criteria illustrated in the next section.
-            </p>
-            <div class="section-image-container">
-                <img src="images/testflow.png" alt="Task Generation Framework Overview" class="section-image">
-            </div>
 
              <p class="section-sub-header" style="text-align: center;">Task Difficulty and Evaluation Criteria</p>
             <p class="section-text">
-                To better evaluate the VLMs, we divide the task into 3 levels and define the evaluation criteria for each level.
-                
+               We divide all process-based tasks into 3 difficulty levels. The evaluation criteria is defined as below.
+              
             </p>
-            
-                
-            
+
+
 
             <div class="section-image-container">
-                <img src="images/task_judgement.png" alt="task_judgement_method" class="section-image">
+                <img src="images/task_criteria.png" alt="task_judgement_method" class="section-image">
+            </div>
+
+            <p class="section-header" style="text-align: center;">Episode Examples</p>
+
+            <div class="video-container">
+                <video class="demo-video" controls>
+                    <source src="videos/benchmark.mp4" type="video/mp4">
+                </video>
             </div>
 
             <p class="section-text" style="text-align: left;">
-                 Some real Episode is displayed below: 
+                 Some real Episodes are displayed below: 
                 </p>
             
            <div class="demo-container">
@@ -317,7 +275,7 @@ both benchmarking and improvement of embodied decision-making agents. </p>
                     </div>
                 </div>
                 
-                <div class="chat-content" id="claude-episode-0" style="display: none;">
+                <div class="chat-content" id="claude-episode-0">
                     <div class="chat-message robot-message">
                         <div class="message-text">
                             <p>You are a household assistant robot equipped with a vision system and manipulation capabilities. You need to complete a task in a 3D environment, mainly involving moving, picking up, and placing objects. Your goal is to move an object from one place to another correctly according to instructions. Please strictly follow the given Action Space for operations.</p>
@@ -1066,62 +1024,82 @@ both benchmarking and improvement of embodied decision-making agents. </p>
                     </div>
                 </div>
             </div>
+             
         </div>
 
-            </div>
-        </div>
-                        
+            
+
         
-
-        <div class="section-container">
-            <p class="section-sub-header" style="text-align: center;">Benchmarking Results</p>
+            <p class="section-header" style="text-align: center;">Benchmarking Results</p>
             
 
             
         
-            <div class="section-container">
+            
                
                 <p class="section-text">
                     We observe that all models achieve a low average SR (under 30%), significantly below human-level performance. Performance generally decreases with increasing task difficulty. Longer tasks (Level 3) lead to significantly lower performance compared to single-step tasks, highlighting the substantial challenge posed by the generated tasks.
                     
                 </p>
                 <img src="images/result_table.png" alt="result_table" class="section-image">
+                <p class="section-text">
+                    We visualize the sub-step mistake distribution from Gemini-2.5-pro for Level 3 tasks.
+                    The Sankey diagram illustrates that wrong placement accounts for the largest proportion of mistakes, and the navigation mistakes becomes more frequent in the later steps of the task.
+                </p>
+                
                 <img src="images/sankey_diagram.png" alt="result_table" class="section-image">
-            </div>
-        </div>
+            
+            
+       
+        
+                        
+        
+
+        
+           
+            
+            <div class="section-container">
+                <p class="section-header">Improving VLM Agents </p>
+
+                ManiTaskGen tasks can not only be used for benchmarking VLMs, but also for optimizing VLM-based agents. We adopt a Reflexion-based method to
+    achieve inference-time finetuning of VLM agents.
+
+                <img src="images/reflection_overview.png" alt="reflexion_overview" class="section-image">
+
+                As shown in the results, our optimization significantly improved both the task execution success rate and the Intermediate Points score.
+                
+                
+                
+                    <img src="images/reflection_result.png" alt="result_table" class="section-image">
+                
 
             
-
-        <div class="section-container">
-            <p class="section-header">Improving VLM Agents </p>
-
-            ManiTaskGen tasks can not only be used for benchmarking VLMs, but also for optimizing VLM-based agents. we adopt an inference-time RFT policy to enhance agent capabilities inspired by Reflexion and ReAct.
-
-            <img src="images/reflection_result_on_vlms.png" alt="result_table" class="section-image">
-            <img src="images/reflection_result.png" alt="result_table" class="section-image">
-
-        
-        </div>
-
-        <div class="section-container">
-            <!-- <p class="section-header">Acknowledgments</p>
-             -->
-        
-
-        
-            <p class="section-header">Citation</p>
-            <div class="citation-content">
-                <pre>@misc{dai2025manitaskgencomprehensivetaskgenerator,
-                    title={ManiTaskGen: A Comprehensive Task Generator for Benchmarking and Improving Vision-Language Agents on Embodied Decision-Making}, 
-                    author={Liu Dai and Haina Wang and Weikang Wan and Hao Su},
-                    year={2025},
-                    eprint={2505.20726},
-                    archivePrefix={arXiv},
-                    primaryClass={cs.RO},
-                    url={https://arxiv.org/abs/2505.20726}, 
-                }</pre>
+            </div>
+            </div>
             </div>
         </div>
+
+        
+        <div class="major-section" id="citation">
+            <div class="major-section-header">
+                    <p>Citation</p>
+                </div>
+            <div class="section-container">
+                <!-- <p class="section-header">Acknowledgments</p>
+                -->
+                <div class="citation-content">
+                    <pre>@misc{dai2025manitaskgencomprehensivetaskgenerator,
+                        title={ManiTaskGen: A Comprehensive Task Generator for Benchmarking and Improving Vision-Language Agents on Embodied Decision-Making}, 
+                        author={Liu Dai and Haina Wang and Weikang Wan and Hao Su},
+                        year={2025},
+                        eprint={2505.20726},
+                        archivePrefix={arXiv},
+                        primaryClass={cs.RO},
+                        url={https://arxiv.org/abs/2505.20726}, 
+                    }</pre>
+                </div>
+            </div>
+            </div>
 
         <div id="website-inspiration">
             <p>This website was inspired by <a href="https://kzakka.com/robopianist/">Kevin Zakka's</a> and <a
@@ -1131,97 +1109,6 @@ both benchmarking and improvement of embodied decision-making agents. </p>
     </div>
 </body>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // VLM选择器功能
-    const vlmSelector = document.getElementById('vlm-selector');
-    const claudeEpisode = document.getElementById('claude-episode-0');
-    const geminiEpisode = document.getElementById('gemini-episode-0');
-    const taskItems = document.querySelectorAll('.task-item');
-
-    // 初始状态：显示Claude episode，隐藏Gemini episode
-    claudeEpisode.style.display = 'block';
-    geminiEpisode.style.display = 'none';
-
-    vlmSelector.addEventListener('change', function() {
-        const selectedVLM = this.value;
-        
-        if (selectedVLM === 'claude') {
-            claudeEpisode.style.display = 'block';
-            geminiEpisode.style.display = 'none';
-            // 更新任务选择器
-            taskItems.forEach(item => item.classList.remove('selected'));
-            document.querySelector('[data-episode="claude-success"]').classList.add('selected');
-        } else if (selectedVLM === 'gemini') {
-            claudeEpisode.style.display = 'none';
-            geminiEpisode.style.display = 'block';
-            // 更新任务选择器
-            taskItems.forEach(item => item.classList.remove('selected'));
-            document.querySelector('[data-episode="gemini-failure"]').classList.add('selected');
-        }
-    });
-
-    // 任务选择器功能
-    taskItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const episode = this.dataset.episode;
-            
-            taskItems.forEach(task => task.classList.remove('selected'));
-            this.classList.add('selected');
-            
-            if (episode === 'claude-success') {
-                vlmSelector.value = 'claude';
-                claudeEpisode.style.display = 'block';
-                geminiEpisode.style.display = 'none';
-            } else if (episode === 'gemini-failure') {
-                vlmSelector.value = 'gemini';
-                claudeEpisode.style.display = 'none';
-                geminiEpisode.style.display = 'block';
-            }
-        });
-    });
-
-    // 视频控制功能（保持现有代码）
-    const videos = document.querySelectorAll('.control-video');
-    
-    videos.forEach(video => {
-        const container = video.closest('.video-container');
-        const playButton = container.querySelector('.play-button');
-        const speedSelector = container.querySelector('.speed-selector');
-        
-        // 播放/暂停功能
-        playButton.addEventListener('click', function() {
-            if (video.paused || video.ended) {
-                video.play();
-                playButton.textContent = 'Pause';
-            } else {
-                video.pause();
-                playButton.textContent = 'Play';
-            }
-        });
-        
-        // 速度控制功能
-        speedSelector.addEventListener('change', function() {
-            video.playbackRate = parseFloat(this.value);
-        });
-        
-        // 视频结束后重置按钮
-        video.addEventListener('ended', function() {
-            playButton.textContent = 'Play';
-        });
-        
-        // 点击视频本身也能播放/暂停
-        video.addEventListener('click', function() {
-            if (video.paused || video.ended) {
-                video.play();
-                playButton.textContent = 'Pause';
-            } else {
-                video.pause();
-                playButton.textContent = 'Play';
-            }
-        });
-    });
-});
-</script>
+<script src="scripts.js"></script>
 
 </html> 
