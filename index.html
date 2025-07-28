@@ -23,17 +23,17 @@ Agents on Embodied Decision-Making</p>
 
             <div id="authors">
                 <div>
-                    <a class="author" href="https://liudai.notion.site/" target="_blank">Liu Dai<sup>1*</sup></a>
-                    <a class="author" href="https://www.linkedin.com/in/haina-wang-58b91032b/" target="_blank">Haina Wang<sup>1*</sup></a>
+                    <a class="author" href="https://liudai.notion.site/" target="_blank">Liu Dai<sup>*</sup></a>
+                    <a class="author" href="https://www.linkedin.com/in/haina-wang-58b91032b/" target="_blank">Haina Wang<sup>*</sup></a>
                     <a class="author" href="https://www.ias.informatik.tu-darmstadt.de/Team/NicoBohlinger"
-                        target="_blank">Weikang Wan<sup>1</sup></a>
-                    <a class="author" href="https://cseweb.ucsd.edu/~haosu/" target="_blank">Hao Su<sup>1</sup></a>
+                        target="_blank">Weikang Wan</a>
+                    <a class="author" href="https://cseweb.ucsd.edu/~haosu/" target="_blank">Hao Su</a>
                 </div>
             </div>
 
-            <div id="affiliations">
+            <div id="affiliations">               
+                <p class="affiliation">University of California San Diego, USA</p>
                 <p class="affiliation"><sup>*</sup>Equal contribution</p>
-                <p class="affiliation"><sup>1</sup>University of California San Diego, USA</p>
             </div>
         </div>
 
@@ -76,7 +76,7 @@ Agents on Embodied Decision-Making</p>
                 
                 
                 <p class="section-text">
-                ManiTaskGen is a universal system that generates a comprehensive set of feasible mobile manipulation tasks given arbitrary scene. These tasks facilitate automatic benchmarking and the improvement of embodied decision-making agents.
+                ManiTaskGen is a universal system that generates a comprehensive set of feasible mobile manipulation tasks given arbitrary scenes. These tasks facilitate both benchmarking and the improvement of embodied decision-making agents.
                 </p>
                 <div class="section-image-container">
                     <img src="images/ManiTaskGen_framework.png" alt="Task Generation Framework Overview" class="section-image">
@@ -94,7 +94,7 @@ Agents on Embodied Decision-Making</p>
             <div class="section-container">
                 <p class="section-header" style="text-align: center;">Pipeline Overview </p>
                 <div class="section-image-container">
-                    <img src="images/figure2.png" alt="Task Generation Framework Overview" class="section-image">
+                    <img src="images/figure2.png" alt="Task Generation Framework Overview" class="section-image-medium">
                 </div>
                 <video class="demo-video" controls>
                     <source src="videos/task_gen.mp4" type="video/mp4">
@@ -105,7 +105,7 @@ Agents on Embodied Decision-Making</p>
             <div class="section-container">
                 <p class="section-header" style="text-align: center;">Step 1: Construct Receptacle-Aware 3D Scene Graph</p>
                 <p class="section-text">
-                    We build a scene graph 𝒮 that captures the
+                    We build a receptacle-aware 3D scene graph 𝒮 that captures the
                     spatial relationships between objects and receptacles around each
                     object. Below we visualize the rules to build the scene graph.
 
@@ -116,14 +116,14 @@ Agents on Embodied Decision-Making</p>
             </div>
         
             <div class="section-container">
-                <p class="section-header" style="text-align: center;">Step2: Generate Process- and Outcome-based Tasks</p>
+                <p class="section-header" style="text-align: center;">Step 2: Generate Process- and Outcome-based Tasks</p>
                 
                 <p class="section-sub-header " style="text-align: center;"> Process-based Tasks</p>
                 <p class="section-text">
                     For process-based tasks, we generate them through the use of our scene graph and some patterns.
                 </p>
                 <div class="section-image-container">
-                    <img src="images/process_based_task.png" alt="Task Generation Framework Overview" class="section-image">
+                    <img src="images/process_based_task_c.png" alt="Task Generation Framework Overview" class="section-image-medium">
                 </div>
 
                 <p class="section-sub-header" style="text-align: center;"> Outcome-based Tasks</p>
@@ -131,7 +131,15 @@ Agents on Embodied Decision-Making</p>
                     For outcome-based tasks, we employ a hybrid approach combining template-based generation and VLM-based filtering.
                 </p>
                 <div class="section-image-container">
-                    <img src="images/outcome_based_task.png" alt="Task Generation Framework Overview" class="section-image">
+                    <img src="images/outcome_based_task_c.png" alt="Task Generation Framework Overview" class="section-image-medium">
+                </div>
+                <p class="section-text">                  
+                    Below are "lightmaps" that visualize the diversity of generated tasks. Each time an object or location is specifically mentioned in a task, a corresponding highlight is added at the precise position.
+                    This “heatmap” reveals the effect of our method by the comparison of brightness intensity and distribution.
+
+                </p>
+                <div class="section-image-container">
+                    <img src="images/heatmap.png" alt="Task Generation Framework Overview" class="section-image">
                 </div>
             </div>
 
@@ -154,7 +162,7 @@ Agents on Embodied Decision-Making</p>
            
 
             <div class="section-deployment-video-container">
-            <p class="section-deployment-video-container-header">Agents' Action Space</p>
+            <p class="section-deployment-video-container-header">Agent Action Space</p>
                 
                 <div class="section-deployment-video-row">
                     <div class="deployment-video-block">
@@ -241,6 +249,10 @@ Agents on Embodied Decision-Making</p>
 
             <p class="section-header" style="text-align: center;">Episode Examples</p>
 
+            <p class="section-text" style="text-align: left;">
+                 Visualization of an episode is displayed in the video below.
+                </p>
+
             <div class="video-container">
                 <video class="demo-video" controls>
                     <source src="videos/benchmark.mp4" type="video/mp4">
@@ -248,7 +260,7 @@ Agents on Embodied Decision-Making</p>
             </div>
 
             <p class="section-text" style="text-align: left;">
-                 Some real Episodes are displayed below: 
+                Full history of episodes is displayed in the container below. 
                 </p>
             
            <div class="demo-container">
@@ -260,7 +272,7 @@ Agents on Embodied Decision-Making</p>
                 </div>
                 <div class="task-item" data-episode="gemini-failure">
                     <p>Move Remote to Bowl's rear-left receptacles</p>
-                    <p class="task-description">(Unsuccessful Episode by Gemini-2.5-pro)</p>
+                    <p class="task-description">(Failed Episode by Gemini-2.5-pro)</p>
                 </div>
             </div>
             
@@ -785,7 +797,7 @@ Agents on Embodied Decision-Making</p>
                             <div class="task-result">
                                 <p><strong>(call_ended)</strong></p>
                                 <p><strong>Task result:</strong> Target object placed between two objects.</p>
-                                <p><strong>Task status:</strong> <span class="success-status">Success</span></p>
+                                <p><strong>Task status:</strong> <span class="success-status" style="color: green;">Success</span></p>
                             </div>
                         </div>
                     </div>
@@ -1018,7 +1030,7 @@ Agents on Embodied Decision-Making</p>
                             <div class="task-result">
                                 <p><strong>(call_ended)</strong></p>
                                 <p><strong>Task result:</strong> Target object placed in wrong direction, expected: rear-left, found: rear-right.</p>
-                                <p><strong>Task status:</strong> <span class="failure-status">Failed</span></p>
+                                <p><strong>Task status:</strong> <span class="failure-status" style="color: red;">Failed</span></p>
                             </div>
                         </div>
                     </div>
@@ -1044,7 +1056,7 @@ Agents on Embodied Decision-Making</p>
                 <img src="images/result_table.png" alt="result_table" class="section-image">
                 <p class="section-text">
                     We visualize the sub-step mistake distribution from Gemini-2.5-pro for Level 3 tasks.
-                    The Sankey diagram illustrates that wrong placement accounts for the largest proportion of mistakes, and the navigation mistakes becomes more frequent in the later steps of the task.
+                    The Sankey diagram below illustrates that wrong placement accounts for the largest proportion of mistakes, and the navigation mistakes become more frequent in the later steps of the episode. The observation elaborates that longer horizon tasks pose more challenges for VLM agents.
                 </p>
                 
                 <img src="images/sankey_diagram.png" alt="result_table" class="section-image">
@@ -1057,7 +1069,7 @@ Agents on Embodied Decision-Making</p>
 
         
            
-            
+            </div>
             <div class="section-container">
                 <p class="section-header">Improving VLM Agents </p>
 
@@ -1066,16 +1078,16 @@ Agents on Embodied Decision-Making</p>
 
                 <img src="images/reflection_overview.png" alt="reflexion_overview" class="section-image">
 
-                As shown in the results, our optimization significantly improved both the task execution success rate and the Intermediate Points score.
-                
-                
-                
+                As shown by our experiment results, our optimization significantly improved both the task execution success rate and the Intermediate Points score.
+                Besides, more trial episodes continuously contribute to the agent performance.
+
+
                     <img src="images/reflection_result.png" alt="result_table" class="section-image">
                 
 
             
             </div>
-            </div>
+            
             </div>
         </div>
 
