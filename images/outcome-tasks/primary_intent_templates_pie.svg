@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="518.4pt" viewBox="0 0 864 518.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 518.4
+L 864 518.4
+L 864 0
+L 0 0
+z
+" style="fill: #f5f5f5"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 322.552459 206.112868
+C 311.495968 182.616629 293.977188 162.745473 272.051969 148.831307
+C 250.12675 134.91714 224.687658 127.5264 198.72 127.5264
+L 198.72 182.26944
+C 214.300595 182.26944 229.56405 186.703884 242.719182 195.052384
+C 255.874313 203.400884 266.385581 215.323577 273.019475 229.421321
+z
+" style="fill: #17647e; stroke: #f5f5f5; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 316.519088 334.050186
+C 327.88256 314.835604 334.374101 293.12937 335.425671 270.830876
+C 336.477241 248.532381 332.057248 226.311572 322.552459 206.112868
+L 273.019475 229.421321
+C 278.722349 241.540543 281.374345 254.873029 280.743403 268.252125
+C 280.11246 281.631222 276.217536 294.654963 269.399453 306.183712
+z
+" style="fill: #438fa3; stroke: #f5f5f5; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 236.902053 395.807489
+C 253.465961 390.995229 268.971768 383.094626 282.600988 372.522719
+C 296.230209 361.950811 307.738738 348.896948 316.519088 334.050186
+L 269.399453 306.183712
+C 264.131243 315.091769 257.226125 322.924087 249.048593 329.267231
+C 240.871061 335.610375 231.567576 340.350738 221.629232 343.238093
+z
+" style="fill: #6d9d73; stroke: #f5f5f5; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 136.58795 386.325014
+C 151.956737 394.155803 168.668319 399.010966 185.840562 400.634221
+C 203.012805 402.257476 220.338146 400.619749 236.902053 395.807489
+L 221.629232 343.238093
+C 211.690887 346.125449 201.295683 347.108086 190.992337 346.134133
+C 180.688992 345.16018 170.662042 342.247082 161.44077 337.548609
+z
+" style="fill: #b3a34e; stroke: #f5f5f5; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 69.953316 310.742859
+C 75.796136 326.971917 84.654768 341.951044 96.061599 354.889555
+C 107.468431 367.828066 121.219162 378.494226 136.58795 386.325014
+L 161.44077 337.548609
+C 152.219497 332.850136 143.969059 326.450439 137.12496 318.687333
+C 130.280861 310.924226 124.965682 301.93675 121.45999 292.199315
+z
+" style="fill: #c98347; stroke: #f5f5f5; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 68.560688 222.092676
+C 63.899998 236.436805 61.642381 251.453216 61.879284 266.533666
+C 62.116186 281.614115 64.844366 296.552203 69.953316 310.742859
+L 121.45999 292.199315
+C 118.394619 283.684922 116.757712 274.722069 116.61557 265.673799
+C 116.473429 256.62553 117.827999 247.615683 120.624413 239.009205
+z
+" style="fill: #b96871; stroke: #f5f5f5; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 118.277121 153.663876
+C 106.658748 162.105118 96.441118 172.322748 87.999876 183.941121
+C 79.558634 195.559494 72.998511 208.43446 68.560688 222.092676
+L 120.624413 239.009205
+C 123.287107 230.814276 127.22318 223.089296 132.287925 216.118273
+C 137.352671 209.147249 143.483249 203.016671 150.454273 197.951925
+z
+" style="fill: #8976a4; stroke: #f5f5f5; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 148.339357 137.137022
+C 143.007495 139.248055 137.813584 141.692124 132.788348 144.454771
+C 127.763112 147.217418 122.91648 150.293184 118.277121 153.663876
+L 150.454273 197.951925
+C 153.237888 195.929511 156.145867 194.084051 159.161009 192.426463
+C 162.176151 190.768874 165.292497 189.302433 168.491614 188.035813
+z
+" style="fill: #6684ad; stroke: #f5f5f5; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 177.310755 129.211344
+C 172.35517 129.996232 167.446496 131.053042 162.606968 132.376987
+C 157.76744 133.700932 153.004377 135.29001 148.339357 137.137022
+L 168.491614 188.035813
+C 171.290626 186.927606 174.148464 185.974159 177.052181 185.179792
+C 179.955897 184.385425 182.901102 183.751339 185.874453 183.280406
+z
+" style="fill: #86b4b0; stroke: #f5f5f5; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 194.421199 127.593931
+C 191.556039 127.683972 188.694415 127.86401 185.840562 128.133779
+C 182.986709 128.403547 180.142037 128.762913 177.310755 129.211344
+L 185.874453 183.280406
+C 187.573222 183.011348 189.280026 182.795728 190.992337 182.633867
+C 192.704649 182.472006 194.421623 182.363983 196.140719 182.309959
+z
+" style="fill: #a39a8c; stroke: #f5f5f5; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 198.72 127.5264
+C 198.003412 127.5264 197.286834 127.532028 196.570334 127.543284
+C 195.853834 127.554539 195.137434 127.571422 194.421199 127.593931
+L 196.140719 182.309959
+C 196.57046 182.296453 197.000301 182.286324 197.430201 182.27957
+C 197.860101 182.272817 198.290047 182.26944 198.72 182.26944
+z
+" style="fill: #c2c8ce; stroke: #f5f5f5; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 32px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #24333d" x="198.72" y="264.485044" transform="rotate(-0 198.72 264.485044)">200</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #596b77" x="198.72" y="291.027253" transform="rotate(-0 198.72 291.027253)">templates</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="legend_1">
+    <g id="patch_13">
+     <path d="M 410.68 174.475176
+L 423.33 174.475176
+L 423.33 163.435176
+L 410.68 163.435176
+z
+" style="fill: #17647e"/>
+    </g>
+    <g id="text_3">
+     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #24333d" x="432.53" y="172.865176" transform="rotate(-0 432.53 172.865176)">Ordering / alignment  —  36 (18.0%)</text>
+    </g>
+    <g id="patch_14">
+     <path d="M 410.68 197.592871
+L 423.33 197.592871
+L 423.33 186.552871
+L 410.68 186.552871
+z
+" style="fill: #438fa3"/>
+    </g>
+    <g id="text_4">
+     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #24333d" x="432.53" y="195.982871" transform="rotate(-0 432.53 195.982871)">Display / presentation / curation  —  31 (15.5%)</text>
+    </g>
+    <g id="patch_15">
+     <path d="M 410.68 220.710566
+L 423.33 220.710566
+L 423.33 209.670566
+L 410.68 209.670566
+z
+" style="fill: #6d9d73"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #24333d" x="432.53" y="219.100566" transform="rotate(-0 432.53 219.100566)">Functional workspace / workflow setup  —  24 (12.0%)</text>
+    </g>
+    <g id="patch_16">
+     <path d="M 410.68 243.828262
+L 423.33 243.828262
+L 423.33 232.788262
+L 410.68 232.788262
+z
+" style="fill: #b3a34e"/>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #24333d" x="432.53" y="242.218262" transform="rotate(-0 432.53 242.218262)">Artistic / geometric arrangement  —  24 (12.0%)</text>
+    </g>
+    <g id="patch_17">
+     <path d="M 410.68 266.945957
+L 423.33 266.945957
+L 423.33 255.905957
+L 410.68 255.905957
+z
+" style="fill: #c98347"/>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #24333d" x="432.53" y="265.335957" transform="rotate(-0 432.53 265.335957)">Thematic scene / structural construction  —  24 (12.0%)</text>
+    </g>
+    <g id="patch_18">
+     <path d="M 410.68 290.063652
+L 423.33 290.063652
+L 423.33 279.023652
+L 410.68 279.023652
+z
+" style="fill: #b96871"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #24333d" x="432.53" y="288.453652" transform="rotate(-0 432.53 288.453652)">Grouping / categorization  —  21 (10.5%)</text>
+    </g>
+    <g id="patch_19">
+     <path d="M 410.68 313.181348
+L 423.33 313.181348
+L 423.33 302.141348
+L 410.68 302.141348
+z
+" style="fill: #8976a4"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #24333d" x="432.53" y="311.571348" transform="rotate(-0 432.53 311.571348)">Storage / relocation / redistribution  —  20 (10.0%)</text>
+    </g>
+    <g id="patch_20">
+     <path d="M 410.68 336.299043
+L 423.33 336.299043
+L 423.33 325.259043
+L 410.68 325.259043
+z
+" style="fill: #6684ad"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #24333d" x="432.53" y="334.689043" transform="rotate(-0 432.53 334.689043)">General organization / tidying  —  8 (4.0%)</text>
+    </g>
+    <g id="patch_21">
+     <path d="M 410.68 359.416738
+L 423.33 359.416738
+L 423.33 348.376738
+L 410.68 348.376738
+z
+" style="fill: #86b4b0"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #24333d" x="432.53" y="357.806738" transform="rotate(-0 432.53 357.806738)">Accessibility / ergonomic optimization  —  7 (3.5%)</text>
+    </g>
+    <g id="patch_22">
+     <path d="M 410.68 382.534434
+L 423.33 382.534434
+L 423.33 371.494434
+L 410.68 371.494434
+z
+" style="fill: #a39a8c"/>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #24333d" x="432.53" y="380.924434" transform="rotate(-0 432.53 380.924434)">Clearing / decluttering  —  4 (2.0%)</text>
+    </g>
+    <g id="patch_23">
+     <path d="M 410.68 405.652129
+L 423.33 405.652129
+L 423.33 394.612129
+L 410.68 394.612129
+z
+" style="fill: #c2c8ce"/>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #24333d" x="432.53" y="404.042129" transform="rotate(-0 432.53 404.042129)">Others  —  1 (0.5%)</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_14">
+   <text style="font-weight: 700; font-size: 20px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #24333d" x="30.24" y="31.104" transform="rotate(-0 30.24 31.104)">Primary Intent</text>
+  </g>
+  <g id="text_15">
+   <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #596b77" x="30.24" y="54.432" transform="rotate(-0 30.24 54.432)">200 templates · One primary intent per template</text>
+  </g>
+ </g>
+</svg>

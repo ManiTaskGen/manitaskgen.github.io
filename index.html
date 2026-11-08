@@ -142,6 +142,15 @@ Agents on Embodied Decision-Making</p>
                     <img src="images/outcome_based_task_c.png" alt="Task Generation Framework Overview" class="section-image-medium">
                 </div>
 
+                <div class="outcome-taxonomy" id="outcome-template-taxonomy" role="region" aria-label="ManiTaskOT-200 template distributions">
+                    <a href="images/outcome-tasks/primary_intent_templates_pie.svg" target="_blank" rel="noopener" aria-label="Open the primary intent template distribution chart (new tab)">
+                        <img src="images/outcome-tasks/primary_intent_templates_pie.svg" alt="Primary intent distribution across 200 templates, with counts and percentages. Each template has one primary intent; ordering and alignment is the largest category at 36 templates (18.0%)." width="1200" height="720" loading="lazy" decoding="async">
+                    </a>
+                    <a href="images/outcome-tasks/semantic_reasoning_templates_bar.svg" target="_blank" rel="noopener" aria-label="Open the semantic and reasoning tag template distribution chart (new tab)">
+                        <img src="images/outcome-tasks/semantic_reasoning_templates_bar.svg" alt="Semantic and reasoning tags across 200 templates, with counts and percentages. Templates may have multiple tags, so percentages need not sum to 100%. Thematic and aesthetic composition is the most common tag at 99 templates (49.5%)." width="1200" height="760" loading="lazy" decoding="async">
+                    </a>
+                </div>
+
                 <div class="outcome-examples" id="outcome-task-examples" role="region" aria-label="Outcome-based task examples">
                     <article class="outcome-card" aria-labelledby="outcome-clearing-title">
                         <header class="outcome-card-header">
@@ -282,7 +291,11 @@ Agents on Embodied Decision-Making</p>
                 <p class="section-text">
                     Human verification finds 94.0% of process-based tasks and 86.5% of outcome-based tasks valid. In a separate single-scene comparison, ManiTaskGen also achieves broader coverage of source and target platforms than the GPT-based baselines.
                 </p>
-                <!-- TODO: Add task validity and platform coverage figures here, with separate legends for the two metrics. -->
+                <div class="section-image-container">
+                    <a href="images/validation_GPTTaskgen_f5f5f5.png" target="_blank" rel="noopener" aria-label="Open the full-resolution task quality comparison table (new tab)">
+                        <img src="images/validation_GPTTaskgen_f5f5f5.png" alt="Single-scene comparison of GPTTaskGen baselines and ManiTaskGen, with separate columns for task validity and normalized source-platform, target-platform, moved-object and anchor-object coverage" class="section-image" width="1346" height="277" style="height: auto;" loading="lazy" decoding="async">
+                    </a>
+                </div>
             </div>
 
             
@@ -382,7 +395,7 @@ Agents on Embodied Decision-Making</p>
 
              <p class="section-sub-header" style="text-align: center;">Task Difficulty and Evaluation Criteria</p>
             <p class="section-text">
-               Levels 1–3 test single-step relocation with unique targets, object disambiguation, and two-step task completion; Level 4 tests outcome-based goals. Process-based tasks receive automatic success checks and intermediate scores, while outcome-based results are primarily evaluated by humans.
+               Levels 1–3 test single-step relocation with unique targets, object disambiguation, and two-step task completion; Level 4 tests outcome-based goals. Process-based tasks receive automatic success checks and intermediate scores, while outcome-based results, whose non-neglectable discrepancy was shown in our experiments, are primarily evaluated by humans and have no intermediate scores.
               
             </p>
 

@@ -867,6 +867,29 @@ p {
   color: #666;
 }
 
+/* Template-only taxonomy charts; open the SVG for a full-size view. */
+.outcome-taxonomy {
+    width: 100%;
+    min-width: 0;
+    margin-top: 24px;
+}
+
+.outcome-taxonomy a {
+    display: block;
+    cursor: zoom-in;
+}
+
+.outcome-taxonomy a:focus-visible {
+    outline: 3px solid #17647e;
+    outline-offset: 4px;
+}
+
+.outcome-taxonomy img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 /* Outcome-based examples: full-width cards keep scene details readable. */
 .outcome-examples {
     display: grid;

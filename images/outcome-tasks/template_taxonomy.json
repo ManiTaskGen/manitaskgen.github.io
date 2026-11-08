@@ -1,0 +1,32 @@
+{
+  "total_templates": 200,
+  "source_column": "Templates n (%)",
+  "primary_intent_source": "primary_intent.png",
+  "semantic_reasoning_source": "semantic_reasoning.png",
+  "primary_intent": [
+    {"label": "Ordering / alignment", "n": 36, "percent": 18.0},
+    {"label": "Display / presentation / curation", "n": 31, "percent": 15.5},
+    {"label": "Functional workspace / workflow setup", "n": 24, "percent": 12.0},
+    {"label": "Artistic / geometric arrangement", "n": 24, "percent": 12.0},
+    {"label": "Thematic scene / structural construction", "n": 24, "percent": 12.0},
+    {"label": "Grouping / categorization", "n": 21, "percent": 10.5},
+    {"label": "Storage / relocation / redistribution", "n": 20, "percent": 10.0},
+    {"label": "General organization / tidying", "n": 8, "percent": 4.0},
+    {"label": "Accessibility / ergonomic optimization", "n": 7, "percent": 3.5},
+    {"label": "Clearing / decluttering", "n": 4, "percent": 2.0},
+    {"label": "Others", "n": 1, "percent": 0.5}
+  ],
+  "semantic_reasoning": [
+    {"label": "Thematic / aesthetic composition", "n": 99, "percent": 49.5},
+    {"label": "Semantic categorization", "n": 61, "percent": 30.5},
+    {"label": "Symmetry / geometric reasoning", "n": 60, "percent": 30.0},
+    {"label": "Attribute comparison & ordering", "n": 54, "percent": 27.0},
+    {"label": "Accessibility / ergonomics / workflow", "n": 53, "percent": 26.5},
+    {"label": "Directional / spatial relation", "n": 50, "percent": 25.0},
+    {"label": "Alignment / spacing / proportion", "n": 49, "percent": 24.5},
+    {"label": "Stacking / containment / physical structure", "n": 32, "percent": 16.0},
+    {"label": "Cross-platform / layer transfer", "n": 31, "percent": 15.5},
+    {"label": "Selection / decluttering / cleaning", "n": 23, "percent": 11.5},
+    {"label": "Others", "n": 5, "percent": 2.5}
+  ]
+}
