@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
      <title>ManiTaskGen: A Comprehensive Task Generator for
 Benchmarking and Improving Vision-Language
 Agents on Embodied Decision-Making</title>
@@ -24,14 +25,20 @@ Agents on Embodied Decision-Making</p>
             <div id="authors">
                 <div>
                     <a class="author" href="https://liudai.notion.site/" target="_blank">Liu Dai<sup>*</sup></a>
-                    <a class="author" href="https://www.linkedin.com/in/haina-wang-58b91032b/" target="_blank">Haina Wang<sup>*</sup></a>
-                    <a class="author" href="https://www.ias.informatik.tu-darmstadt.de/Team/NicoBohlinger"
+                    <a class="author" href="https://hainawang.github.io" target="_blank">Haina Wang<sup>*</sup></a>
+                    <a class="author" href="https://wkwan7.github.io/"
                         target="_blank">Weikang Wan</a>
                     <a class="author" href="https://cseweb.ucsd.edu/~haosu/" target="_blank">Hao Su</a>
                 </div>
             </div>
+                <div class="conference">
+                    <div class="conference-name">NeurIPS 2026</div>
+                    <div class="conference-track">
+                        Evaluations &amp; Datasets Track
+                    </div>
+                </div>
+            <div id="affiliations">
 
-            <div id="affiliations">               
                 <p class="affiliation">University of California San Diego, USA</p>
                 <p class="affiliation"><sup>*</sup>Equal contribution</p>
             </div>
@@ -76,7 +83,7 @@ Agents on Embodied Decision-Making</p>
                 
                 
                 <p class="section-text">
-                ManiTaskGen is a universal system that generates a comprehensive set of feasible mobile manipulation tasks given arbitrary scenes. These tasks facilitate both benchmarking and the improvement of embodied decision-making agents.
+                ManiTaskGen automatically generates diverse, scene-grounded mobile manipulation tasks, from specific object relocations to abstract goals such as clearing a table. These tasks support systematic benchmarking and feedback-based improvement of embodied decision-making agents.
                 </p>
                 <div class="section-image-container">
                     <img src="images/ManiTaskGen_framework.png" alt="Task Generation Framework Overview" class="section-image">
@@ -93,6 +100,9 @@ Agents on Embodied Decision-Making</p>
 
             <div class="section-container">
                 <p class="section-header" style="text-align: center;">Pipeline Overview </p>
+                <p class="section-text">
+                    Starting from scene information, ManiTaskGen builds a receptacle-aware 3D scene graph and generates two complementary task types: process-based instructions that specify actions, and outcome-based instructions that specify desired scene states.
+                </p>
                 <div class="section-image-container">
                     <img src="images/figure2.png" alt="Task Generation Framework Overview" class="section-image-medium">
                 </div>
@@ -105,9 +115,7 @@ Agents on Embodied Decision-Making</p>
             <div class="section-container">
                 <p class="section-header" style="text-align: center;">Step 1: Construct Receptacle-Aware 3D Scene Graph</p>
                 <p class="section-text">
-                    We build a receptacle-aware 3D scene graph 𝒮 that captures the
-                    spatial relationships between objects and receptacles around each
-                    object. Below we visualize the rules to build the scene graph.
+                    Our scene graph represents both objects and the available placement regions around them. By recording support relations, spatial relations, and free space, it provides a structured basis for generating object relocation tasks.
 
                 </p>
                 <div class="section-image-container">
@@ -120,7 +128,7 @@ Agents on Embodied Decision-Making</p>
                 
                 <p class="section-sub-header " style="text-align: center;"> Process-based Tasks</p>
                 <p class="section-text">
-                    For process-based tasks, we generate them through the use of our scene graph and some patterns.
+                    Process-based tasks specify actions and their order. We sample object relocations from the scene graph and compose them into instructions with different spatial constraints and sequence lengths.
                 </p>
                 <div class="section-image-container">
                     <img src="images/process_based_task_c.png" alt="Task Generation Framework Overview" class="section-image-medium">
@@ -128,19 +136,153 @@ Agents on Embodied Decision-Making</p>
 
                 <p class="section-sub-header" style="text-align: center;"> Outcome-based Tasks</p>
                 <p class="section-text">                  
-                    For outcome-based tasks, we employ a hybrid approach combining template-based generation and VLM-based filtering.
+                    Outcome-based tasks describe desired scene states, from clearing a surface to organizing a workspace. We instantiate 200 human-derived task templates with scene objects and use VLM voting to filter for feasibility.
                 </p>
                 <div class="section-image-container">
                     <img src="images/outcome_based_task_c.png" alt="Task Generation Framework Overview" class="section-image-medium">
                 </div>
+
+                <div class="outcome-examples" id="outcome-task-examples" role="region" aria-label="Outcome-based task examples">
+                    <article class="outcome-card" aria-labelledby="outcome-clearing-title">
+                        <header class="outcome-card-header">
+                            <h3 id="outcome-clearing-title">Clearing</h3>
+                            <span class="outcome-scope">1 platform</span>
+                        </header>
+                        <p class="outcome-instruction">Tidy up the <code>sofa_platform_0</code>.</p>
+                        <dl class="outcome-metadata">
+                            <div><dt>Primary Intent</dt><dd>General organization / tidying</dd></div>
+                            <div><dt>Semantic / Reasoning Tags</dt><dd><ul class="outcome-tags"><li>Others</li></ul></dd></div>
+                        </dl>
+                        <div class="outcome-comparison">
+                            <figure>
+                                <figcaption>Initial state</figcaption>
+                                <a href="images/outcome-tasks/clearing-sofa-initial.png" target="_blank" rel="noopener" aria-label="Open full-resolution initial state of the sofa (new tab)">
+                                    <picture><source srcset="images/outcome-tasks/clearing-sofa-initial.webp" type="image/webp"><img src="images/outcome-tasks/clearing-sofa-initial.png" alt="Initial state of sofa_platform_0 before tidying" width="1920" height="1080" loading="lazy" decoding="async"></picture>
+                                </a>
+                            </figure>
+                            <figure>
+                                <figcaption class="outcome-final-label">One valid outcome</figcaption>
+                                <a href="images/outcome-tasks/clearing-sofa-outcome.png" target="_blank" rel="noopener" aria-label="Open full-resolution outcome of tidying the sofa (new tab)">
+                                    <picture><source srcset="images/outcome-tasks/clearing-sofa-outcome.webp" type="image/webp"><img src="images/outcome-tasks/clearing-sofa-outcome.png" alt="One valid outcome of tidying sofa_platform_0" width="1920" height="1080" loading="lazy" decoding="async"></picture>
+                                </a>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="outcome-card" aria-labelledby="outcome-ordering-title">
+                        <header class="outcome-card-header">
+                            <h3 id="outcome-ordering-title">Ordering</h3>
+                            <span class="outcome-scope">1 platform</span>
+                        </header>
+                        <p class="outcome-instruction">Arrange objects on <code>wooden_table_platform_0</code> by height and type.</p>
+                        <dl class="outcome-metadata">
+                            <div><dt>Primary Intent</dt><dd>Ordering / alignment</dd></div>
+                            <div><dt>Semantic / Reasoning Tags</dt><dd><ul class="outcome-tags"><li>Attribute comparison &amp; ordering</li><li>Semantic categorization</li></ul></dd></div>
+                        </dl>
+                        <div class="outcome-comparison">
+                            <figure>
+                                <figcaption>Initial state</figcaption>
+                                <a href="images/outcome-tasks/ordering-table-initial.png" target="_blank" rel="noopener" aria-label="Open full-resolution initial state of the wooden table (new tab)">
+                                    <picture><source srcset="images/outcome-tasks/ordering-table-initial.webp" type="image/webp"><img src="images/outcome-tasks/ordering-table-initial.png" alt="Initial object arrangement on wooden_table_platform_0" width="1920" height="1080" loading="lazy" decoding="async"></picture>
+                                </a>
+                            </figure>
+                            <figure>
+                                <figcaption class="outcome-final-label">One valid outcome</figcaption>
+                                <a href="images/outcome-tasks/ordering-table-outcome.png" target="_blank" rel="noopener" aria-label="Open full-resolution height-and-type ordering outcome (new tab)">
+                                    <picture><source srcset="images/outcome-tasks/ordering-table-outcome.webp" type="image/webp"><img src="images/outcome-tasks/ordering-table-outcome.png" alt="Objects arranged by height and type on wooden_table_platform_0" width="1920" height="1080" loading="lazy" decoding="async"></picture>
+                                </a>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="outcome-card" aria-labelledby="outcome-spatial-title">
+                        <header class="outcome-card-header">
+                            <h3 id="outcome-spatial-title">Spatial Arrangement</h3>
+                            <span class="outcome-scope">1 platform</span>
+                        </header>
+                        <p class="outcome-instruction">Transform the top of <code>white_table_platform_0</code> into a &quot;cityscape&quot; by arranging objects to resemble buildings and roads.</p>
+                        <dl class="outcome-metadata">
+                            <div><dt>Primary Intent</dt><dd>Thematic scene / structural construction</dd></div>
+                            <div><dt>Semantic / Reasoning Tags</dt><dd><ul class="outcome-tags"><li>Symmetry / geometric reasoning</li><li>Stacking / containment / physical structure</li><li>Thematic / aesthetic composition</li></ul></dd></div>
+                        </dl>
+                        <div class="outcome-comparison">
+                            <figure>
+                                <figcaption>Initial state</figcaption>
+                                <a href="images/outcome-tasks/cityscape-table-initial.png" target="_blank" rel="noopener" aria-label="Open full-resolution initial state of the white table (new tab)">
+                                    <picture><source srcset="images/outcome-tasks/cityscape-table-initial.webp" type="image/webp"><img src="images/outcome-tasks/cityscape-table-initial.png" alt="Initial object arrangement on white_table_platform_0 before creating a cityscape" width="1920" height="1080" loading="lazy" decoding="async"></picture>
+                                </a>
+                            </figure>
+                            <figure>
+                                <figcaption class="outcome-final-label">One valid outcome</figcaption>
+                                <a href="images/outcome-tasks/cityscape-table-outcome.png" target="_blank" rel="noopener" aria-label="Open full-resolution cityscape arrangement outcome (new tab)">
+                                    <picture><source srcset="images/outcome-tasks/cityscape-table-outcome.webp" type="image/webp"><img src="images/outcome-tasks/cityscape-table-outcome.png" alt="Objects arranged to resemble buildings and roads on white_table_platform_0" width="1920" height="1080" loading="lazy" decoding="async"></picture>
+                                </a>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="outcome-card outcome-card-cross-platform" aria-labelledby="outcome-cross-platform-title">
+                        <header class="outcome-card-header">
+                            <h3 id="outcome-cross-platform-title">Cross-platform Organization</h3>
+                            <span class="outcome-scope">2 platforms</span>
+                        </header>
+                        <p class="outcome-instruction">Remove all objects from <code>kitchen_counter_platform_1</code> and organize them into distinct categories, placing related items together on <code>tvstand_1</code>.</p>
+                        <dl class="outcome-metadata">
+                            <div><dt>Primary Intent</dt><dd>Storage / relocation / redistribution</dd></div>
+                            <div><dt>Semantic / Reasoning Tags</dt><dd><ul class="outcome-tags"><li>Semantic categorization</li><li>Cross-platform / layer transfer</li><li>Selection / decluttering / cleaning</li></ul></dd></div>
+                        </dl>
+                        <div class="outcome-platform">
+                            <h4>Source platform <code>kitchen_counter_platform_1</code></h4>
+                            <div class="outcome-comparison">
+                                <figure>
+                                    <figcaption>Initial state</figcaption>
+                                    <a href="images/outcome-tasks/relocation-counter-initial.png" target="_blank" rel="noopener" aria-label="Open full-resolution initial state of the source kitchen counter (new tab)">
+                                        <picture><source srcset="images/outcome-tasks/relocation-counter-initial.webp" type="image/webp"><img src="images/outcome-tasks/relocation-counter-initial.png" alt="Objects on source kitchen_counter_platform_1 before relocation" width="1920" height="1080" loading="lazy" decoding="async"></picture>
+                                    </a>
+                                </figure>
+                                <figure>
+                                    <figcaption class="outcome-final-label">One valid outcome</figcaption>
+                                    <a href="images/outcome-tasks/relocation-counter-outcome.png" target="_blank" rel="noopener" aria-label="Open full-resolution outcome of clearing the source kitchen counter (new tab)">
+                                        <picture><source srcset="images/outcome-tasks/relocation-counter-outcome.webp" type="image/webp"><img src="images/outcome-tasks/relocation-counter-outcome.png" alt="Source kitchen_counter_platform_1 after its objects have been removed" width="1920" height="1080" loading="lazy" decoding="async"></picture>
+                                    </a>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="outcome-platform">
+                            <h4>Target platform <code>tvstand_1</code></h4>
+                            <div class="outcome-comparison">
+                                <figure>
+                                    <figcaption>Initial state</figcaption>
+                                    <a href="images/outcome-tasks/relocation-tvstand-initial.png" target="_blank" rel="noopener" aria-label="Open full-resolution initial state of the target TV stand (new tab)">
+                                        <picture><source srcset="images/outcome-tasks/relocation-tvstand-initial.webp" type="image/webp"><img src="images/outcome-tasks/relocation-tvstand-initial.png" alt="Target tvstand_1 before receiving objects from the kitchen counter" width="1920" height="1080" loading="lazy" decoding="async"></picture>
+                                    </a>
+                                </figure>
+                                <figure>
+                                    <figcaption class="outcome-final-label">One valid outcome</figcaption>
+                                    <a href="images/outcome-tasks/relocation-tvstand-outcome.png" target="_blank" rel="noopener" aria-label="Open full-resolution categorized arrangement on the target TV stand (new tab)">
+                                        <picture><source srcset="images/outcome-tasks/relocation-tvstand-outcome.webp" type="image/webp"><img src="images/outcome-tasks/relocation-tvstand-outcome.png" alt="Relocated objects grouped into categories on target tvstand_1" width="1920" height="1080" loading="lazy" decoding="async"></picture>
+                                    </a>
+                                </figure>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
                 <p class="section-text">                  
-                    Below are "lightmaps" that visualize the diversity of generated tasks. Each time an object or location is specifically mentioned in a task, a corresponding highlight is added at the precise position.
-                    This “heatmap” reveals the effect of our method by the comparison of brightness intensity and distribution.
+                    Each lightmap visualizes 100 sampled tasks from the same scene, with highlights marking referenced objects and locations. Compared with the GPT-based baseline, ManiTaskGen distributes tasks more broadly across the scene.
 
                 </p>
                 <div class="section-image-container">
                     <img src="images/heatmap.png" alt="Task Generation Framework Overview" class="section-image">
                 </div>
+            </div>
+
+            <div class="section-container" id="task-quality">
+                <p class="section-header" style="text-align: center;">Task Quality</p>
+                <p class="section-text">
+                    Human verification finds 94.0% of process-based tasks and 86.5% of outcome-based tasks valid. In a separate single-scene comparison, ManiTaskGen also achieves broader coverage of source and target platforms than the GPT-based baselines.
+                </p>
+                <!-- TODO: Add task validity and platform coverage figures here, with separate legends for the two metrics. -->
             </div>
 
             
@@ -163,6 +305,9 @@ Agents on Embodied Decision-Making</p>
 
             <div class="section-deployment-video-container">
             <p class="section-deployment-video-container-header">Agent Action Space</p>
+                <p class="section-text">
+                    We evaluate high-level embodied decision-making through a grounded skill interface. At each step, the agent receives visual observations and selects an action to navigate, change viewpoint, pick, inspect placement regions, place, or end the episode.
+                </p>
                 
                 <div class="section-deployment-video-row">
                     <div class="deployment-video-block">
@@ -237,20 +382,21 @@ Agents on Embodied Decision-Making</p>
 
              <p class="section-sub-header" style="text-align: center;">Task Difficulty and Evaluation Criteria</p>
             <p class="section-text">
-               We divide all process-based tasks into 3 difficulty levels. The evaluation criteria is defined as below.
+               Levels 1–3 test single-step relocation with unique targets, object disambiguation, and two-step task completion; Level 4 tests outcome-based goals. Process-based tasks receive automatic success checks and intermediate scores, while outcome-based results are primarily evaluated by humans.
               
             </p>
 
 
 
             <div class="section-image-container">
+                <!-- TODO: Update task_criteria.png to include Level 4 outcome-based goals and their evaluation criteria. -->
                 <img src="images/task_criteria.png" alt="task_judgement_method" class="section-image">
             </div>
 
             <p class="section-header" style="text-align: center;">Episode Examples</p>
 
             <p class="section-text" style="text-align: left;">
-                 Visualization of an episode is displayed in the video below.
+                 Follow an agent from the initial task instruction to the final scene. The video illustrates how observations, actions, and environment updates form a complete evaluation episode.
                 </p>
 
             <div class="video-container">
@@ -260,7 +406,7 @@ Agents on Embodied Decision-Making</p>
             </div>
 
             <p class="section-text" style="text-align: left;">
-                Full history of episodes is displayed in the container below. 
+                Explore successful and failed episodes below, including the full observations, selected actions, and final task judgments.
                 </p>
             
            <div class="demo-container">
@@ -1050,13 +1196,13 @@ Agents on Embodied Decision-Making</p>
             
                
                 <p class="section-text">
-                    We observe that all models achieve a low average SR (under 30%), significantly below human-level performance. Performance generally decreases with increasing task difficulty. Longer tasks (Level 3) lead to significantly lower performance compared to single-step tasks, highlighting the substantial challenge posed by the generated tasks.
+                    The best-performing evaluated VLM achieves 40.3% average success across the four task levels, compared with 83.3% for humans. Multi-step and outcome-based tasks remain challenging even with a grounded skill interface.
                     
                 </p>
+                <!-- TODO: Replace result_table.png with the complete CR-version table, including Level 4 and updated averages. -->
                 <img src="images/result_table.png" alt="result_table" class="section-image">
                 <p class="section-text">
-                    We visualize the sub-step mistake distribution from Gemini-2.5-pro for Level 3 tasks.
-                    The Sankey diagram below illustrates that wrong placement accounts for the largest proportion of mistakes, and the navigation mistakes become more frequent in the later steps of the episode. The observation elaborates that longer horizon tasks pose more challenges for VLM agents.
+                    An analysis of Gemini-2.5-pro on Level-3 tasks identifies incorrect placement as the most common failure. Navigation errors also become more frequent in the second subtask, highlighting difficulties in maintaining accurate decisions over longer sequences.
                 </p>
                 
                 <img src="images/sankey_diagram.png" alt="result_table" class="section-image">
@@ -1070,19 +1216,30 @@ Agents on Embodied Decision-Making</p>
         
            
             </div>
+            <div class="section-container" id="teleoperated-real-robot-evaluation">
+                <p class="section-header" style="text-align: center;">Teleoperated Real-Robot Evaluation</p>
+                <p class="section-text">
+                    We apply ManiTaskGen to a reconstructed physical scene and evaluate VLM-generated high-level decisions on a mobile robot. Low-level navigation and manipulation are executed through human teleoperation.
+                </p>
+                <!-- TODO: Add paper Fig. 7 or a verified real-robot experiment video here. -->
+            </div>
+
             <div class="section-container">
                 <p class="section-header">Improving VLM Agents </p>
-
-                ManiTaskGen tasks can not only be used for benchmarking VLMs, but also for optimizing VLM-based agents. We adopt a Reflexion-based method to
-    achieve inference-time finetuning of VLM agents.
+                <p class="section-text">
+                    Beyond benchmarking, generated tasks provide feedback for improving agent decisions. We convert task outcomes and intermediate-step evaluations into a reflection memory that guides later attempts at inference time, without updating model weights.
+                </p>
 
                 <img src="images/reflection_overview.png" alt="reflexion_overview" class="section-image">
 
-                As shown by our experiment results, our optimization significantly improved both the task execution success rate and the Intermediate Points score.
-                Besides, more trial episodes continuously contribute to the agent performance.
+                <p class="section-text">
+                    Reflection memory built from 10 trial episodes improves performance on 100 Level-1 tasks in a different scene. Gemini-2.5-flash improves from 36% to 58% success, with gains also observed for GPT-4.1 and Claude-3.5-haiku.
+                </p>
 
-
-                    <img src="images/reflection_result.png" alt="result_table" class="section-image">
+                <img src="images/reflection_result.png" alt="result_table" class="section-image">
+                <p class="section-text">
+                    Within the tested range, additional trial episodes further improve Gemini-2.5-flash’s success rate.
+                </p>
                 
 
             
@@ -1100,14 +1257,13 @@ Agents on Embodied Decision-Making</p>
                 <!-- <p class="section-header">Acknowledgments</p>
                 -->
                 <div class="citation-content">
-                    <pre>@misc{dai2025manitaskgencomprehensivetaskgenerator,
-                        title={ManiTaskGen: A Comprehensive Task Generator for Benchmarking and Improving Vision-Language Agents on Embodied Decision-Making}, 
-                        author={Liu Dai and Haina Wang and Weikang Wan and Hao Su},
-                        year={2025},
-                        eprint={2505.20726},
-                        archivePrefix={arXiv},
-                        primaryClass={cs.RO},
-                        url={https://arxiv.org/abs/2505.20726}, 
+                    <pre>@inproceedings{dai2026manitaskgen,
+                        title     = {ManiTaskGen: A Comprehensive Task Generator for Benchmarking and Improving Vision-Language Agents on Embodied Decision-Making},
+                        author    = {Dai, Liu and Wang, Haina and Wan, Weikang and Su, Hao},
+                        booktitle = {Advances in Neural Information Processing Systems},
+                        year      = {2026},
+                        note      = {Evaluations and Datasets Track. To appear},
+                        url       = {https://arxiv.org/abs/2505.20726}
                     }</pre>
                 </div>
             </div>
