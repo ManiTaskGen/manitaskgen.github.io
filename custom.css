@@ -295,7 +295,7 @@ p {
     margin: 20px auto;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    object-fit: cover;  /* 保持完整视频内容 */
+    object-fit: contain;  /* 保持完整视频内容 */
     background: #f8f9fa;  /* 浅色背景替代黑色 */
 }
 
@@ -310,7 +310,7 @@ p {
 
 @media (max-width: 768px) {
     .demo-video {
-        height: 300px;
+        height: auto;
     }
 }
 
