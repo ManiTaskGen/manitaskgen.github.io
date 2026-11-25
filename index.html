@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <title>ManiTaskGen: A Comprehensive Task Generator for
+    <title>ManiTaskGen: A Comprehensive Task Generator for
 Benchmarking and Improving Vision-Language
 Agents on Embodied Decision-Making</title>
     <link rel="stylesheet" href="custom.css">
@@ -19,6 +19,7 @@ Agents on Embodied Decision-Making</title>
     <link rel="stylesheet" href="assets/site/text-columns.css">
     <link rel="stylesheet" href="assets/site/outline.css">
     <link rel="stylesheet" href="assets/site/typography.css">
+    <link rel="stylesheet" href="assets/site/relative-layout.css">
     <link rel="icon" type="image/x-icon" href="./images/favicon.png">
 </head>
 
@@ -329,7 +330,7 @@ Agents on Embodied Decision-Making</p>
                     Each lightmap visualizes 100 sampled tasks from the same scene, with highlights marking referenced objects and locations. Compared with the GPT-based baseline, ManiTaskGen distributes tasks more broadly across the scene.
 
                 </p>
-                <div class="section-image-container" data-story-source="coverage">
+                <div class="section-image-container">
                     <img loading="lazy" src="images/paper/heatmap.png" width="4000" height="1489" style="height:auto" alt="Lightmaps for 100 tasks in the same room: GPTTaskGen-RAS on the left and ManiTaskGen-RAS on the right, with detail insets." class="section-image">
                 </div>
             </div>
@@ -339,7 +340,7 @@ Agents on Embodied Decision-Making</p>
                 <p class="section-text">
                     Human verification finds 94.0% of process-based tasks and 86.5% of outcome-based tasks valid. In a separate single-scene comparison, ManiTaskGen also achieves broader coverage of source and target platforms than the GPT-based baselines.
                 </p>
-                <div class="paper-plate table-scroll quality-table" data-story-source="quality" data-keep-visible tabindex="0" role="region" aria-label="Single-scene comparison table">
+                <div class="paper-plate table-scroll quality-table" tabindex="0" role="region" aria-label="Single-scene comparison table">
                     <table class="ink-table">
                         <caption>Single-scene comparison · validity and coverage</caption>
                         <thead>

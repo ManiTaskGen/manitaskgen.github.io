@@ -1,0 +1,32 @@
+/* Desktop homepage layout. Horizontal measures are expressed
+   in units of the 1660px reference viewport. Leave text, hit targets, strokes,
+   film coordinates and the existing phone/tablet layout at their native scale. */
+@media screen and (min-width: 1200px) {
+    :root { --u: calc(100vw / 1660); }
+    body { max-width: calc(960 * var(--u)); padding-inline: calc(32 * var(--u)); }
+    html:has(.page-outline[open]) { padding-left: calc(232 * var(--u)); }
+    .page-outline { left: calc(10.4 * var(--u)); }
+    .page-outline[open] { width: calc(208 * var(--u)); }
+    .major-section, html:has(.page-outline[open]) .major-section { width: calc(1140 * var(--u)); }
+    .section-container { padding-inline: calc(20 * var(--u)); }
+
+    /* Text (90%), films, images, result tables and episodes already fill
+       a fraction of the section. Scale their gutters, not the assets. */
+    .outcome-examples, .outcome-taxonomy { column-gap: calc(18 * var(--u)); }
+    .outcome-card { padding-inline: calc(22 * var(--u)); }
+    .outcome-comparison { column-gap: calc(14 * var(--u)); }
+    .action-grid { column-gap: calc(16 * var(--u)); }
+    .action-card { padding-inline: calc(18 * var(--u)); }
+    .paper-plate { padding-inline: calc(30 * var(--u)); }
+    .plate-grid { column-gap: calc(25 * var(--u)); }
+    .gain-plate { column-gap: calc(24 * var(--u)); }
+    .ink-table th, .ink-table td { padding-inline: calc(10 * var(--u)); }
+    .evaluation-key thead th:first-child { width: max(10.5rem, calc(174 * var(--u))); }
+    .flow-diagram { column-gap: calc(6 * var(--u)); }
+    .flow-node { padding-inline: calc(14 * var(--u)); }
+    .flow-arrow { flex-basis: calc(34 * var(--u)); width: calc(34 * var(--u)); }
+    .story-player header, .story-player .st-controls { padding-inline: calc(20 * var(--u)); }
+    .story-player figure { padding-inline: calc(14 * var(--u)); }
+    .story-player article { padding-inline: calc(28 * var(--u)); }
+    .task-panel { width: calc(250 * var(--u)); }
+}
