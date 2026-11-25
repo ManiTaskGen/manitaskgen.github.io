@@ -39,7 +39,9 @@ def encode(src):
     dest = OUT / src.relative_to(IMAGES).with_suffix('.webm')
     dest.parent.mkdir(parents=True, exist_ok=True)
     with Image.open(src) as im:
-        left, right = content_columns(im)
+        # Preserve the original framing of the Sankey and real-world figures.
+        keep_frame = src.relative_to(IMAGES).as_posix() in {'paper/sankey_diagram.png', 'paper/real_robot_fig.png'}
+        left, right = (0, im.width) if keep_frame else content_columns(im)
         width, height, original_width = right - left, im.height, im.width
     limit = 960 if 'outcome-tasks' in src.parts else 2400
     # Keep the original encode density; do not spend the saved blank pixels enlarging the strip.
