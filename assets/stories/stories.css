@@ -1,0 +1,47 @@
+.story-player,.story-archive {width:100%;box-sizing:border-box;min-width:0;}
+.story-player {--ink:#182c31;--green:#006b62;--line:#d3dfdc; margin:20px 0 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;color:var(--ink);background:white;font:16px/1.5 system-ui,sans-serif;text-align:left;scroll-margin-top:12px;}
+.story-player *, .story-archive * {box-sizing:border-box;}
+.story-player header,.story-player .st-controls {display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 20px;}
+.story-player header {justify-content:space-between;border-bottom:1px solid var(--line);}
+.story-player .st-eyebrow,.story-player .st-group {font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--green);text-transform:uppercase;}
+.story-player h3 {margin:2px 0 0;line-height:1.2;font-size:clamp(1.2rem,2.6vw,1.65rem);letter-spacing:-.025em;}
+.story-player .st-spread {display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);}
+#story-coverage, #story-coverage .st-screen, #story-coverage article { background-color:#f8f6ef; }
+.story-player figure {margin:0;padding:14px;min-width:0;align-self:center;}
+.story-player .st-screen {position:relative;aspect-ratio:16/9;display:grid;place-content:stretch;background:#f1f5f3;border-radius:7px;overflow:hidden;}
+.story-player .st-screen img {grid-area:1/1;width:100%;height:100%;min-height:0;min-width:0;object-fit:contain;}
+.story-player figcaption,.story-player .st-prompt {margin-top:8px;font-size:.8rem;line-height:1.4;color:#4b6365;}
+.story-player article {display:grid;align-content:center;padding:clamp(16px,2vw,28px);background:#f4f8f6;overflow-wrap:anywhere;}
+.story-player h4 {font-size:clamp(1.12rem,2vw,1.55rem);line-height:1.22;margin:6px 0 10px;}
+.story-player .st-controls {border-top:1px solid var(--line);}
+.story-player select,.story-player button {max-width:100%;min-height:38px;font:600 .88rem system-ui,sans-serif;color:var(--ink);background:white;border:1px solid #b4c8c2;border-radius:7px;padding:5px 9px;cursor:pointer;}
+.story-player .st-play {background:var(--ink);color:white;min-width:65px;}
+.story-player .st-seek {min-width:70px;flex:1 1 80px;accent-color:var(--green);}
+.story-player :focus-visible,.story-archive summary:focus-visible {outline:3px solid #2964a3;outline-offset:2px;}
+.story-player .st-flow,.story-player .st-bars {width:100%;margin:0;padding:14px;align-self:center;display:grid;gap:8px;list-style:none;}
+.story-player .st-flow li {background:white;border-left:3px solid #a8beb8;padding:8px 13px;display:flex;gap:12px;align-items:baseline;}
+.story-player .st-flow small {font-weight:700;font-size:.75rem;color:var(--green);}
+.story-player .st-flow .st-current {background:#d7ebe3;border-color:var(--green);}
+.story-player .st-fork li:not(:first-child) {margin-left:1.3em;}
+.story-player .st-bars>div {display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:3px 8px;}
+.story-player .st-bars dt {font-size:.88rem;}
+.story-player .st-bars dd {font-size:.93rem;font-weight:700;margin:0;font-variant-numeric:tabular-nums;}
+.story-player .st-track {grid-column:1/-1;background:#dbe4e0;height:8px;border-radius:3px;overflow:hidden;}
+.story-player .st-track i {display:block;height:100%;background:var(--green);transform-origin:left;}
+.story-archive {font-size:.9rem;text-align:left;color:#385458;margin:8px 0 18px;}
+.story-archive summary {cursor:pointer;width:fit-content;}
+.story-archive img,.story-archive video {max-width:100%;}
+@media (prefers-reduced-motion:no-preference) {
+  .story-player .st-track i {animation:st-bar .38s ease-out;}
+  .story-player .st-screen img,.story-player .st-flow {animation:st-reveal .22s ease-out;}
+}
+@keyframes st-bar {from {transform:scaleX(0);}}
+@keyframes st-reveal {from {opacity:.5;}}
+@media(max-width:700px){
+ .story-player .st-spread {grid-template-columns:1fr;}
+ .story-player figure {padding:9px;}
+ .story-player .st-screen:has(.st-flow,.st-bars) {aspect-ratio:auto;min-height:165px;}
+ .story-player header,.story-player .st-controls {padding:10px;}
+ .story-player .st-controls {display:grid;grid-template-columns:auto auto minmax(0,1fr);}
+ .story-player .st-seek {grid-column:1/-1;grid-row:1;width:100%;margin:0;height:26px;}
+}

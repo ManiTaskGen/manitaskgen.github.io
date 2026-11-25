@@ -1,0 +1,16 @@
+/* Measure running copy against the media's own container, not a fixed ch limit.
+   Cards, constrained figures, tables and their internal labels retain their geometry. */
+.major-section { --text-width: 90%; }
+/* Give lazy-loaded full-width images a reference before their intrinsic size is known. */
+.section-container > .section-image-container { width: 100%; min-width: 0; }
+.major-section :is(.section-text, .section-header, .section-sub-header, .major-section-header,
+                   .citation-content, .md-fallback > p),
+#overview .ov-intro {
+    box-sizing: border-box;
+    width: var(--text-width);
+    max-width: none;
+    margin-inline: auto;
+}
+@media (max-width: 760px) {
+    .major-section { --text-width: 100%; }
+}

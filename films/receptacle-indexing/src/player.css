@@ -1,0 +1,24 @@
+*{box-sizing:border-box}
+html,body{margin:0;background:#f8f6ef;color:#222d29}
+body{font-family:FilmSans,Arial,sans-serif}
+.film{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#f8f6ef;outline-offset:-3px}
+.film:fullscreen{display:grid;place-items:center;background:#222d29}
+.film:fullscreen canvas{width:min(100vw,177.778vh)}
+canvas{display:block;width:100%;height:auto;aspect-ratio:16/9}
+.controls{position:absolute;left:4.55%;right:4.55%;bottom:1%;display:flex;align-items:center;gap:14px;height:36px;opacity:0;transition:opacity .2s;background:rgba(248,246,239,.94);color:#354c3c}
+.film:hover .controls,.film:focus-within .controls,.film.paused .controls{opacity:1}
+button{font:inherit;font-size:14px;background:none;border:0;cursor:pointer;white-space:nowrap;color:inherit;padding:4px}
+button:hover{text-decoration:underline}
+button:focus-visible,input:focus-visible{outline:2px solid #16756f}
+.seek{flex:1;min-width:20px;accent-color:#286650}
+.time{font:12px FilmMono,monospace;white-space:nowrap}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+@media(pointer:coarse){.controls{opacity:1}
+}
+@media(max-width:560px){.controls{height:20px;gap:5px;bottom:1px}
+button{font-size:11px;padding:2px}
+.time{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){.controls{transition:none}
+}
+

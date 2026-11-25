@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How does ManiTaskGen index receptacles?</title>
+  <link rel="stylesheet" href="src/fonts.css">
+  <link rel="stylesheet" href="src/player.css">
+</head>
+<body>
+  <main class="film" tabindex="0" aria-label="How does ManiTaskGen index receptacles?">
+    <canvas width="1920" height="1080" aria-label="An orbiting oblique view of two modeled tables, two desk lamps and a surrounding room point cloud, alongside a support tree. The white table has nine indexed regions. The wood table has anchors A and B. Each anchor grows eight regions. Two regions merge to fit a long serving board. The scene graph and inventory generate three example placement tasks."></canvas>
+    <nav class="controls" aria-label="Animation playback">
+    <button class="play">Play</button>
+    <button class="replay">Replay</button>
+    <input class="seek" type="range" min="0" max="176" step=".05" value="0" aria-label="Seek through animation">
+    <span class="time">0:00 / 2:56</span>
+    <button class="sound" aria-pressed="false">Sound off</button>
+    <button class="fs" aria-label="Enter fullscreen">Fullscreen</button>
+    </nav>
+    <img id="room" hidden alt="" src="assets/room.png">
+    <img id="timber" hidden alt="" src="assets/timber.jpg">
+    <audio preload="metadata" src="assets/soundtrack.m4a"></audio>
+  </main>
+  <script src="src/scene.js"></script>
+  <script src="src/player.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 438 615" width="438" height="615" role="img" aria-labelledby="title desc">
+  <title id="title">Semantic / reasoning tags</title><desc id="desc">A template can carry more than one tag. Markers show the share of the 200 templates on a common 0–50% scale. Each row lists the count and percentage.</desc>
+  <style>text{font:17px Georgia,serif;fill:#29372f}.title{font-size:28px}.meta,.number{font:12px monospace;fill:#45614e}.note{font-size:15px}</style>
+  <rect width="438" height="615" fill="#f8f6ef"/>
+  <text class="title" x="20" y="36">Semantic / reasoning tags</text><text class="note" x="20" y="60">A template can carry more than one tag.</text>
+  <path d="M20 72H418" stroke="#d1cbbb"/><text class="meta" x="418" y="88" text-anchor="end">COUNT · SHARE</text>
+  <g><text x="20" y="111">Thematic / aesthetic composition</text>
+    <path d="M20 123H304" stroke="#d9d4c7"/><path d="M20 123H301.16" stroke="#416c5c" stroke-width="2"/><circle cx="301.16" cy="123" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="127" text-anchor="end">99 · 49.5%</text></g>
+  <g><text x="20" y="156">Semantic categorization</text>
+    <path d="M20 168H304" stroke="#d9d4c7"/><path d="M20 168H193.24" stroke="#416c5c" stroke-width="2"/><circle cx="193.24" cy="168" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="172" text-anchor="end">61 · 30.5%</text></g>
+  <g><text x="20" y="201">Symmetry / geometric reasoning</text>
+    <path d="M20 213H304" stroke="#d9d4c7"/><path d="M20 213H190.4" stroke="#416c5c" stroke-width="2"/><circle cx="190.4" cy="213" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="217" text-anchor="end">60 · 30.0%</text></g>
+  <g><text x="20" y="246">Attribute comparison &amp; ordering</text>
+    <path d="M20 258H304" stroke="#d9d4c7"/><path d="M20 258H173.36" stroke="#416c5c" stroke-width="2"/><circle cx="173.36" cy="258" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="262" text-anchor="end">54 · 27.0%</text></g>
+  <g><text x="20" y="291">Accessibility / ergonomics / workflow</text>
+    <path d="M20 303H304" stroke="#d9d4c7"/><path d="M20 303H170.52" stroke="#416c5c" stroke-width="2"/><circle cx="170.52" cy="303" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="307" text-anchor="end">53 · 26.5%</text></g>
+  <g><text x="20" y="336">Directional / spatial relation</text>
+    <path d="M20 348H304" stroke="#d9d4c7"/><path d="M20 348H162" stroke="#416c5c" stroke-width="2"/><circle cx="162" cy="348" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="352" text-anchor="end">50 · 25.0%</text></g>
+  <g><text x="20" y="381">Alignment / spacing / proportion</text>
+    <path d="M20 393H304" stroke="#d9d4c7"/><path d="M20 393H159.16" stroke="#416c5c" stroke-width="2"/><circle cx="159.16" cy="393" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="397" text-anchor="end">49 · 24.5%</text></g>
+  <g><text x="20" y="426">Stacking / containment / physical structure</text>
+    <path d="M20 438H304" stroke="#d9d4c7"/><path d="M20 438H110.88" stroke="#416c5c" stroke-width="2"/><circle cx="110.88" cy="438" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="442" text-anchor="end">32 · 16.0%</text></g>
+  <g><text x="20" y="471">Cross-platform / layer transfer</text>
+    <path d="M20 483H304" stroke="#d9d4c7"/><path d="M20 483H108.04" stroke="#416c5c" stroke-width="2"/><circle cx="108.04" cy="483" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="487" text-anchor="end">31 · 15.5%</text></g>
+  <g><text x="20" y="516">Selection / decluttering / cleaning</text>
+    <path d="M20 528H304" stroke="#d9d4c7"/><path d="M20 528H85.32" stroke="#416c5c" stroke-width="2"/><circle cx="85.32" cy="528" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="532" text-anchor="end">23 · 11.5%</text></g>
+  <g><text x="20" y="561">Others</text>
+    <path d="M20 573H304" stroke="#d9d4c7"/><path d="M20 573H34.2" stroke="#416c5c" stroke-width="2"/><circle cx="34.2" cy="573" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="577" text-anchor="end">5 · 2.5%</text></g>
+</svg>

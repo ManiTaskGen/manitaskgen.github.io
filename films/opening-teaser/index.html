@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ManiTaskGen | One room, many manipulation tasks</title>
+  <link rel="stylesheet" href="src/fonts.css">
+  <link rel="stylesheet" href="src/player.css">
+</head>
+<body>
+  <main class="film" tabindex="0" aria-label="ManiTaskGen | One room, many manipulation tasks">
+    <canvas width="1920" height="1080" aria-label="A room overview expands into four task cases across five support surfaces, followed by task generation, template statistics and VLM benchmark results."></canvas>
+    <p class="caption-box" hidden></p>
+    <nav class="controls" aria-label="Animation playback">
+    <button class="play">Play</button>
+    <button class="replay">Replay</button>
+    <input class="seek" type="range" min="0" max="120" step=".05" value="0" aria-label="Seek through animation">
+    <span class="time">0:00 / 2:00</span>
+    <button class="sound" aria-pressed="false">Sound off</button>
+    <button class="cc" aria-label="English captions" aria-pressed="false">CC</button>
+    <button class="browse" aria-haspopup="dialog">Templates</button>
+    <button class="fs" aria-label="Enter fullscreen">Fullscreen</button>
+    </nav>
+    
+    <dialog class="catalog" aria-labelledby="catalog-title">
+      <div class="catalog-head"><h2 id="catalog-title">ManiTaskOT-200</h2><button class="close-catalog" aria-label="Close templates">Close</button></div>
+      <label for="template-search">Search the 200 original templates</label>
+      <input type="search" id="template-search" autocomplete="off" placeholder="Search by phrase or template number">
+      <p class="result-count" role="status"></p><ol class="template-list"></ol>
+    </dialog>
+    <audio preload="metadata" src="assets/soundtrack.m4a"></audio>
+  </main>
+  <script src="assets/cloud.js"></script>
+  <script src="src/scene.js"></script>
+  <script src="src/multiview.js"></script>
+  <script src="src/content.js"></script>
+  <script src="src/player.js"></script>
+</body>
+</html>

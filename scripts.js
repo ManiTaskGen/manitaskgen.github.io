@@ -14,52 +14,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 导航功能
 function initNavigation() {
-    const navItems = document.querySelectorAll('.nav-item');
-    const sections = document.querySelectorAll('.major-section');
-    
-    // 导航点击事件
-    navItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
-            const targetSection = document.getElementById(targetId);
-            
-            if (targetSection) {
-                // 移除所有active类
-                navItems.forEach(nav => nav.classList.remove('active'));
-                // 添加active类到当前项
-                this.classList.add('active');
-                
-                // 平滑滚动到目标区域
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
+    const outline = document.getElementById('page-outline');
+    if (!outline) return;
+    const desktop = matchMedia('(min-width: 1200px)');
+    const setLayout = () => { outline.open = desktop.matches; };
+    setLayout();
+    desktop.addEventListener('change', setLayout);
+
+    const entries = [...outline.querySelectorAll('a')].map(link => ({
+        link, target: document.getElementById(link.hash.slice(1))
+    })).filter(entry => entry.target);
+    outline.addEventListener('click', event => {
+        if (!desktop.matches && event.target.closest('a')) outline.open = false;
     });
-    
-    // 滚动监听，自动更新导航状态
-    function updateActiveNav() {
-        const scrollPosition = window.scrollY + 100; // 偏移量
-        
-        sections.forEach((section, index) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navItems.forEach(nav => nav.classList.remove('active'));
-                if (navItems[index]) {
-                    navItems[index].classList.add('active');
-                }
-            }
-        });
+    outline.addEventListener('keydown', event => {
+        if (event.key === 'Escape') { outline.open = false; outline.querySelector('summary').focus(); }
+    });
+
+    let current, pending = false;
+    function update() {
+        pending = false;
+        let active;
+        for (const entry of entries) {
+            if (entry.target.getBoundingClientRect().top > 24) break;
+            active = entry.link;
+        }
+        if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) active = entries.at(-1)?.link;
+        if (active === current) return;
+        current?.removeAttribute('aria-current');
+        active?.setAttribute('aria-current', 'location');
+        current = active;
     }
-    
-    // 监听滚动事件
-    window.addEventListener('scroll', updateActiveNav);
-    
-    // 初始化
-    updateActiveNav();
+    function schedule() { if (!pending) { pending = true; requestAnimationFrame(update); } }
+    addEventListener('scroll', schedule, { passive: true });
+    addEventListener('resize', schedule);
+    new ResizeObserver(schedule).observe(document.body);
+    update();
 }
 
 // VLM选择器功能

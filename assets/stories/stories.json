@@ -1,0 +1,565 @@
+{
+ "pipeline": {
+  "title": "Inside the task generator",
+  "source": "Framework figure and narrated generation demo",
+  "frames": [
+   {
+    "label": "Scene",
+    "title": "Start with the room, not the instruction",
+    "image": "assets/overview/input-room.webp",
+    "alt": "Room view from the task-generation demonstration.",
+    "caption": "Objects, supporting surfaces and their geometry form the input."
+   },
+   {
+    "label": "Graph",
+    "title": "Represent space around an anchor",
+    "image": "frames/graph-3.webp",
+    "alt": "Initial placement regions around a tabletop object.",
+    "caption": "A receptacle-aware graph records spatial relationships and candidate placement regions."
+   },
+   {
+    "label": "Instructions",
+    "title": "Two ways to specify a task",
+    "flow": [
+     "Scene graph",
+     "Process: specify actions",
+     "Outcome: specify a desired state"
+    ],
+    "fork": true,
+    "caption": "Generate instructions grounded in the graph. The two outputs specify different things; neither is an agent rollout."
+   }
+  ]
+ },
+ "graph": {
+  "title": "Where can the next object fit?",
+  "source": "Complete nine-panel scene graph figure",
+  "note": "Method figure · selected panel",
+  "frames": [
+   {
+    "label": "Bounds",
+    "image": "frames/graph-1.webp",
+    "caption": "Establish the platform heading and the bounding boxes of the objects it supports."
+   },
+   {
+    "label": "Empty surface",
+    "image": "frames/graph-2.webp",
+    "caption": "An empty surface can be partitioned into directional regions relative to its heading."
+   },
+   {
+    "label": "Anchor",
+    "image": "frames/graph-3.webp",
+    "caption": "On an occupied surface, describe possible placements relative to an anchor object."
+   },
+   {
+    "label": "Extend",
+    "image": "frames/graph-4.webp",
+    "caption": "Extend bounding-box edges to the platform boundaries."
+   },
+   {
+    "label": "Occupancy",
+    "image": "frames/graph-5.webp",
+    "caption": "Check which initial regions overlap existing objects."
+   },
+   {
+    "label": "Cardinal",
+    "image": "frames/graph-6.webp",
+    "caption": "Refine candidate regions along the cardinal directions."
+   },
+   {
+    "label": "Diagonal",
+    "image": "frames/graph-7.webp",
+    "caption": "Refine diagonal placement regions as well."
+   },
+   {
+    "label": "Before merge",
+    "image": "frames/graph-8.webp",
+    "caption": "Inspect the candidate regions before merging."
+   },
+   {
+    "label": "After merge",
+    "image": "frames/graph-9.webp",
+    "caption": "The merged region represents available placement space for the generator."
+   }
+  ]
+ },
+ "process": {
+  "title": "Compose an ordered instruction",
+  "source": "Atomic-action patterns and generation rules",
+  "note": "Floral cup example · illustrations from the narrated demonstration",
+  "frames": [
+   {
+    "label": "Select",
+    "title": "Choose an object and two spatial goals",
+    "image": "frames/cup-1.webp",
+    "caption": "The example refers to a floral cup, a wooden box and two lamps in this room."
+   },
+   {
+    "label": "First relation",
+    "title": "To the right of the box",
+    "image": "frames/cup-2.webp",
+    "caption": "The first relocation names an anchor and a direction. It constrains where the cup can be placed."
+   },
+   {
+    "label": "Next relation",
+    "title": "Then, between the lamps",
+    "image": "frames/cup-3.webp",
+    "caption": "Compose a second relocation for the same cup. Reversing the order would describe a different task."
+   }
+  ]
+ },
+ "coverage": {
+  "title": "Compare coverage in the same room",
+  "source": "Full lightmaps, including insets",
+  "note": "100 sampled tasks per method · accumulated references, not a trajectory",
+  "frames": [
+   {
+    "label": "Baseline",
+    "title": "GPTTaskGen-RAS",
+    "image": "frames/coverage-baseline.webp",
+    "caption": "Read the highlighted objects and locations in the baseline lightmap."
+   },
+   {
+    "label": "ManiTaskGen",
+    "title": "ManiTaskGen-RAS",
+    "image": "frames/coverage-generator.webp",
+    "caption": "Compare the distribution across the same room. The map summarizes a sample; brightness does not show the order of tasks."
+   }
+  ]
+ },
+ "quality": {
+  "title": "Read the single-scene comparison",
+  "source": "Full comparison table",
+  "note": "Methods in original table order · percentage scales 0–100",
+  "frames": [
+   {
+    "label": "Validity",
+    "caption": "The fraction of generated tasks judged valid. This is the single-scene comparison, not the separate human-verification summary above.",
+    "bars": [
+     [
+      "GPTTaskGen",
+      29
+     ],
+     [
+      "GPTTaskGen-SG",
+      68
+     ],
+     [
+      "GPTTaskGen-SG-validated",
+      100
+     ],
+     [
+      "ManiTaskGen",
+      94
+     ]
+    ]
+   },
+   {
+    "label": "Source coverage",
+    "caption": "Normalized coverage of source platforms: where referenced objects start.",
+    "bars": [
+     [
+      "GPTTaskGen",
+      47.2
+     ],
+     [
+      "GPTTaskGen-SG",
+      42.2
+     ],
+     [
+      "GPTTaskGen-SG-validated",
+      34.5
+     ],
+     [
+      "ManiTaskGen",
+      85.4
+     ]
+    ]
+   },
+   {
+    "label": "Target coverage",
+    "caption": "Normalized coverage of target platforms: where objects are asked to go.",
+    "bars": [
+     [
+      "GPTTaskGen",
+      48.8
+     ],
+     [
+      "GPTTaskGen-SG",
+      41.7
+     ],
+     [
+      "GPTTaskGen-SG-validated",
+      36.1
+     ],
+     [
+      "ManiTaskGen",
+      87.3
+     ]
+    ]
+   },
+   {
+    "label": "Moved objects",
+    "caption": "Normalized coverage of the objects selected for relocation.",
+    "bars": [
+     [
+      "GPTTaskGen",
+      45.6
+     ],
+     [
+      "GPTTaskGen-SG",
+      73.2
+     ],
+     [
+      "GPTTaskGen-SG-validated",
+      61.2
+     ],
+     [
+      "ManiTaskGen",
+      72.9
+     ]
+    ]
+   },
+   {
+    "label": "Anchors",
+    "caption": "Normalized coverage of objects used as spatial references.",
+    "bars": [
+     [
+      "GPTTaskGen",
+      42.5
+     ],
+     [
+      "GPTTaskGen-SG",
+      71.3
+     ],
+     [
+      "GPTTaskGen-SG-validated",
+      60.5
+     ],
+     [
+      "ManiTaskGen",
+      70.9
+     ]
+    ]
+   }
+  ]
+ },
+ "skills": {
+  "title": "Inspect a grounded skill",
+  "source": "Original recordings for all six skills",
+  "recording": "skills",
+  "note": "Independent demonstrations, not one episode"
+ },
+ "difficulty": {
+  "title": "What counts as completing a task?",
+  "source": "Original process-based criteria (levels 1–3)",
+  "frames": [
+   {
+    "label": "Level 1",
+    "title": "One relocation",
+    "flow": [
+     "Identify a unique object",
+     "Relocate it",
+     "Check placement"
+    ],
+    "focus": 0,
+    "caption": "A single relocation with a unique target. An automatic final check and intermediate points are available."
+   },
+   {
+    "label": "Level 2",
+    "title": "Resolve ambiguity",
+    "flow": [
+     "Disambiguate the object",
+     "Relocate it",
+     "Check placement"
+    ],
+    "focus": 0,
+    "caption": "The agent must distinguish relevant objects. The task is still a single relocation with automatic evaluation."
+   },
+   {
+    "label": "Level 3",
+    "title": "Preserve the order",
+    "flow": [
+     "First relocation",
+     "Then the second relocation",
+     "Check the ordered task"
+    ],
+    "focus": 1,
+    "caption": "Two relocations must be completed in order. Intermediate points capture partial progress."
+   },
+   {
+    "label": "Level 4",
+    "title": "Judge a desired outcome",
+    "flow": [
+     "Goal instruction",
+     "Final scene state",
+     "Primarily human judgment"
+    ],
+    "focus": 2,
+    "caption": "An outcome may admit several valid arrangements. There is no intermediate score for this level."
+   }
+  ]
+ },
+ "episodes": {
+  "title": "Replay a decision trace",
+  "source": "Narrated demonstration and complete episode transcripts",
+  "recording": "episodes"
+ },
+ "results": {
+  "title": "Success rate across task levels",
+  "note": "Human reference and Claude-4.5-sonnet · SR (%) only",
+  "source": "Full benchmark: all models, success rates and intermediate points",
+  "frames": [
+   {
+    "label": "Average",
+    "caption": "Claude-4.5-sonnet has the highest average success rate among the evaluated VLMs. The complete table includes the other models.",
+    "bars": [
+     [
+      "Human",
+      83.3
+     ],
+     [
+      "Claude-4.5-sonnet",
+      40.3
+     ]
+    ]
+   },
+   {
+    "label": "Level 1",
+    "caption": "Single-step relocation with a unique target.",
+    "bars": [
+     [
+      "Human",
+      82.5
+     ],
+     [
+      "Claude-4.5-sonnet",
+      69.3
+     ]
+    ]
+   },
+   {
+    "label": "Level 2",
+    "caption": "Single-step relocation with object disambiguation.",
+    "bars": [
+     [
+      "Human",
+      80.5
+     ],
+     [
+      "Claude-4.5-sonnet",
+      36.7
+     ]
+    ]
+   },
+   {
+    "label": "Level 3",
+    "caption": "Two ordered subtasks. Read success for the complete task, not the intermediate score.",
+    "bars": [
+     [
+      "Human",
+      80
+     ],
+     [
+      "Claude-4.5-sonnet",
+      20
+     ]
+    ]
+   },
+   {
+    "label": "Level 4",
+    "caption": "Outcome-based tasks are primarily judged by humans.",
+    "bars": [
+     [
+      "Human",
+      90
+     ],
+     [
+      "Claude-4.5-sonnet",
+      35
+     ]
+    ]
+   }
+  ],
+  "player": false
+ },
+ "failures": {
+  "title": "Follow the two-subtask failure analysis",
+  "source": "Full Sankey diagram with every branch",
+  "note": "Gemini-2.5-pro · level 3 · counts from the flow diagram",
+  "scale": 1000,
+  "unit": " tasks",
+  "frames": [
+   {
+    "label": "First subtask",
+    "title": "Start with 1,000 tasks",
+    "caption": "The first subtask separates the starting cohort into two disjoint branches.",
+    "bars": [
+     [
+      "First subtask failed",
+      644
+     ],
+     [
+      "First subtask succeeded",
+      356
+     ]
+    ]
+   },
+   {
+    "label": "First error",
+    "title": "Placement is the largest first-stage error",
+    "caption": "Of the 644 first-subtask failures, 356 are classified as wrong placements. Counts use the same 1,000-task axis.",
+    "bars": [
+     [
+      "Wrong pick",
+      244
+     ],
+     [
+      "Wrong destination",
+      44
+     ],
+     [
+      "Wrong placement",
+      356
+     ]
+    ]
+   },
+   {
+    "label": "Whole task",
+    "title": "Both subtasks must succeed",
+    "caption": "Some agents complete the second subtask after failing the first; that does not rescue the whole task.",
+    "bars": [
+     [
+      "Whole task succeeded",
+      133
+     ],
+     [
+      "Whole task failed",
+      867
+     ]
+    ]
+   }
+  ]
+ },
+ "real": {
+  "title": "A decision trace on a physical robot",
+  "source": "Full setup figure and teleoperated episode video",
+  "note": "Physical robot · human-operated low-level motion",
+  "frames": [
+   {
+    "label": "Setup",
+    "image": "frames/real-setup.webp",
+    "caption": "A mobile manipulator and two tables in the physical evaluation space."
+   },
+   {
+    "label": "Observe",
+    "image": "frames/real-trial-1.webp",
+    "caption": "Object labels in the recorded table view ground the high-level choice.",
+    "note": "Recorded observation · 12.77 s"
+   },
+   {
+    "label": "Choose a region",
+    "image": "frames/real-trial-2.webp",
+    "caption": "The bottle is the spatial reference for a placement decision.",
+    "note": "Recorded observation · 24.83 s"
+   },
+   {
+    "label": "Later observation",
+    "image": "frames/real-trial-3.webp",
+    "caption": "A later view in the same demonstration. These are recorded camera observations, not simulated motion.",
+    "note": "Recorded observation · 49.65 s"
+   }
+  ]
+ },
+ "memory": {
+  "title": "What changes between trials?",
+  "source": "Original reflection mechanism figure",
+  "note": "Inference-time mechanism · not an example of a successful retry",
+  "frames": [
+   {
+    "label": "Evaluate",
+    "flow": [
+     "Evaluate the trajectory",
+     "Summarize the feedback",
+     "Read memory in a later task"
+    ],
+    "focus": 0,
+    "caption": "Use the trial’s final judgment and, where available, intermediate-step feedback."
+   },
+   {
+    "label": "Remember",
+    "flow": [
+     "Evaluate the trajectory",
+     "Summarize the feedback",
+     "Read memory in a later task"
+    ],
+    "focus": 1,
+    "caption": "A rule-based reflection module stores a verbal summary in long-term memory."
+   },
+   {
+    "label": "Recall",
+    "flow": [
+     "Evaluate the trajectory",
+     "Summarize the feedback",
+     "Read memory in a later task"
+    ],
+    "focus": 2,
+    "caption": "Include these summaries in the agent’s context. Model weights do not change."
+   }
+  ]
+ },
+ "improvement": {
+  "title": "Compare decisions with and without memory",
+  "source": "Full before/after table and trial-count plot",
+  "note": "100 level-1 evaluation tasks · memory built from 10 trial episodes (before/after comparison)",
+  "frames": [
+   {
+    "label": "GPT-4.1",
+    "caption": "Success rate increases from 38% to 49% with reflection memory.",
+    "bars": [
+     [
+      "Without memory",
+      38
+     ],
+     [
+      "With memory",
+      49
+     ]
+    ]
+   },
+   {
+    "label": "Gemini-2.5-flash",
+    "caption": "Success rate increases from 36% to 58% with memory.",
+    "bars": [
+     [
+      "Without memory",
+      36
+     ],
+     [
+      "With memory",
+      58
+     ]
+    ]
+   },
+   {
+    "label": "Claude-3.5-haiku",
+    "caption": "Success rate increases from 36% to 51% with memory.",
+    "bars": [
+     [
+      "Without memory",
+      36
+     ],
+     [
+      "With memory",
+      51
+     ]
+    ]
+   },
+   {
+    "label": "Trial count",
+    "image": "frames/reflection-scaling.webp",
+    "caption": "The separate Gemini-2.5-flash experiment varies the number of trial episodes. The markers are measured settings, not rollout steps.",
+    "note": "Original scaling plot · Gemini-2.5-flash"
+   }
+  ]
+ }
+}

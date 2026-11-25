@@ -4,7 +4,7 @@ body{
     margin: 0 auto;
     padding: 0 1em; /* 添加左右内边距 */
     color: #333;
-    background-color: white;
+    background-color: #f8f6ef; /* 与 films/ 两支讲解片的纸色一致 */
     align-items: center;
     width: 100%;
     box-sizing: border-box; /* 确保padding包含在宽度内 */
@@ -289,14 +289,14 @@ p {
 
 .demo-video {
     width: 100%;
-    max-width: 800px;
+    max-width: none;
     height: auto;
     display: block;
     margin: 20px auto;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     object-fit: contain;  /* 保持完整视频内容 */
-    background: #f8f9fa;  /* 浅色背景替代黑色 */
+    background: #f8f6ef;  /* 与页面及讲解片纸色一致 */
 }
 
 /* custom.css */
@@ -315,9 +315,7 @@ p {
 }
 
 .citation-container {
-  background-color: #f5f5f5;
   padding: 20px;
-  border-radius: 8px;
   margin: 20px 0;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -341,6 +339,161 @@ p {
     font-size: small;
 }
 
+/* RoboLab-style arrow flow diagram with real thumbnails. */
+.flow-diagram {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    margin: 2em 0 1em;
+}
+
+.flow-node {
+    flex: 1 1 0;
+    min-width: 0;
+    border: 1px solid #d3dfdc;
+    border-radius: 12px;
+    background: #f3f7f5;
+    padding: 12px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.flow-node img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #eef3f1;
+}
+
+.flow-node b { font-size: 0.98rem; line-height: 1.25; }
+.flow-node span { color: #4c6265; font-size: 0.82rem; }
+
+.flow-stack {
+    flex: 1.15 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flow-stack .flow-node { flex: 1; }
+
+.flow-arrow {
+    flex: 0 0 34px;
+    align-self: center;
+    width: 34px;
+    height: 24px;
+    color: #006b62;
+}
+
+.flow-arrow path {
+    stroke: currentColor;
+    stroke-width: 2.4;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+@media (max-width: 760px) {
+    .flow-diagram { flex-direction: column; align-items: stretch; }
+    .flow-arrow { transform: rotate(90deg); align-self: center; margin: -4px 0; }
+}
+
+/* Self-contained canvas films (films/*) embedded as same-origin iframes.
+   The film pages autoplay muted while visible, loop, and expose their own
+   play / seek / sound / fullscreen controls; ?autoplay=0 disables autoplay. */
+.film-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 20px auto;
+    border-radius: 16px; /* 更明显的倒角，与站内其它媒体卡片一致 */
+    overflow: hidden;
+    background: #f8f6ef; /* match the films' paper tone while assets stream in */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.film-embed > iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+.film-note {
+    max-width: 72ch;
+    margin: 0 auto 14px;
+    text-align: center;
+    font-size: 0.92em;
+    color: #5a665f;
+}
+
+/* Skill grid: muted loops fill each cell. */
+.video-container { width: 100%; }
+.video-container > video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Compact skill studies share the task cards' paper, border and typography. */
+#agent-action-space, .action-card h4 { font-family: var(--title-face, Georgia, serif); }
+.action-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 24px 0; }
+.action-card {
+    min-width: 0; padding: clamp(12px, 1.4vw, 18px);
+    background: #f8f6ef; border: 1px solid #d7d2c3; border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+}
+.action-card h4 { margin: 0 0 .6em; font-size: 1.25rem; color: #29372f; }
+.action-card video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 8px; background: #edeade; }
+.action-card p { margin: .65em 0 0; font: inherit; font-size: 1.0625rem; line-height: 1.6; }
+@media (max-width: 840px) { .action-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 540px) { .action-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* Click-to-play overlay for long recordings. */
+.video-clickplay {
+    position: relative;
+    width: 100%;
+}
+
+.video-clickplay .demo-video { margin: 0; }
+
+.clickplay-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    border: 0;
+    background: rgba(16, 22, 20, 0.22);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.clickplay-overlay span {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(24, 44, 49, 0.88);
+    display: grid;
+    place-items: center;
+}
+
+.clickplay-overlay span::after {
+    content: '';
+    margin-left: 7px;
+    border-style: solid;
+    border-width: 14px 0 14px 24px;
+    border-color: transparent transparent transparent #ffffff;
+}
+
+.clickplay-overlay:hover span { background: #006b62; }
+.clickplay-overlay:focus-visible { outline: 3px solid #1964bc; outline-offset: -3px; }
+
 #website-inspiration a {
     color: #333;
 }
@@ -354,7 +507,8 @@ p {
     border: 1px solid #333;
     background-color: #1e1e1e;
     color: #eee;
-    max-width: 1000px;
+    width: 100%;
+    max-width: none;
     margin: 20px 0;
 }
 
@@ -655,12 +809,36 @@ p {
 /* 大模块样式 */
 .major-section {
     padding: 60px 0;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e0e0e0;
-    width: 100%;
-    max-width: 60em;
+    background-color: transparent; /* 透出 body 的纸色，与 films/ 两支讲解片一致 */
+    border-bottom: 1px solid #e2ded1;
+    width: min(1140px, 94vw);
     margin: 0 auto;
     box-sizing: border-box;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Keep clear of the fixed sidebar on wide screens. */
+@media (min-width: 1200px) {
+    .major-section {
+        width: min(1140px, calc(100vw - 140px));
+    }
+}
+
+/* Media spans the section; running text stays readable. */
+.section-text {
+    max-width: 72ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-image,
+.section-image-medium,
+.section-image-large,
+.section-image-xlarge {
+    width: 100%;
+    max-width: 100%;
 }
 
 .major-section-alt {
@@ -810,9 +988,7 @@ p {
 
 /* 章节容器 */
 .section-container {
-    background-color: #f5f5f5;
     padding: 20px;
-    border-radius: 8px;
     margin: 20px auto; /* 改为居中 */
     max-width: 100%;
     box-sizing: border-box;
@@ -869,6 +1045,9 @@ p {
 
 /* Template-only taxonomy charts; open the SVG for a full-size view. */
 .outcome-taxonomy {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
     width: 100%;
     min-width: 0;
     margin-top: 24px;
@@ -876,6 +1055,10 @@ p {
 
 .outcome-taxonomy a {
     display: block;
+    background: #f8f6ef;
+    border: 1px solid #d7d2c3;
+    border-radius: 16px;
+    overflow: hidden;
     cursor: zoom-in;
 }
 
@@ -890,10 +1073,12 @@ p {
     height: auto;
 }
 
-/* Outcome-based examples: full-width cards keep scene details readable. */
+/* Two half-width studies; keep the full-resolution scene links intact. */
 .outcome-examples {
     display: grid;
-    gap: 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 18px;
     width: 100%;
     min-width: 0;
     margin: 24px 0;
@@ -901,27 +1086,40 @@ p {
 
 .outcome-card {
     min-width: 0;
-    padding: 22px;
-    background: #fff;
-    border: 1px solid #dce4e8;
-    border-top: 3px solid #17647e;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(27, 56, 72, 0.04);
+    padding: clamp(14px, 2vw, 22px);
+    background: #f8f6ef;
+    border: 1px solid #d7d2c3;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
     overflow-wrap: anywhere;
 }
 
+.example-tasks-title { text-align: center; margin-bottom: 0; }
+/* Equalize folded cards, but don't stretch their neighbors when a study opens. */
+.outcome-examples:not(:has(> [open])) { grid-auto-rows: 1fr; align-items: stretch; }
 .outcome-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 14px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-content: center;
+    gap: 6px 12px;
+    min-height: 5.75rem;
+    cursor: pointer;
+    list-style: none;
 }
+.outcome-card-header::-webkit-details-marker { display: none; }
+.outcome-card-header .outcome-scope { grid-column: 1; justify-self: start; }
+.outcome-card-header::after {
+    content: ''; grid-column: 2; grid-row: 1 / 3; align-self: center;
+    width: .55rem; height: .55rem; margin-right: 4px;
+    border: solid #356759; border-width: 0 2px 2px 0; transform: rotate(45deg);
+}
+.outcome-card[open] .outcome-card-header { min-height: auto; margin-bottom: 14px; }
+.outcome-card[open] .outcome-card-header::after { transform: rotate(225deg); }
+.outcome-card-header:focus-visible { outline: 2px solid #356759; outline-offset: 4px; }
 
 .outcome-card-header h3 {
     margin: 0;
-    color: #19546a;
+    color: #29372f;
     font-size: 1.15rem;
     line-height: 1.4;
 }
@@ -929,8 +1127,8 @@ p {
 .outcome-scope {
     padding: 4px 10px;
     border-radius: 20px;
-    background: #edf4f7;
-    color: #31566a;
+    background: #e6e8dc;
+    color: #37594b;
     font-size: 0.75rem;
     white-space: nowrap;
 }
@@ -956,7 +1154,7 @@ p {
 
 .outcome-metadata > div {
     display: grid;
-    grid-template-columns: 175px minmax(0, 1fr);
+    grid-template-columns: minmax(85px, 30%) minmax(0, 1fr);
     gap: 8px;
 }
 
@@ -980,12 +1178,20 @@ p {
     list-style: none;
 }
 
-.outcome-tags li {
-    max-width: 100%;
-    padding: 3px 8px;
-    background: #f1f5f7;
-    border-radius: 5px;
+.outcome-tag-label, .outcome-tags { grid-column: 1 / -1; }
+.outcome-tag-label { margin-top: .4rem; font-size: .875rem; font-weight: 600; color: #45554c; }
+.outcome-tags [data-tag] {
+    max-width: 100%; padding: 3px 8px; border-radius: 5px;
+    font-size: .875rem; line-height: 1.45; color: #26332d;
 }
+.outcome-tags [data-tag=others] { background: #e4e2dd; }
+.outcome-tags [data-tag=ordering] { background: #fae7b5; }
+.outcome-tags [data-tag=category] { background: #cfe8d3; }
+.outcome-tags [data-tag=geometry] { background: #cce1f6; }
+.outcome-tags [data-tag=structure] { background: #edccba; }
+.outcome-tags [data-tag=composition] { background: #e4d4f3; }
+.outcome-tags [data-tag=transfer] { background: #bde8e6; }
+.outcome-tags [data-tag=selection] { background: #f4d2dd; }
 
 .outcome-comparison {
     display: grid;
@@ -1048,6 +1254,10 @@ p {
     color: #596b77;
 }
 
+@media (max-width: 760px) {
+    .outcome-examples, .outcome-taxonomy { grid-template-columns: minmax(0, 1fr); }
+}
+
 @media (max-width: 600px) {
     .outcome-card {
         padding: 16px;
@@ -1068,6 +1278,12 @@ p {
 @media (max-width: 768px) {
     .demo-container {
         flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .demo-container .chat-content {
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .task-panel {

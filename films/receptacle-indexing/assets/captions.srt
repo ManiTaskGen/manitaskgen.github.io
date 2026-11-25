@@ -1,0 +1,100 @@
+1
+00:00:00,000 --> 00:00:08,000
+How does ManiTaskGen index receptacles? Two tables. Three objects. Where will the serving board fit?
+
+2
+00:00:08,000 --> 00:00:15,000
+Focus on the empty white table.
+
+3
+00:00:15,000 --> 00:00:24,000
+Use the empty surface itself as the anchor. Its heading orients a three-by-three grid.
+
+4
+00:00:24,000 --> 00:00:32,000
+Query the center receptacle on the white table.
+
+5
+00:00:32,000 --> 00:00:42,000
+Return to the room and locate the occupied light wood table.
+
+6
+00:00:42,000 --> 00:00:56,500
+Index an occupied surface. Use the objects on the surface as anchors to index receptacles.
+
+7
+00:00:56,500 --> 00:01:03,000
+The two desk lamps become line drawings.
+
+8
+00:01:03,000 --> 00:01:11,000
+Take the convex hull of each footprint and extrude it to the height of the lamp.
+
+9
+00:01:11,000 --> 00:01:21,000
+Anchor A extends a placement region from each of its four sides and four corners.
+
+10
+00:01:21,000 --> 00:01:25,500
+Keep the front-right region of A.
+
+11
+00:01:25,500 --> 00:01:36,000
+Repeat the eight directional lookups for B using the same table heading.
+
+12
+00:01:36,000 --> 00:01:41,000
+Keep the front-left region of B.
+
+13
+00:01:41,000 --> 00:01:47,000
+The hatching marks the overlap between the two indexed regions.
+
+14
+00:01:47,000 --> 00:01:53,000
+Trace the outside boundary of their union.
+
+15
+00:01:53,000 --> 00:02:02,000
+Return to the room.
+
+16
+00:02:02,000 --> 00:02:10,000
+Expand the scene graph and choose an available object.
+
+17
+00:02:10,000 --> 00:02:15,400
+Match the tea tin to the center region.
+
+18
+00:02:15,400 --> 00:02:21,000
+Place the tea tin in the center of the white table.
+
+19
+00:02:21,000 --> 00:02:26,400
+A single region indexed from A can contain the notebook.
+
+20
+00:02:26,400 --> 00:02:32,000
+Place the field notebook in the rear region of A.
+
+21
+00:02:32,000 --> 00:02:37,900
+A’s front-right region is too short for the serving board.
+
+22
+00:02:37,900 --> 00:02:42,000
+B’s front-left region is also too short.
+
+23
+00:02:42,000 --> 00:02:45,700
+Join the two regions and test the full board footprint.
+
+24
+00:02:45,700 --> 00:02:53,000
+Place the serving board in front of lamp A.
+
+25
+00:02:54,200 --> 00:02:56,000
+How does ManiTaskGen index receptacles?
+

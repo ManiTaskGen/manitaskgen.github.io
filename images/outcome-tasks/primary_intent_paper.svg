@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 438 615" width="438" height="615" role="img" aria-labelledby="title desc">
+  <title id="title">Primary intent</title><desc id="desc">One primary intent per template. Markers show the share of the 200 templates on a common 0–50% scale. Each row lists the count and percentage.</desc>
+  <style>text{font:17px Georgia,serif;fill:#29372f}.title{font-size:28px}.meta,.number{font:12px monospace;fill:#45614e}.note{font-size:15px}</style>
+  <rect width="438" height="615" fill="#f8f6ef"/>
+  <text class="title" x="20" y="36">Primary intent</text><text class="note" x="20" y="60">One primary intent per template.</text>
+  <path d="M20 72H418" stroke="#d1cbbb"/><text class="meta" x="418" y="88" text-anchor="end">COUNT · SHARE</text>
+  <g><text x="20" y="111">Ordering / alignment</text>
+    <path d="M20 123H304" stroke="#d9d4c7"/><path d="M20 123H122.24" stroke="#416c5c" stroke-width="2"/><circle cx="122.24" cy="123" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="127" text-anchor="end">36 · 18.0%</text></g>
+  <g><text x="20" y="156">Display / presentation / curation</text>
+    <path d="M20 168H304" stroke="#d9d4c7"/><path d="M20 168H108.04" stroke="#416c5c" stroke-width="2"/><circle cx="108.04" cy="168" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="172" text-anchor="end">31 · 15.5%</text></g>
+  <g><text x="20" y="201">Functional workspace / workflow setup</text>
+    <path d="M20 213H304" stroke="#d9d4c7"/><path d="M20 213H88.16" stroke="#416c5c" stroke-width="2"/><circle cx="88.16" cy="213" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="217" text-anchor="end">24 · 12.0%</text></g>
+  <g><text x="20" y="246">Artistic / geometric arrangement</text>
+    <path d="M20 258H304" stroke="#d9d4c7"/><path d="M20 258H88.16" stroke="#416c5c" stroke-width="2"/><circle cx="88.16" cy="258" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="262" text-anchor="end">24 · 12.0%</text></g>
+  <g><text x="20" y="291">Thematic scene / structural construction</text>
+    <path d="M20 303H304" stroke="#d9d4c7"/><path d="M20 303H88.16" stroke="#416c5c" stroke-width="2"/><circle cx="88.16" cy="303" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="307" text-anchor="end">24 · 12.0%</text></g>
+  <g><text x="20" y="336">Grouping / categorization</text>
+    <path d="M20 348H304" stroke="#d9d4c7"/><path d="M20 348H79.64" stroke="#416c5c" stroke-width="2"/><circle cx="79.64" cy="348" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="352" text-anchor="end">21 · 10.5%</text></g>
+  <g><text x="20" y="381">Storage / relocation / redistribution</text>
+    <path d="M20 393H304" stroke="#d9d4c7"/><path d="M20 393H76.8" stroke="#416c5c" stroke-width="2"/><circle cx="76.8" cy="393" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="397" text-anchor="end">20 · 10.0%</text></g>
+  <g><text x="20" y="426">General organization / tidying</text>
+    <path d="M20 438H304" stroke="#d9d4c7"/><path d="M20 438H42.72" stroke="#416c5c" stroke-width="2"/><circle cx="42.72" cy="438" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="442" text-anchor="end">8 · 4.0%</text></g>
+  <g><text x="20" y="471">Accessibility / ergonomic optimization</text>
+    <path d="M20 483H304" stroke="#d9d4c7"/><path d="M20 483H39.879999999999995" stroke="#416c5c" stroke-width="2"/><circle cx="39.879999999999995" cy="483" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="487" text-anchor="end">7 · 3.5%</text></g>
+  <g><text x="20" y="516">Clearing / decluttering</text>
+    <path d="M20 528H304" stroke="#d9d4c7"/><path d="M20 528H31.36" stroke="#416c5c" stroke-width="2"/><circle cx="31.36" cy="528" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="532" text-anchor="end">4 · 2.0%</text></g>
+  <g><text x="20" y="561">Others</text>
+    <path d="M20 573H304" stroke="#d9d4c7"/><path d="M20 573H22.84" stroke="#416c5c" stroke-width="2"/><circle cx="22.84" cy="573" r="3.2" fill="#995f40"/>
+    <text class="number" x="418" y="577" text-anchor="end">1 · 0.5%</text></g>
+</svg>

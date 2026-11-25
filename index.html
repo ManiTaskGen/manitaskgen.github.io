@@ -8,6 +8,17 @@
 Benchmarking and Improving Vision-Language
 Agents on Embodied Decision-Making</title>
     <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="assets/site/media.css">
+    <script defer src="assets/site/media.js"></script>
+    <script defer src="assets/site/episode-figure.js"></script>
+    <link rel="stylesheet" href="assets/site/plates.css">
+    <script defer src="assets/site/plates.js"></script>
+    <link rel="stylesheet" href="assets/stories/stories.css">
+    <script defer src="assets/stories/stories.js"></script>
+    <link rel="stylesheet" href="assets/site/balanced.css">
+    <link rel="stylesheet" href="assets/site/text-columns.css">
+    <link rel="stylesheet" href="assets/site/outline.css">
+    <link rel="stylesheet" href="assets/site/typography.css">
     <link rel="icon" type="image/x-icon" href="./images/favicon.png">
 </head>
 
@@ -56,42 +67,59 @@ Agents on Embodied Decision-Making</p>
         </div>
 
 
-        <div class="sidebar-nav" id="sidebar-nav">
-            <div class="nav-item active" data-target="overview">
-                <div class="nav-dot"></div>
-                <div class="nav-label">Overview</div>
-            </div>
-            <div class="nav-item active" data-target="task-generation-pipeline">
-                <div class="nav-dot"></div>
-                <div class="nav-label">Task Generation Pipeline</div>
-            </div>
-            <div class="nav-item" data-target="applications">
-                <div class="nav-dot"></div>
-                <div class="nav-label">ManiTaskGen Applications</div>
-            </div>
-            <div class="nav-item" data-target="citation">
-                <div class="nav-dot"></div>
-                <div class="nav-label">Citation</div>
-            </div>
-        </div>
+        <details class="page-outline" id="page-outline">
+            <summary>Contents</summary>
+            <nav aria-label="Page contents">
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#task-generation-pipeline">Task Generation Pipeline</a>
+                        <ul>
+                            <li><a href="#pipeline-overview">Pipeline overview</a></li>
+                            <li><a href="#scene-graph">Step 1: Scene graph</a></li>
+                            <li><a href="#generate-tasks">Step 2: Generate tasks</a>
+                                <ul>
+                                    <li><a href="#process-tasks">Process-based tasks</a></li>
+                                    <li><a href="#outcome-tasks">Outcome-based tasks</a></li>
+                                    <li><a href="#example-tasks">Example tasks</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#task-quality">Task quality</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#applications">ManiTaskGen Applications</a>
+                        <ul>
+                            <li><a href="#benchmarking-agents">Benchmarking agents</a>
+                                <ul>
+                                    <li><a href="#agent-action-space">Agent action space</a></li>
+                                    <li><a href="#evaluation-criteria">Evaluation criteria</a></li>
+                                    <li><a href="#episode-examples">Episode examples</a></li>
+                                    <li><a href="#benchmarking-results">Benchmarking results</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#teleoperated-real-robot-evaluation">Real-robot evaluation</a></li>
+                            <li><a href="#improving-agents">Improving agents</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#citation">Citation</a></li>
+                </ul>
+            </nav>
+        </details>
 
-        <div class="major-section" id="overview">
-            <div class="major-section-header">
-                    <p>Overview</p>
-                </div>
-            <div class="section-container">
-                
-                
-                <p class="section-text">
-                ManiTaskGen automatically generates diverse, scene-grounded mobile manipulation tasks, from specific object relocations to abstract goals such as clearing a table. These tasks support systematic benchmarking and feedback-based improvement of embodied decision-making agents.
-                </p>
-                <div class="section-image-container">
-                    <img src="images/ManiTaskGen_framework.png" alt="Task Generation Framework Overview" class="section-image">
-                </div>
-
-                
+        <section class="major-section" id="overview" aria-labelledby="ov-heading">
+            <header class="ov-intro">
+                <p class="ov-label">Overview <span>/</span> Method walkthrough</p>
+                <h2 id="ov-heading">From a scene to a task.</h2>
+                <p>Generate scene-grounded tasks to benchmark and improve embodied agents.</p>
+            </header>
+            <div class="film-embed">
+                <iframe src="films/opening-teaser/index.html" title="ManiTaskGen teaser film: one room, many manipulation tasks — from scene to task sets to VLM benchmark results" loading="lazy" allowfullscreen></iframe>
             </div>
-        </div>
+            <!-- <p class="section-text film-note">Narrated two-minute teaser: one room overview expands into four task cases across five support surfaces — scene graphs, process- and outcome-based examples, the 200-template library, and VLM benchmark results. Sound is off by default; use the player controls to enable it. The Templates button opens a searchable list of all 200 original templates.</p>
+            <details class="md-fallback"><summary>Original framework figure</summary>
+                <p>ManiTaskGen builds a receptacle-aware 3D scene graph and generates tasks that specify actions or desired outcomes. These tasks support both agent evaluation and inference-time reflection.</p>
+                <a href="images/ManiTaskGen_framework.png"><img loading="lazy" src="images/ManiTaskGen_framework.png" alt="Framework: input scene, task generator, process- and outcome-based tasks, and two applications."></a>
+            </details> -->
+        </section>
 
         <div class="major-section" id="task-generation-pipeline">
             <div class="major-section-header">
@@ -99,72 +127,85 @@ Agents on Embodied Decision-Making</p>
             </div>
 
             <div class="section-container">
-                <p class="section-header" style="text-align: center;">Pipeline Overview </p>
+                <p class="section-header" id="pipeline-overview" style="text-align: center;">Pipeline Overview </p>
                 <p class="section-text">
                     Starting from scene information, ManiTaskGen builds a receptacle-aware 3D scene graph and generates two complementary task types: process-based instructions that specify actions, and outcome-based instructions that specify desired scene states.
                 </p>
-                <div class="section-image-container">
-                    <img src="images/figure2.png" alt="Task Generation Framework Overview" class="section-image-medium">
+                <div class="flow-diagram" role="img" aria-label="Flow diagram: scene information feeds a receptacle-aware 3D scene graph; the graph generates process-based tasks and outcome-based tasks; the tasks are used to benchmark agents and to improve them through reflection memory.">
+                    <div class="flow-node" data-sketch="room"><b>Scene information</b><span>objects · surfaces · relations</span></div>
+                    <svg class="flow-arrow" viewBox="0 0 34 24" aria-hidden="true"><path d="M2 12h26"/><path d="M22 5l8 7-8 7"/></svg>
+                    <div class="flow-node" data-sketch="graph"><b>Receptacle-aware 3D scene graph</b><span>placement regions · support relations</span></div>
+                    <svg class="flow-arrow" viewBox="0 0 34 24" aria-hidden="true"><path d="M2 12h26"/><path d="M22 5l8 7-8 7"/></svg>
+                    <div class="flow-stack">
+                        <div class="flow-node" data-sketch="move"><b>Process-based tasks</b><span>actions and order</span></div>
+                        <div class="flow-node" data-sketch="align"><b>Outcome-based tasks</b><span>desired scene states</span></div>
+                    </div>
+                    <svg class="flow-arrow" viewBox="0 0 34 24" aria-hidden="true"><path d="M2 12h26"/><path d="M22 5l8 7-8 7"/></svg>
+                    <div class="flow-stack">
+                        <div class="flow-node" data-sketch="bench"><b>Benchmark agents</b><span>grounded skill episodes</span></div>
+                        <div class="flow-node" data-sketch="memory"><b>Improve agents</b><span>reflection memory</span></div>
+                    </div>
                 </div>
-                <video class="demo-video" controls>
-                    <source src="videos/task_gen.webm" type="video/webm">
-                </video>
+                <div class="film-embed">
+                    <iframe src="films/receptacle-indexing/index.html" title="How does ManiTaskGen index receptacles? — narrated walkthrough of region indexing, merging and generated placement tasks" loading="lazy" allowfullscreen></iframe>
+                </div>
+                <!-- <p class="section-text film-note">Narrated walkthrough of Step 1: how an empty or occupied surface is indexed into receptacle regions, how regions merge, and how the graph turns them into grounded placement tasks.</p> -->
+
                 
             </div>
 
             <div class="section-container">
-                <p class="section-header" style="text-align: center;">Step 1: Construct Receptacle-Aware 3D Scene Graph</p>
+                <p class="section-header" id="scene-graph" style="text-align: center;">Step 1: Construct Receptacle-Aware 3D Scene Graph</p>
                 <p class="section-text">
                     Our scene graph represents both objects and the available placement regions around them. By recording support relations, spatial relations, and free space, it provides a structured basis for generating object relocation tasks.
 
                 </p>
-                <div class="section-image-container">
-                    <img src="images/receptacles.png" alt="Task Generation Framework Overview" class="section-image">
-                </div>
+                <figure class="clip-plate"><iframe loading="lazy" src="films/receptacle-indexing/excerpt.html" title="Receptacle indexing: empty grid, anchored regions and merging"></iframe><figcaption>Film study · The empty table uses nine cells; the occupied table uses object footprints to index and merge regions.</figcaption></figure>
             </div>
         
             <div class="section-container">
-                <p class="section-header" style="text-align: center;">Step 2: Generate Process- and Outcome-based Tasks</p>
+                <p class="section-header" id="generate-tasks" style="text-align: center;">Step 2: Generate Process- and Outcome-based Tasks</p>
                 
-                <p class="section-sub-header " style="text-align: center;"> Process-based Tasks</p>
+                <p class="section-sub-header " id="process-tasks" style="text-align: center;"> Process-based Tasks</p>
                 <p class="section-text">
                     Process-based tasks specify actions and their order. We sample object relocations from the scene graph and compose them into instructions with different spatial constraints and sequence lengths.
                 </p>
-                <div class="section-image-container">
-                    <img src="images/process_based_task_c.png" alt="Task Generation Framework Overview" class="section-image-medium">
-                </div>
+                <figure class="paper-plate"><figcaption>Scene graph + atomic action → feasible instruction</figcaption>
+                    <ol class="plate-grid"><li data-sketch="surface"><b>On a surface</b>The footprint fits on the named surface.</li><li data-sketch="around"><b>Around an object</b>The placement fits within regions of one anchor.</li><li data-sketch="direction"><b>In a direction</b>The footprint fits in the named region relative to the anchor.</li><li data-sketch="between"><b>Between two objects</b>The footprint fits across complementary regions of two anchors.</li></ol>
+                </figure>
 
-                <p class="section-sub-header" style="text-align: center;"> Outcome-based Tasks</p>
+                <p class="section-sub-header" id="outcome-tasks" style="text-align: center;"> Outcome-based Tasks</p>
                 <p class="section-text">                  
                     Outcome-based tasks describe desired scene states, from clearing a surface to organizing a workspace. We instantiate 200 human-derived task templates with scene objects and use VLM voting to filter for feasibility.
                 </p>
-                <div class="section-image-container">
-                    <img src="images/outcome_based_task_c.png" alt="Task Generation Framework Overview" class="section-image-medium">
-                </div>
+                <figure class="paper-plate"><figcaption>ManiTaskOT-200 → grounded outcome goals</figcaption><ol class="plate-grid"><li data-sketch="cards"><b>Choose a template</b>Pattern 12: align objects on a surface symmetrically.</li><li data-sketch="graph"><b>Bind scene entities</b>Fill the object and platform slots from the scene graph.</li><li data-sketch="vote"><b>Filter candidate goals</b>VLMs vote on the feasibility of the instantiated tasks.</li><li data-sketch="align"><b>Keep the goal</b>Specify a desired state, not the sequence of moves.</li></ol></figure>
 
+                <p class="section-text">ManiTaskOT-200 bears a tremendous variety of primary intents and semantic tags.</p>
                 <div class="outcome-taxonomy" id="outcome-template-taxonomy" role="region" aria-label="ManiTaskOT-200 template distributions">
-                    <a href="images/outcome-tasks/primary_intent_templates_pie.svg" target="_blank" rel="noopener" aria-label="Open the primary intent template distribution chart (new tab)">
-                        <img src="images/outcome-tasks/primary_intent_templates_pie.svg" alt="Primary intent distribution across 200 templates, with counts and percentages. Each template has one primary intent; ordering and alignment is the largest category at 36 templates (18.0%)." width="1200" height="720" loading="lazy" decoding="async">
+                    <a href="images/outcome-tasks/primary_intent_paper.svg" target="_blank" rel="noopener" aria-label="Open the primary intent template distribution chart (new tab)">
+                        <img src="images/outcome-tasks/primary_intent_paper.svg" alt="Primary intent distribution across 200 templates, with counts and percentages. Each template has one primary intent; ordering and alignment is the largest category at 36 templates (18.0%)." width="438" height="615" loading="lazy" decoding="async">
                     </a>
-                    <a href="images/outcome-tasks/semantic_reasoning_templates_bar.svg" target="_blank" rel="noopener" aria-label="Open the semantic and reasoning tag template distribution chart (new tab)">
-                        <img src="images/outcome-tasks/semantic_reasoning_templates_bar.svg" alt="Semantic and reasoning tags across 200 templates, with counts and percentages. Templates may have multiple tags, so percentages need not sum to 100%. Thematic and aesthetic composition is the most common tag at 99 templates (49.5%)." width="1200" height="760" loading="lazy" decoding="async">
+                    <a href="images/outcome-tasks/semantic_reasoning_paper.svg" target="_blank" rel="noopener" aria-label="Open the semantic and reasoning tag template distribution chart (new tab)">
+                        <img src="images/outcome-tasks/semantic_reasoning_paper.svg" alt="Semantic and reasoning tags across 200 templates, with counts and percentages. Templates may have multiple tags, so percentages need not sum to 100%. Thematic and aesthetic composition is the most common tag at 99 templates (49.5%)." width="438" height="615" loading="lazy" decoding="async">
                     </a>
                 </div>
 
+                <h3 class="section-sub-header example-tasks-title" id="example-tasks">Example tasks generated via ManiTaskOT-200</h3>
                 <p class="section-text">
                     The following examples illustrate how outcome-based tasks translate high-level goals into concrete scene changes. Each card presents a task instruction, its primary intent and semantic / reasoning tags, and a comparison between the initial state and one valid outcome.
                 </p>
 
                 <div class="outcome-examples" id="outcome-task-examples" role="region" aria-label="Outcome-based task examples">
-                    <article class="outcome-card" aria-labelledby="outcome-clearing-title">
-                        <header class="outcome-card-header">
+                    <details class="outcome-card" aria-labelledby="outcome-clearing-title">
+                        <summary class="outcome-card-header">
                             <h3 id="outcome-clearing-title">Clearing</h3>
                             <span class="outcome-scope">1 platform</span>
-                        </header>
+                            <span class="outcome-tag-label">Semantic / Reasoning Tags</span>
+                            <span class="outcome-tags"><span data-tag="others">Others</span></span>
+                        </summary>
                         <p class="outcome-instruction">Tidy up the <code>sofa_platform_0</code>.</p>
                         <dl class="outcome-metadata">
                             <div><dt>Primary Intent</dt><dd>General organization / tidying</dd></div>
-                            <div><dt>Semantic / Reasoning Tags</dt><dd><ul class="outcome-tags"><li>Others</li></ul></dd></div>
                         </dl>
                         <div class="outcome-comparison">
                             <figure>
@@ -180,17 +221,18 @@ Agents on Embodied Decision-Making</p>
                                 </a>
                             </figure>
                         </div>
-                    </article>
+                    </details>
 
-                    <article class="outcome-card" aria-labelledby="outcome-ordering-title">
-                        <header class="outcome-card-header">
+                    <details class="outcome-card" aria-labelledby="outcome-ordering-title">
+                        <summary class="outcome-card-header">
                             <h3 id="outcome-ordering-title">Ordering</h3>
                             <span class="outcome-scope">1 platform</span>
-                        </header>
+                            <span class="outcome-tag-label">Semantic / Reasoning Tags</span>
+                            <span class="outcome-tags"><span data-tag="ordering">Attribute comparison &amp; ordering</span><span data-tag="category">Semantic categorization</span></span>
+                        </summary>
                         <p class="outcome-instruction">Arrange objects on <code>wooden_table_platform_0</code> by height and type.</p>
                         <dl class="outcome-metadata">
                             <div><dt>Primary Intent</dt><dd>Ordering / alignment</dd></div>
-                            <div><dt>Semantic / Reasoning Tags</dt><dd><ul class="outcome-tags"><li>Attribute comparison &amp; ordering</li><li>Semantic categorization</li></ul></dd></div>
                         </dl>
                         <div class="outcome-comparison">
                             <figure>
@@ -206,17 +248,18 @@ Agents on Embodied Decision-Making</p>
                                 </a>
                             </figure>
                         </div>
-                    </article>
+                    </details>
 
-                    <article class="outcome-card" aria-labelledby="outcome-spatial-title">
-                        <header class="outcome-card-header">
+                    <details class="outcome-card" aria-labelledby="outcome-spatial-title">
+                        <summary class="outcome-card-header">
                             <h3 id="outcome-spatial-title">Spatial Arrangement</h3>
                             <span class="outcome-scope">1 platform</span>
-                        </header>
+                            <span class="outcome-tag-label">Semantic / Reasoning Tags</span>
+                            <span class="outcome-tags"><span data-tag="geometry">Symmetry / geometric reasoning</span><span data-tag="structure">Stacking / containment / physical structure</span><span data-tag="composition">Thematic / aesthetic composition</span></span>
+                        </summary>
                         <p class="outcome-instruction">Transform the top of <code>white_table_platform_0</code> into a &quot;cityscape&quot; by arranging objects to resemble buildings and roads.</p>
                         <dl class="outcome-metadata">
                             <div><dt>Primary Intent</dt><dd>Thematic scene / structural construction</dd></div>
-                            <div><dt>Semantic / Reasoning Tags</dt><dd><ul class="outcome-tags"><li>Symmetry / geometric reasoning</li><li>Stacking / containment / physical structure</li><li>Thematic / aesthetic composition</li></ul></dd></div>
                         </dl>
                         <div class="outcome-comparison">
                             <figure>
@@ -232,17 +275,18 @@ Agents on Embodied Decision-Making</p>
                                 </a>
                             </figure>
                         </div>
-                    </article>
+                    </details>
 
-                    <article class="outcome-card outcome-card-cross-platform" aria-labelledby="outcome-cross-platform-title">
-                        <header class="outcome-card-header">
+                    <details class="outcome-card outcome-card-cross-platform" aria-labelledby="outcome-cross-platform-title">
+                        <summary class="outcome-card-header">
                             <h3 id="outcome-cross-platform-title">Cross-platform Organization</h3>
                             <span class="outcome-scope">2 platforms</span>
-                        </header>
+                            <span class="outcome-tag-label">Semantic / Reasoning Tags</span>
+                            <span class="outcome-tags"><span data-tag="category">Semantic categorization</span><span data-tag="transfer">Cross-platform / layer transfer</span><span data-tag="selection">Selection / decluttering / cleaning</span></span>
+                        </summary>
                         <p class="outcome-instruction">Remove all objects from <code>kitchen_counter_platform_1</code> and organize them into distinct categories, placing related items together on <code>tvstand_1</code>.</p>
                         <dl class="outcome-metadata">
                             <div><dt>Primary Intent</dt><dd>Storage / relocation / redistribution</dd></div>
-                            <div><dt>Semantic / Reasoning Tags</dt><dd><ul class="outcome-tags"><li>Semantic categorization</li><li>Cross-platform / layer transfer</li><li>Selection / decluttering / cleaning</li></ul></dd></div>
                         </dl>
                         <div class="outcome-platform">
                             <h4>Source platform <code>kitchen_counter_platform_1</code></h4>
@@ -278,15 +322,15 @@ Agents on Embodied Decision-Making</p>
                                 </figure>
                             </div>
                         </div>
-                    </article>
+                    </details>
                 </div>
 
                 <p class="section-text">                  
                     Each lightmap visualizes 100 sampled tasks from the same scene, with highlights marking referenced objects and locations. Compared with the GPT-based baseline, ManiTaskGen distributes tasks more broadly across the scene.
 
                 </p>
-                <div class="section-image-container">
-                    <img src="images/heatmap.png" alt="Task Generation Framework Overview" class="section-image">
+                <div class="section-image-container" data-story-source="coverage">
+                    <img loading="lazy" src="images/paper/heatmap.png" width="4000" height="1489" style="height:auto" alt="Lightmaps for 100 tasks in the same room: GPTTaskGen-RAS on the left and ManiTaskGen-RAS on the right, with detail insets." class="section-image">
                 </div>
             </div>
 
@@ -295,10 +339,20 @@ Agents on Embodied Decision-Making</p>
                 <p class="section-text">
                     Human verification finds 94.0% of process-based tasks and 86.5% of outcome-based tasks valid. In a separate single-scene comparison, ManiTaskGen also achieves broader coverage of source and target platforms than the GPT-based baselines.
                 </p>
-                <div class="section-image-container">
-                    <a href="images/validation_GPTTaskgen_f5f5f5.png" target="_blank" rel="noopener" aria-label="Open the full-resolution task quality comparison table (new tab)">
-                        <img src="images/validation_GPTTaskgen_f5f5f5.png" alt="Single-scene comparison of GPTTaskGen baselines and ManiTaskGen, with separate columns for task validity and normalized source-platform, target-platform, moved-object and anchor-object coverage" class="section-image" width="1346" height="277" style="height: auto;" loading="lazy" decoding="async">
-                    </a>
+                <div class="paper-plate table-scroll quality-table" data-story-source="quality" data-keep-visible tabindex="0" role="region" aria-label="Single-scene comparison table">
+                    <table class="ink-table">
+                        <caption>Single-scene comparison · validity and coverage</caption>
+                        <thead>
+                            <tr><th scope="col" rowspan="2">Method</th><th scope="col" rowspan="2">Validity (%)</th><th colspan="4">Normalized entity coverage (%)</th></tr>
+                            <tr><th scope="col">Source platform</th><th scope="col">Target platform</th><th scope="col">Moved object</th><th scope="col">Anchor object</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row">GPTTaskGen</th><td>29</td><td>47.2</td><td>48.8</td><td>45.6</td><td>42.5</td></tr>
+                            <tr><th scope="row">GPTTaskGen-SG</th><td>68</td><td>42.2</td><td>41.7</td><td><strong>73.2</strong></td><td><strong>71.3</strong></td></tr>
+                            <tr><th scope="row">GPTTaskGen-SG-validated</th><td><strong>100</strong></td><td>34.5</td><td>36.1</td><td>61.2</td><td>60.5</td></tr>
+                            <tr><th scope="row">ManiTaskGen</th><td>94</td><td><strong>85.4</strong></td><td><strong>87.3</strong></td><td>72.9</td><td>70.9</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -317,79 +371,46 @@ Agents on Embodied Decision-Making</p>
         
 
         <div class="section-container">
-           <p class="section-header" style="text-align: center;">Benchmarking VLM Agents on Embodied Decision-Making</p>
+           <p class="section-header" id="benchmarking-agents" style="text-align: center;">Benchmarking VLM Agents on Embodied Decision-Making</p>
            
 
             <div class="section-deployment-video-container">
-            <p class="section-deployment-video-container-header">Agent Action Space</p>
+            <h3 class="section-deployment-video-container-header" id="agent-action-space">Agent Action Space</h3>
                 <p class="section-text">
-                    We evaluate high-level embodied decision-making through a grounded skill interface. At each step, the agent receives visual observations and selects an action to navigate, change viewpoint, pick, inspect placement regions, place, or end the episode.
+                    At each step, the agent chooses an action from its visual observations. The clips show the six skills defined in <a href="https://arxiv.org/html/2505.20726#S5.SS1.SSS1">Section 5.1.1</a>. The terminal action, <code>call_end</code>, signals task completion and ends the episode for evaluation.
                 </p>
                 
-                <div class="section-deployment-video-row">
-                    <div class="deployment-video-block">
-                        <p class="deployment-video-header">Goto</p>
-                        <div class="video-container">
-                            <video class="control-video" autoplay loop muted playsinline>
-                                <source src="videos/goto.webm" type="video/webm">
-                                Your browser does not support HTML5 video
-                            </video>
-                        </div>
-                    </div>
-                    
-                    <div class="deployment-video-block">
-                        <p class="deployment-video-header">Change View</p>
-                        <div class="video-container">
-                            <video class="control-video" autoplay loop muted playsinline>
-                                <source src="videos/change_view.webm" type="video/webm">
-                                Your browser does not support HTML5 video
-                            </video>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="section-deployment-video-row">
-                    <div class="deployment-video-block">
-                        <p class="deployment-video-header">Pick</p>
-                        <div class="video-container">
-                            <video class="control-video" autoplay loop muted playsinline>
-                                <source src="videos/pick.webm" type="video/webm">
-                                Your browser does not support HTML5 video
-                            </video>
-                        </div>
-                    </div>
-                    
-                    <div class="deployment-video-block">
-                        <p class="deployment-video-header">Show Receptacle</p>
-                        <div class="video-container">
-                            <video class="control-video" autoplay loop muted playsinline>
-                                <source src="videos/show_receptacle.webm" type="video/webm">
-                                Your browser does not support HTML5 video
-                            </video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-deployment-video-row">
-                    <div class="deployment-video-block">
-                        <p class="deployment-video-header">Place_r</p>
-                        <div class="video-container">
-                            <video class="control-video" autoplay loop muted playsinline>
-                                <source src="videos/place_r.webm" type="video/webm">
-                                Your browser does not support HTML5 video
-                            </video>
-                        </div>
-                    </div>
-                    
-                    <div class="deployment-video-block">
-                        <p class="deployment-video-header">Place_s</p>
-                        <div class="video-container">
-                            <video class="control-video" autoplay loop muted playsinline>
-                                <source src="videos/place_s.webm" type="video/webm">
-                                Your browser does not support HTML5 video
-                            </video>
-                        </div>
-                    </div>
+                <div class="action-grid" data-autoloop data-story-source="skills" data-keep-visible>
+                    <article class="action-card">
+                        <h4>Go to</h4>
+                        <video controls muted playsinline preload="none" poster="assets/stories/frames/skill-goto-1.webp" aria-label="Go to demonstration" src="videos/goto.webm"></video>
+                        <p>Navigate to a walkable area beside the selected platform.</p>
+                    </article>
+                    <article class="action-card">
+                        <h4>Change view</h4>
+                        <video controls muted playsinline preload="none" poster="assets/stories/frames/skill-change_view-1.webp" aria-label="Change view demonstration" src="videos/change_view.webm"></video>
+                        <p>Move to another available viewpoint around the current platform.</p>
+                    </article>
+                    <article class="action-card">
+                        <h4>Pick</h4>
+                        <video controls muted playsinline preload="none" poster="assets/stories/frames/skill-pick-1.webp" aria-label="Pick demonstration" src="videos/pick.webm"></video>
+                        <p>Grasp the object identified by its visible ID tag.</p>
+                    </article>
+                    <article class="action-card">
+                        <h4>Show receptacle</h4>
+                        <video controls muted playsinline preload="none" poster="assets/stories/frames/skill-show_receptacle-1.webp" aria-label="Show receptacle demonstration" src="videos/show_receptacle.webm"></video>
+                        <p>Reveal feasible placement regions associated with the selected object.</p>
+                    </article>
+                    <article class="action-card">
+                        <h4>Place_r</h4>
+                        <video controls muted playsinline preload="none" poster="assets/stories/frames/skill-place_r-1.webp" aria-label="Random placement demonstration" src="videos/place_r.webm"></video>
+                        <p>Place the held object in a randomly chosen feasible region.</p>
+                    </article>
+                    <article class="action-card">
+                        <h4>Place_s</h4>
+                        <video controls muted playsinline preload="none" poster="assets/stories/frames/skill-place_s-1.webp" aria-label="Specified placement demonstration" src="videos/place_s.webm"></video>
+                        <p>Place the held object within the specified receptacle regions.</p>
+                    </article>
                 </div>
                
 
@@ -397,7 +418,7 @@ Agents on Embodied Decision-Making</p>
             </div>
 
 
-             <p class="section-sub-header" style="text-align: center;">Task Difficulty and Evaluation Criteria</p>
+             <p class="section-sub-header" id="evaluation-criteria" style="text-align: center;">Task Difficulty and Evaluation Criteria</p>
             <p class="section-text">
                Levels 1–3 test single-step relocation with unique targets, object disambiguation, and two-step task completion; Level 4 tests outcome-based goals. Process-based tasks receive automatic success checks and intermediate scores, while outcome-based results, whose non-neglectable discrepancy was shown in our experiments, are primarily evaluated by humans and have no intermediate scores.
               
@@ -405,27 +426,42 @@ Agents on Embodied Decision-Making</p>
 
 
 
-            <div class="section-image-container">
-                <!-- TODO: Update task_criteria.png to include Level 4 outcome-based goals and their evaluation criteria. -->
-                <img src="images/task_criteria.png" alt="task_judgement_method" class="section-image">
-            </div>
+            <div class="paper-plate table-scroll" tabindex="0" role="region" aria-label="Process-based task difficulty"><table class="ink-table evaluation-key"><caption>Process-based tasks · evaluation key</caption><thead><tr><th>Level</th><th>Example instruction</th><th>Success at CALL_END</th><th>Intermediate progress</th></tr></thead><tbody>
+                <tr><th scope="row">01 · Relocate</th><td>Move the box to table_01_platform_0.</td><td>Requested placement completed.</td><td>25% per step</td></tr>
+                <tr><th scope="row">02 · Disambiguate</th><td>Move the spice shaker between the two lamps.</td><td>Requested placement completed.</td><td>25% per step</td></tr>
+                <tr><th scope="row">03 · Sequence</th><td>Move the floral cup left of the navy blue hardcover book, then between the two lamps.</td><td>Both subtasks completed in order.</td><td>25% ÷ number of subtasks per step</td></tr>
+            </tbody></table></div>
 
-            <p class="section-header" style="text-align: center;">Episode Examples</p>
+            <p class="section-header" id="episode-examples" style="text-align: center;">Episode Examples</p>
 
             <p class="section-text" style="text-align: left;">
-                 Follow an agent from the initial task instruction to the final scene. The video illustrates how observations, actions, and environment updates form a complete evaluation episode.
+                 Place the paper towel holder between two lamps. Select a step to compare the recorded views before and after each action.
                 </p>
 
-            <div class="video-container">
-                <video class="demo-video" controls>
+            <figure class="episode-figure" id="episode-decision-figure" data-recording="claude">
+                <canvas role="img" aria-label="Recorded episode: observation, grounded skill and next observation."></canvas>
+                <button type="button" class="episode-pause" aria-pressed="false" aria-label="Pause animation">Pause</button>
+                <p class="episode-action"><strong>Action</strong> <code></code></p>
+                <div class="step-picker" role="group" aria-label="Select Claude step"></div>
+                <figcaption>Claude 3.7 Sonnet · Success after 13 of 20 steps.</figcaption>
+            </figure>
+
+            <p class="section-text">Place the remote to the rear-left of the bowl. Gemini places it to the rear-right instead.</p>
+            <figure class="episode-figure" id="gemini-decision-figure" data-recording="gemini">
+                <canvas role="img" aria-label="Gemini 2.5 Pro failed episode"></canvas>
+                <button type="button" class="episode-pause" aria-pressed="false" aria-label="Pause animation">Pause</button>
+                <p class="episode-action"><strong>Action</strong> <code></code></p>
+                <div class="step-picker" role="group" aria-label="Select Gemini step"></div>
+                <figcaption>Gemini 2.5 Pro · Failed after five actions and CALL_END.</figcaption>
+            </figure>
+
+            <!-- <div class="video-container">
+                <video class="demo-video" data-clickplay playsinline preload="metadata" aria-label="Recorded benchmark episode">
                     <source src="videos/benchmark.webm" type="video/webm">
                 </video>
-            </div>
+            </div> -->
 
-            <p class="section-text" style="text-align: left;">
-                Explore successful and failed episodes below, including the full observations, selected actions, and final task judgments.
-                </p>
-            
+            <details class="episode-transcripts"><summary>Full transcripts · successful and failed episodes</summary>
            <div class="demo-container">
             <div class="task-panel">
                 <h3>Examples</h3>
@@ -497,7 +533,7 @@ Agents on Embodied Decision-Making</p>
                             </details>
 
                             <div class="message-image">
-                                <img src="images/episodes/claude_success_0/success_step0.png" alt="Initial scene">
+                                <img loading="lazy" src="images/episodes/claude_success_0/success_step0.png" alt="Initial scene">
                             </div>
 
                             <p><strong>The task involves identical objects. To help you distinguish them, we have provided images of the relevant objects.</strong></p>
@@ -529,7 +565,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step1.png" alt="Step 1 - At kitchen counter">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step1.png" alt="Step 1 - At kitchen counter">
                         </div>
                         <div class="message-text">
                             <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
@@ -563,7 +599,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step2.png" alt="Step 2 - Unable to change view">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step2.png" alt="Step 2 - Unable to change view">
                         </div>
                         <div class="message-text">
                             <p><strong>Unable to rotate to another view. The platform you at only have 1 walkable place for you.</strong></p>
@@ -598,7 +634,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step3.png" alt="Step 3 - Picked up wrong object">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step3.png" alt="Step 3 - Picked up wrong object">
                         </div>
                         <div class="message-text">
                             <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
@@ -632,7 +668,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step4.png" alt="Step 4 - Platform images">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step4.png" alt="Step 4 - Platform images">
                         </div>
                         <div class="message-text">
                             <p><strong>The object has been placed successfully. You can now call end if you think you've finished the task correctly, or can also pick up the object again if you think the placement is not correct.</strong></p>
@@ -668,7 +704,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step5.png" alt="Step 5 - Platform images">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step5.png" alt="Step 5 - Platform images">
                         </div>
                         <div class="message-text">
                             <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
@@ -702,7 +738,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step6.png" alt="Step 6 - Platform images">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step6.png" alt="Step 6 - Platform images">
                         </div>
                         <div class="message-text">
                             <p><strong>The object has been placed successfully. You can now call end if you think you've finished the task correctly, or can also pick up the object again if you think the placement is not correct.</strong></p>
@@ -737,7 +773,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step7.png" alt="Step 7 - Platform images">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step7.png" alt="Step 7 - Platform images">
                         </div>
                         <div class="message-text">
                             <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
@@ -764,7 +800,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step8.png" alt="Step 8 - Platform images">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step8.png" alt="Step 8 - Platform images">
                         </div>
                         <div class="message-text">
                             <p><strong>The object has been placed successfully. You can now call end if you think you've finished the task correctly, or can also pick up the object again if you think the placement is not correct.</strong></p>
@@ -799,7 +835,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step9.png" alt="Step 9 - Picked correct object">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step9.png" alt="Step 9 - Picked correct object">
                         </div>
                         <div class="message-text">
                             <p>You are currently at object_kitchen_counter_1_body_platform_1.</p>
@@ -833,7 +869,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step10.png" alt="Step 10 - At table">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step10.png" alt="Step 10 - At table">
                         </div>
                         <div class="message-text">
                             <p>You are currently at object_table_02_40_platform_2.</p>
@@ -868,7 +904,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step11.png" alt="Receptacles around object 1">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step11.png" alt="Receptacles around object 1">
                         </div>
                         <div class="message-text">
                             <p style="color: yellow;">Here are 1 images, named ['ShowReceptacle_11.png'] respectively.</p>
@@ -895,7 +931,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step12.png" alt="Receptacles around object 2">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step12.png" alt="Receptacles around object 2">
                         </div>
                         <div class="message-text">
                             <p style="color: yellow;">Here are 1 images, named ['ShowReceptacle_12.png'] respectively.</p>
@@ -922,7 +958,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/claude_success_0/success_step13.png" alt="Step 13 - Successfully placed object">
+                            <img loading="lazy" src="images/episodes/claude_success_0/success_step13.png" alt="Step 13 - Successfully placed object">
                         </div>
                         <div class="message-text">
                             <p><strong>The object has been placed successfully. You can now call end if you think you've finished the task correctly, or can also pick up the object again if you think the placement is not correct.</strong></p>
@@ -1041,7 +1077,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/gemini_failed_0/failed_step1.png" alt="Step 1 - At day bed">
+                            <img loading="lazy" src="images/episodes/gemini_failed_0/failed_step1.png" alt="Step 1 - At day bed">
                         </div>
                         <div class="message-text">
                             <p>You are currently at object_hemnes_day_bed_platform_5.</p>
@@ -1074,7 +1110,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/gemini_failed_0/failed_step2.png" alt="Step 1 - At day bed">
+                            <img loading="lazy" src="images/episodes/gemini_failed_0/failed_step2.png" alt="Step 1 - At day bed">
                         </div>
                         <div class="message-text">
                             <p>You are currently at object_hemnes_day_bed_platform_5.</p>
@@ -1097,7 +1133,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/gemini_failed_0/failed_step3.png" alt="Step 3 - At dining table">
+                            <img loading="lazy" src="images/episodes/gemini_failed_0/failed_step3.png" alt="Step 3 - At dining table">
                         </div>
                         <div class="message-text">
                             <p>You are currently at object_dining_table_mella_platform_0.</p>
@@ -1130,7 +1166,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/gemini_failed_0/failed_step4.png" alt="Step 4 - At dining table">
+                            <img loading="lazy" src="images/episodes/gemini_failed_0/failed_step4.png" alt="Step 4 - At dining table">
                         </div>
                         <div class="message-text">
                             <p style="color: yellow;">Here are 1 images, named ['ShowReceptacle_4.png'] respectively.</p>
@@ -1156,7 +1192,7 @@ Agents on Embodied Decision-Making</p>
 
                     <div class="chat-message robot-message">
                         <div class="message-image">
-                            <img src="images/episodes/gemini_failed_0/failed_step5.png" alt="Step 5 - At dining table">
+                            <img loading="lazy" src="images/episodes/gemini_failed_0/failed_step5.png" alt="Step 5 - At dining table">
                         </div>
                         <div class="message-text">
                             <p><strong>The object has been placed successfully. You can now call end if you think you've finished the task correctly, or can also pick up the object again if you think the placement is not correct.</strong></p>
@@ -1199,13 +1235,12 @@ Agents on Embodied Decision-Making</p>
                     </div>
                 </div>
             </div>
-             
-        </div>
+        </div></details>
 
             
 
         
-            <p class="section-header" style="text-align: center; margin-top: 1em;">Benchmarking Results</p>
+            <p class="section-header" id="benchmarking-results" style="text-align: center; margin-top: 1em;">Benchmarking Results</p>
             
 
             
@@ -1216,13 +1251,44 @@ Agents on Embodied Decision-Making</p>
                     The best-performing evaluated VLM achieves 40.3% average success across the four task levels, compared with 83.3% for humans. Multi-step and outcome-based tasks remain challenging even with a grounded skill interface.
                     
                 </p>
-                <!-- TODO: Replace result_table.png with the complete CR-version table, including Level 4 and updated averages. -->
-                <img src="images/result_table.png" alt="result_table" class="section-image">
+                <div class="paper-plate table-scroll benchmark-table" tabindex="0" role="region" aria-label="Benchmark scores by model and task level">
+                    <table class="ink-table">
+                        <caption>Benchmark scores by task level</caption>
+                        <thead>
+                            <tr><th scope="col" rowspan="2">Agent</th><th colspan="2">Level 1</th><th colspan="2">Level 2</th><th colspan="2">Level 3</th><th>Level 4</th><th colspan="2">Average</th></tr>
+                            <tr><th scope="col">IP</th><th scope="col">SR (%)</th><th scope="col">IP</th><th scope="col">SR (%)</th><th scope="col">IP</th><th scope="col">SR (%)</th><th scope="col">SR (%)</th><th scope="col">IP</th><th scope="col">SR (%)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row">Human</th><td>96.0</td><td>82.5</td><td>95.0</td><td>80.5</td><td>95.0</td><td>80.0</td><td>90.0</td><td>95.3</td><td>83.3</td></tr>
+                            <tr><th scope="row">Random</th><td>0.7</td><td>0.0</td><td>0.7</td><td>0.0</td><td>0.7</td><td>0.0</td><td>0.0</td><td>0.7</td><td>0.0</td></tr>
+                        </tbody>
+                        <tbody>
+                            <tr><th scope="row">GPT-5.2 [52]</th><td>88.1</td><td>63.9</td><td><strong>67.9</strong></td><td>34.7</td><td>72.8</td><td>20.0</td><td>30.0</td><td><strong>76.3</strong></td><td>37.2</td></tr>
+                            <tr><th scope="row">GPT-4o [52]</th><td>71.6</td><td>40.1</td><td>42.9</td><td>16.3</td><td>57.0</td><td>8.2</td><td>26.0</td><td>57.2</td><td>22.7</td></tr>
+                            <tr><th scope="row">GPT-4.1 [52]</th><td>67.5</td><td>36.4</td><td>46.4</td><td>20.4</td><td>54.4</td><td>4.2</td><td>28.0</td><td>56.1</td><td>22.3</td></tr>
+                            <tr><th scope="row">GPT-4.1-mini [52]</th><td>67.0</td><td>34.0</td><td>45.9</td><td>22.4</td><td>45.3</td><td>0.0</td><td>17.0</td><td>52.7</td><td>18.4</td></tr>
+                            <tr><th scope="row">Gemini-3.1-pro [53]</th><td>87.3</td><td>65.1</td><td>54.6</td><td>24.5</td><td><strong>75.3</strong></td><td><strong>22.2</strong></td><td>33.0</td><td>72.4</td><td>36.2</td></tr>
+                            <tr><th scope="row">Gemini-2.5-pro [53]</th><td>82.3</td><td>51.5</td><td>54.1</td><td>22.4</td><td>68.9</td><td>13.3</td><td>27.0</td><td>68.4</td><td>28.6</td></tr>
+                            <tr><th scope="row">Gemini-2.5-flash [53]</th><td>75.0</td><td>40.3</td><td>40.8</td><td>14.3</td><td>56.0</td><td>4.1</td><td>25.0</td><td>57.3</td><td>20.9</td></tr>
+                            <tr><th scope="row">Claude-4.5-sonnet [54]</th><td><strong>88.5</strong></td><td><strong>69.3</strong></td><td>64.9</td><td><strong>36.7</strong></td><td>71.4</td><td>20.0</td><td><strong>35.0</strong></td><td>74.9</td><td><strong>40.3</strong></td></tr>
+                            <tr><th scope="row">Claude-3.7-sonnet [54]</th><td>73.9</td><td>45.7</td><td>55.6</td><td>28.6</td><td>54.7</td><td>8.9</td><td>28.0</td><td>61.4</td><td>27.8</td></tr>
+                            <tr><th scope="row">Claude-4.5-haiku [54]</th><td>82.6</td><td>55.4</td><td>54.1</td><td>16.3</td><td>53.6</td><td>6.7</td><td>27.0</td><td>63.4</td><td>26.4</td></tr>
+                        </tbody>
+                        <tbody>
+                            <tr><th scope="row">Qwen-3-VL-235B-A22B-instruct [56]</th><td>85.0</td><td>55.0</td><td>53.1</td><td>14.3</td><td>65.3</td><td>13.3</td><td>28.0</td><td>67.8</td><td>27.7</td></tr>
+                            <tr><th scope="row">Qwen-2.5-VL-72B-Ins [56]</th><td>55.1</td><td>28.2</td><td>37.2</td><td>8.2</td><td>43.5</td><td>4.4</td><td>24.0</td><td>45.3</td><td>16.2</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="benchmark-note">IP = intermediate progress; SR = success rate. Bold marks the best VLM score in each column.</p>
+                </div>
                 <p class="section-text">
                     An analysis of Gemini-2.5-pro on Level-3 tasks identifies incorrect placement as the most common failure. Navigation errors also become more frequent in the second subtask, highlighting difficulties in maintaining accurate decisions over longer sequences.
                 </p>
                 
-                <img src="images/sankey_diagram.png" alt="result_table" class="section-image">
+                <figure class="paper-plate result-figure">
+                    <figcaption>Gemini-2.5-pro · Level 3 subtask outcomes</figcaption>
+                    <a href="images/paper/sankey_diagram.png" target="_blank" rel="noopener"><img loading="lazy" src="images/paper/sankey_diagram.png" alt="Sankey diagram of the two subtasks in Gemini-2.5-pro Level-3 episodes"></a>
+                </figure>
             
             
        
@@ -1238,30 +1304,32 @@ Agents on Embodied Decision-Making</p>
                 <p class="section-text">
                     We apply ManiTaskGen to a reconstructed physical scene and evaluate VLM-generated high-level decisions on a mobile robot. Low-level navigation and manipulation are executed through human teleoperation.
                 </p>
-                <div class="section-image-container">
-                    <a href="images/realworld/real_robot_fig.png" target="_blank" rel="noopener" aria-label="Open full-resolution real-robot setup and agent observations (new tab)">
-                        <img src="images/realworld/real_robot_fig.png" alt="Real-robot evaluation setup with a camera, gripper, robot arm and mobile base, alongside agent observations with labeled objects and placement regions" class="section-image" width="3277" height="1327" style="height: auto;" loading="lazy" decoding="async">
+                <figure class="paper-plate result-figure">
+                    <figcaption>Teleoperated evaluation · robot setup and observations</figcaption>
+                    <a href="images/paper/real_robot_fig.png" target="_blank" rel="noopener" aria-label="Open full-resolution real-robot setup and agent observations (new tab)">
+                        <img src="images/paper/real_robot_fig.png" alt="Real-robot evaluation setup with a camera, gripper, robot arm and mobile base, alongside agent observations with labeled objects and placement regions" class="section-image" width="3277" height="1327" style="height: auto;" loading="lazy" decoding="async">
                     </a>
-                </div>
-                <video class="demo-video" controls playsinline preload="metadata" aria-label="Teleoperated real-robot evaluation episode">
+                </figure>
+                <!-- Restore by removing this template wrapper. -->
+                <template id="real-robot-recording"><video class="demo-video" data-clickplay playsinline preload="metadata" aria-label="Teleoperated real-robot evaluation episode">
                     <source src="videos/real_robot_episode.webm" type="video/webm">
                     Your browser does not support HTML5 video. <a href="videos/real_robot_episode.webm">Download the real-robot evaluation video</a>.
-                </video>
+                </video></template>
             </div>
 
             <div class="section-container">
-                <p class="section-header">Improving VLM Agents </p>
+                <p class="section-header" id="improving-agents">Improving VLM Agents </p>
                 <p class="section-text">
                     Beyond benchmarking, generated tasks provide feedback for improving agent decisions. We convert task outcomes and intermediate-step evaluations into a reflection memory that guides later attempts at inference time, without updating model weights.
                 </p>
 
-                <img src="images/reflection_overview.png" alt="reflexion_overview" class="section-image">
+                <figure class="paper-plate"><figcaption>Learning from trials without changing weights</figcaption><ol class="plate-grid"><li data-sketch="bench"><b>Evaluate a trial</b>Score the final state and intermediate decisions.</li><li data-sketch="cards"><b>Write a reflection</b>Turn the scores into a rule-based verbal summary.</li><li data-sketch="memory"><b>Accumulate memory</b>Keep the summaries across trial episodes.</li><li data-sketch="recall"><b>Recall at inference</b>Give the agent the memory alongside the next task and observation.</li></ol></figure>
 
                 <p class="section-text">
                     Reflection memory built from 10 trial episodes improves performance on 100 Level-1 tasks in a different scene. Gemini-2.5-flash improves from 36% to 58% success, with gains also observed for GPT-4.1 and Claude-3.5-haiku.
                 </p>
 
-                <img src="images/reflection_result.png" alt="result_table" class="section-image">
+                <div class="paper-plate gain-plate"><div class="table-scroll"><table class="ink-table"><caption>Without → with memory</caption><thead><tr><th>Agent</th><th>Intermediate progress</th><th>Success rate</th></tr></thead><tbody><tr><th>GPT-4.1</th><td>75.5 → 79.4</td><td>38% → 49%</td></tr><tr><th>Gemini-2.5-flash</th><td>79.4 → 81.7</td><td>36% → 58%</td></tr><tr><th>Claude-3.5-haiku</th><td>68.9 → 79.4</td><td>36% → 51%</td></tr></tbody></table></div><figure class="trial-chart"><figcaption>Gemini-2.5-flash · trial count vs. success rate</figcaption></figure></div>
                 <p class="section-text">
                     Within the tested range, additional trial episodes further improve Gemini-2.5-flash’s success rate.
                 </p>

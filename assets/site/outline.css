@@ -1,0 +1,23 @@
+/* A compact bookmark pane. On narrow screens only its disclosure takes up space. */
+.page-outline {
+    position: fixed; z-index: 1000; left: .65rem; bottom: max(.65rem, env(safe-area-inset-bottom));
+    max-width: calc(100vw - 1.5rem); box-sizing: border-box; color: #29372f;
+    background: #f8f6ef; font: .8125rem/1.4 var(--copy-face, sans-serif);
+}
+.page-outline[open] { width: 13rem; }
+.page-outline summary { padding: .65rem .85rem; cursor: pointer; font-weight: 650; }
+.page-outline nav { max-height: min(72vh, 42rem); overflow-y: auto; overscroll-behavior: contain; padding: .4rem .5rem; border-top: 1px solid #dfdacb; }
+.page-outline ul { list-style: none; margin: 0; padding: 0; }
+.page-outline ul ul { margin: .1rem 0 .25rem .45rem; padding-left: .4rem; border-left: 1px solid #d7d2c3; }
+.page-outline a { display: block; padding: .65rem .4rem; color: inherit; text-decoration: none; }
+.page-outline nav > ul > li > a { font-weight: 650; }
+.page-outline a:hover, .page-outline a[aria-current] { background: #e3eade; color: #234e40; }
+.page-outline a[aria-current] { box-shadow: inset 2px 0 #356759; }
+.page-outline :focus-visible { outline: 2px solid #356759; outline-offset: -2px; }
+@media screen and (min-width: 1200px) {
+    html:has(.page-outline[open]) { padding-left: 14.5rem; }
+    .page-outline { top: 1rem; bottom: auto; }
+    .page-outline nav { max-height: calc(100vh - 6rem); }
+    html:has(.page-outline[open]) .major-section { width: min(1140px, calc(100vw - 17rem)); }
+}
+@media print { .page-outline { display: none; } }

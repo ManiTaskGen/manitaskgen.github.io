@@ -1,0 +1,58 @@
+
+/* 首页题头 */
+#paper-title { font-size: 2.25rem; }
+.author { font-size: 1.125rem; }
+.author sup, .affiliation sup { font-size: 0.75rem; }
+#title-container .conference-name { font-size: 1.5rem; }
+#title-container .conference-track { font-size: 1rem; }
+.affiliation { font-size: 1rem; }
+.social-button { font-size: 1rem; }
+.page-outline nav { font-size: 0.8125rem; }
+
+/* 概览与章节 */
+#overview .ov-label { font-size: 0.8125rem; }
+#overview h2 { font-size: 2.625rem; }
+#overview .ov-intro > p:last-child { font-size: 1.1875rem; }
+.major-section-header > p { font-size: 2.25rem; }
+.major-section .section-container .section-header { font-size: 1.625rem; }
+.section-sub-header, .section-deployment-video-container-header { font-size: 1.3125rem; }
+.section-text { font-size: 1.0625rem; }
+.section-text.film-note, .clip-plate figcaption, .episode-figure figcaption { font-size: 1rem; }
+.md-fallback, .story-archive, .episode-transcripts > summary { font-size: 1rem; }
+
+/* 流程图、任务卡与结果表 */
+.flow-node b, .plate-grid b { font-size: 1.1875rem; }
+.flow-node span { font-size: 0.9375rem; }
+.paper-plate figcaption, .ink-table caption { font-size: 1.375rem; }
+.plate-grid li { font-size: 1rem; }
+.plate-grid li::before { font-size: 0.8125rem; }
+.outcome-card-header h3 { font-size: 1.25rem; }
+.outcome-scope { font-size: 0.875rem; }
+.outcome-instruction { font-size: 1.125rem; }
+.outcome-metadata, .outcome-comparison figcaption, .outcome-platform h4 { font-size: 0.9375rem; }
+.ink-table thead th { font-size: 0.9375rem; }
+.ink-table { font-size: 1rem; }
+.deployment-video-header { font-size: 1.125rem; }
+
+/* 交互示例、记录与引用 */
+.story-player h3 { font-size: 1.5rem; }
+.story-player h4 { font-size: 1.3125rem; }
+.story-player { font-size: 1.0625rem; }
+.story-player .st-eyebrow, .story-player .st-group, .story-player .st-flow small { font-size: 0.875rem; }
+.story-player figcaption, .story-player .st-prompt { font-size: 0.9375rem; }
+.story-player .st-bars dt, .story-player .st-bars dd { font-size: 1rem; }
+.story-player select, .story-player button, .episode-figure .episode-pause, .step-picker button { font-size: 0.9375rem; }
+.task-panel h3 { font-size: 1.25rem; }
+.task-item, .chat-content { font-size: 1.0625rem; }
+.task-description, .control-group, .control-select { font-size: 0.9375rem; }
+.citation-content pre { font-size: 0.9375rem; }
+#website-inspiration { font-size: 0.875rem; }
+.section-text, .outcome-instruction { line-height: 1.6; }
+.citation-content { min-width: 0; max-width: 100%; }
+.citation-content pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.outcome-scope { white-space: normal; }
+@media (max-width: 600px) {
+  #paper-title { font-size: 1.8125rem; }
+  #overview h2 { font-size: 2rem; }
+  .major-section-header > p { font-size: 1.8125rem; }
+}

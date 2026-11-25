@@ -1,0 +1,11 @@
+/* Self-hosted Latin variable fonts. License files are alongside the fonts. */
+@font-face { font-family: Inter; src: url(../fonts/inter.woff2) format('woff2'); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: 'Source Serif 4'; src: url(../fonts/source-serif-4.woff2) format('woff2'); font-weight: 200 900; font-display: swap; }
+:root { --copy-face: Inter, sans-serif; --title-face: 'Source Serif 4', Georgia, serif; }
+body, .story-player, .story-player :is(select, button), .task-item p, .ink-table,
+.ink-table thead th, .plate-grid li, .clip-plate figcaption, .episode-figure figcaption {
+    font-family: var(--copy-face);
+}
+#paper-title, #overview h2, .major-section-header, .section-header, .section-sub-header,
+.outcome-card h3, .task-panel h3, .story-player :is(h3,h4), .flow-node b, .plate-grid b,
+.paper-plate figcaption, .ink-table caption { font-family: var(--title-face); }

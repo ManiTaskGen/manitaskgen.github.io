@@ -1,0 +1,55 @@
+1
+00:00:00,600 --> 00:00:08,300
+Given a room and a vision-language agent, what fraction of the manipulation tasks in that room can the agent complete?
+
+2
+00:00:09,200 --> 00:00:16,800
+ManiTaskGen starts with the room. Look at the sofa, the wooden table, the white table, and a pair of surfaces that link the kitchen to the living room.
+
+3
+00:00:18,000 --> 00:00:23,400
+Read all four views from the ground up. The floor supports the furniture.
+
+4
+00:00:24,100 --> 00:00:30,400
+The furniture supports the objects. Each revealed layer adds new branches to the scene graph.
+
+5
+00:00:31,400 --> 00:00:39,300
+Look closer at the wooden table. The dish rests on the table, but the yellow block rests on the dish. That gives the block one more level of depth.
+
+6
+00:00:40,100 --> 00:00:46,300
+Nodes at depth two and deeper supply the object list. Indexing the surfaces supplies candidate destinations.
+
+7
+00:00:47,000 --> 00:00:53,600
+Process-based tasks specify moves. Take the yellow block from the dish and place it to the right of the cup.
+
+8
+00:00:54,800 --> 00:01:03,400
+A second move can cross surfaces. Take the basket from the kitchen counter and place it at the center of the TV stand.
+
+9
+00:01:04,700 --> 00:01:12,100
+Outcome-based tasks specify a goal. ManiTaskGen instantiates two hundred human-derived templates with scene objects and filters candidates by feasibility.
+
+10
+00:01:13,000 --> 00:01:19,900
+One valid result clears the sofa. Another arranges the objects on the wooden table by height and type.
+
+11
+00:01:21,100 --> 00:01:27,800
+Build a cityscape on the white table, or clear the counter and group related objects on the TV stand.
+
+12
+00:01:29,800 --> 00:01:37,900
+Each template has one primary intent. Ordering and alignment accounts for thirty-six of the two hundred templates. The cityscape belongs to thematic construction.
+
+13
+00:01:39,900 --> 00:01:47,400
+A template can carry several reasoning tags. The cityscape uses composition, symmetry, and stacking. Relocation combines categorization with cross-platform transfer.
+
+14
+00:01:49,200 --> 00:01:58,900
+Together, the two task families span four levels. Evaluating twelve vision-language agents on the benchmark reveals how much their success rates differ.

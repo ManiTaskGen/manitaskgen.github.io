@@ -1,0 +1,350 @@
+{
+  "skills": [
+    {
+      "name": "Navigate",
+      "frames": [
+        {
+          "label": "Initial view",
+          "caption": "Move to the selected platform.",
+          "image": "assets/stories/frames/skill-goto-1.webp",
+          "note": "Skill demonstration · 0.15 s",
+          "alt": "Navigate: initial view view from the skill recording."
+        },
+        {
+          "label": "Skill in progress",
+          "caption": "Move to the selected platform.",
+          "image": "assets/stories/frames/skill-goto-2.webp",
+          "note": "Skill demonstration · 2.50 s",
+          "alt": "Navigate: skill in progress view from the skill recording."
+        },
+        {
+          "label": "Later view",
+          "caption": "Move to the selected platform.",
+          "image": "assets/stories/frames/skill-goto-3.webp",
+          "note": "Skill demonstration · 4.75 s",
+          "alt": "Navigate: later view view from the skill recording."
+        }
+      ]
+    },
+    {
+      "name": "Change view",
+      "frames": [
+        {
+          "label": "Initial view",
+          "caption": "Observe the same platform from another available viewpoint.",
+          "image": "assets/stories/frames/skill-change_view-1.webp",
+          "note": "Skill demonstration · 0.15 s",
+          "alt": "Change view: initial view view from the skill recording."
+        },
+        {
+          "label": "Skill in progress",
+          "caption": "Observe the same platform from another available viewpoint.",
+          "image": "assets/stories/frames/skill-change_view-2.webp",
+          "note": "Skill demonstration · 3.60 s",
+          "alt": "Change view: skill in progress view from the skill recording."
+        },
+        {
+          "label": "Later view",
+          "caption": "Observe the same platform from another available viewpoint.",
+          "image": "assets/stories/frames/skill-change_view-3.webp",
+          "note": "Skill demonstration · 6.80 s",
+          "alt": "Change view: later view view from the skill recording."
+        }
+      ]
+    },
+    {
+      "name": "Pick",
+      "frames": [
+        {
+          "label": "Initial view",
+          "caption": "Select an object on the current platform.",
+          "image": "assets/stories/frames/skill-pick-1.webp",
+          "note": "Skill demonstration · 0.15 s",
+          "alt": "Pick: initial view view from the skill recording."
+        },
+        {
+          "label": "Skill in progress",
+          "caption": "Select an object on the current platform.",
+          "image": "assets/stories/frames/skill-pick-2.webp",
+          "note": "Skill demonstration · 2.60 s",
+          "alt": "Pick: skill in progress view from the skill recording."
+        },
+        {
+          "label": "Later view",
+          "caption": "Select an object on the current platform.",
+          "image": "assets/stories/frames/skill-pick-3.webp",
+          "note": "Skill demonstration · 4.35 s",
+          "alt": "Pick: later view view from the skill recording."
+        }
+      ]
+    },
+    {
+      "name": "Inspect regions",
+      "frames": [
+        {
+          "label": "Initial view",
+          "caption": "Request the available placement regions around an object.",
+          "image": "assets/stories/frames/skill-show_receptacle-1.webp",
+          "note": "Skill demonstration · 0.15 s",
+          "alt": "Inspect regions: initial view view from the skill recording."
+        },
+        {
+          "label": "Skill in progress",
+          "caption": "Request the available placement regions around an object.",
+          "image": "assets/stories/frames/skill-show_receptacle-2.webp",
+          "note": "Skill demonstration · 2.30 s",
+          "alt": "Inspect regions: skill in progress view from the skill recording."
+        },
+        {
+          "label": "Later view",
+          "caption": "Request the available placement regions around an object.",
+          "image": "assets/stories/frames/skill-show_receptacle-3.webp",
+          "note": "Skill demonstration · 4.40 s",
+          "alt": "Inspect regions: later view view from the skill recording."
+        }
+      ]
+    },
+    {
+      "name": "Place anywhere",
+      "frames": [
+        {
+          "label": "Initial view",
+          "caption": "Place the held object in available space on the platform.",
+          "image": "assets/stories/frames/skill-place_r-1.webp",
+          "note": "Skill demonstration · 0.15 s",
+          "alt": "Place anywhere: initial view view from the skill recording."
+        },
+        {
+          "label": "Skill in progress",
+          "caption": "Place the held object in available space on the platform.",
+          "image": "assets/stories/frames/skill-place_r-2.webp",
+          "note": "Skill demonstration · 2.10 s",
+          "alt": "Place anywhere: skill in progress view from the skill recording."
+        },
+        {
+          "label": "Later view",
+          "caption": "Place the held object in available space on the platform.",
+          "image": "assets/stories/frames/skill-place_r-3.webp",
+          "note": "Skill demonstration · 3.90 s",
+          "alt": "Place anywhere: later view view from the skill recording."
+        }
+      ]
+    },
+    {
+      "name": "Place in a region",
+      "frames": [
+        {
+          "label": "Initial view",
+          "caption": "Place using the selected spatial region or regions.",
+          "image": "assets/stories/frames/skill-place_s-1.webp",
+          "note": "Skill demonstration · 0.37 s",
+          "alt": "Place in a region: initial view view from the skill recording."
+        },
+        {
+          "label": "Skill in progress",
+          "caption": "Place using the selected spatial region or regions.",
+          "image": "assets/stories/frames/skill-place_s-2.webp",
+          "note": "Skill demonstration · 6.38 s",
+          "alt": "Place in a region: skill in progress view from the skill recording."
+        },
+        {
+          "label": "Later view",
+          "caption": "Place using the selected spatial region or regions.",
+          "image": "assets/stories/frames/skill-place_s-3.webp",
+          "note": "Skill demonstration · 11.90 s",
+          "alt": "Place in a region: later view view from the skill recording."
+        }
+      ]
+    }
+  ],
+  "episodes": [
+    {
+      "name": "Claude-3.7-sonnet",
+      "prompt": "Move kitchenware_white_paper_towel_holder between lighting_blue_base_table_lamp and lighting_blue_base_table_lamp",
+      "frames": [
+        {
+          "label": "Step 0",
+          "title": "Identify the objects",
+          "image": "assets/stories/frames/claude-0.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 0.",
+          "caption": "Move kitchenware_white_paper_towel_holder between lighting_blue_base_table_lamp and lighting_blue_base_table_lamp",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 1",
+          "title": "go_to_object_kitchen_counter_1_body_platform_1",
+          "image": "assets/stories/frames/claude-1.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 1.",
+          "caption": "You are currently at object_kitchen_counter_1_body_platform_1. And you are holding nothing.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 2",
+          "title": "change_view",
+          "image": "assets/stories/frames/claude-2.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 2.",
+          "caption": "Unable to rotate to another view. The platform you at only have 1 walkable place for you. You are currently at object_kitchen_counter_1_body_platform_1. And you are holding nothing.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 3",
+          "title": "pick_object_15_of_current_platform",
+          "image": "assets/stories/frames/claude-3.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 3.",
+          "caption": "You are currently at object_kitchen_counter_1_body_platform_1. And you are holding kitchenware_small_white_mug.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 4",
+          "title": "place_r",
+          "image": "assets/stories/frames/claude-4.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 4.",
+          "caption": "You are currently at object_kitchen_counter_1_body_platform_1. And you are holding nothing.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 5",
+          "title": "pick_object_17_of_current_platform",
+          "image": "assets/stories/frames/claude-5.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 5.",
+          "caption": "You are currently at object_kitchen_counter_1_body_platform_1. And you are holding kitchenware_small_white_bowl.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 6",
+          "title": "place_r",
+          "image": "assets/stories/frames/claude-6.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 6.",
+          "caption": "You are currently at object_kitchen_counter_1_body_platform_1. And you are holding nothing.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 7",
+          "title": "pick_object_7_of_current_platform",
+          "image": "assets/stories/frames/claude-7.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 7.",
+          "caption": "You are currently at object_kitchen_counter_1_body_platform_1. And you are holding kitchenware_spice_container.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 8",
+          "title": "place_r",
+          "image": "assets/stories/frames/claude-8.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 8.",
+          "caption": "You are currently at object_kitchen_counter_1_body_platform_1. And you are holding nothing.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 9",
+          "title": "pick_object_1_of_current_platform",
+          "image": "assets/stories/frames/claude-9.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 9.",
+          "caption": "You are currently at object_kitchen_counter_1_body_platform_1. And you are holding kitchenware_white_paper_towel_holder.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 10",
+          "title": "go_to_object_table_02_40_platform_2",
+          "image": "assets/stories/frames/claude-10.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 10.",
+          "caption": "You are currently at object_table_02_40_platform_2. And you are holding kitchenware_white_paper_towel_holder.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 11",
+          "title": "show_receptacle_of_object_1_of_current_platform",
+          "image": "assets/stories/frames/claude-11.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 11.",
+          "caption": "You are currently at object_table_02_40_platform_2. And you are holding kitchenware_white_paper_towel_holder.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 12",
+          "title": "show_receptacle_of_object_2_of_current_platform",
+          "image": "assets/stories/frames/claude-12.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 12.",
+          "caption": "You are currently at object_table_02_40_platform_2. And you are holding kitchenware_white_paper_towel_holder.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 13",
+          "title": "place_s_[(1,7),(1,8),(2,3),(2,4)]",
+          "image": "assets/stories/frames/claude-13.webp",
+          "alt": "Claude-3.7-sonnet, recorded observation at step 13.",
+          "caption": "You are currently at object_table_02_40_platform_2. And you are holding nothing.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Judgment",
+          "title": "Final task judgment",
+          "caption": "(call_ended) Task result: Target object placed between two objects. Task status: Success",
+          "note": "CALL_END",
+          "flow": [
+            "Recorded task",
+            "CALL_END",
+            "Success"
+          ],
+          "focus": 2
+        }
+      ]
+    },
+    {
+      "name": "Gemini-2.5-pro",
+      "prompt": "Move Remote to Bowl's rear-left receptacles",
+      "frames": [
+        {
+          "label": "Step 1",
+          "title": "go_to_object_hemnes_day_bed_platform_5",
+          "image": "assets/stories/frames/gemini-1.webp",
+          "alt": "Gemini-2.5-pro, recorded observation at step 1.",
+          "caption": "You are currently at object_hemnes_day_bed_platform_5. And you are holding nothing.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 2",
+          "title": "pick_object_5_of_current_platform",
+          "image": "assets/stories/frames/gemini-2.webp",
+          "alt": "Gemini-2.5-pro, recorded observation at step 2.",
+          "caption": "You are currently at object_hemnes_day_bed_platform_5. And you are holding Remote.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 3",
+          "title": "go_to_object_dining_table_mella_platform_0",
+          "image": "assets/stories/frames/gemini-3.webp",
+          "alt": "Gemini-2.5-pro, recorded observation at step 3.",
+          "caption": "You are currently at object_dining_table_mella_platform_0. And you are holding Remote.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 4",
+          "title": "show_receptacle_of_object_5_of_current_platform",
+          "image": "assets/stories/frames/gemini-4.webp",
+          "alt": "Gemini-2.5-pro, recorded observation at step 4.",
+          "caption": "You are currently at object_dining_table_mella_platform_0. And you are holding Remote.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Step 5",
+          "title": "place_s_[(3,8)]",
+          "image": "assets/stories/frames/gemini-5.webp",
+          "alt": "Gemini-2.5-pro, recorded observation at step 5.",
+          "caption": "You are currently at object_dining_table_mella_platform_0. And you are holding nothing.",
+          "note": "Single observation panel · see transcript for all views"
+        },
+        {
+          "label": "Judgment",
+          "title": "Final task judgment",
+          "caption": "(call_ended) Task result: Target object placed in wrong direction, expected: rear-left, found: rear-right. Task status: Failed",
+          "note": "CALL_END",
+          "flow": [
+            "Recorded task",
+            "CALL_END",
+            "Failed"
+          ],
+          "focus": 2
+        }
+      ]
+    }
+  ]
+}
