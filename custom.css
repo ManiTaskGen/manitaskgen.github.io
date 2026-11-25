@@ -455,6 +455,7 @@ p {
 @media (max-width: 840px) { .action-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 540px) { .action-grid { grid-template-columns: minmax(0, 1fr); } }
 
+.webm-still { max-width:100%; height:auto; pointer-events:none; }
 /* Click-to-play overlay for long recordings. */
 .video-clickplay {
     position: relative;
@@ -663,7 +664,7 @@ p {
     margin-bottom: 15px;
 }
 
-.message-image img {
+.message-image :is(img, .webm-still) {
     max-width: 100%;
     border-radius: 5px;
 }
@@ -1226,7 +1227,7 @@ p {
     outline-offset: 4px;
 }
 
-.outcome-comparison img {
+.outcome-comparison :is(img, .webm-still) {
     display: block;
     width: 100%;
     height: auto;

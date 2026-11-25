@@ -114,7 +114,7 @@
   function select(i) {
     SELECTED=i; U0=i/CELLS; U1=(i+1)/CELLS;
     buttons.forEach((b,k)=>b.setAttribute('aria-pressed', String(k===i)));
-    const label=`Step ${i+1} · Observation ${i} → ${actions[i]} → Observation ${i+1}`;
+    const label=`Step ${i+1} · ${gemini && i === 0 ? '' : `Observation ${i} → `}${actions[i]} → Observation ${i+1}`;
     host.querySelector('.episode-action strong').textContent = `Step ${i+1} · Action`;
     host.querySelector('.episode-action code').textContent = actions[i];
     const notes=gemini ? ['At the day bed.', 'Picked up the remote.', 'Carried the remote to the dining table.', 'Inspected placement regions.', 'Remote placed rear-right of the bowl, not rear-left. CALL_END: Failed.'] : ['At the kitchen counter.','No second viewpoint is available.','Picked up the white mug.','Put the mug down.','Picked up the small bowl.','Put the bowl down.','Picked up the spice container.','Put the container down.','Picked up the towel holder.','Carried the holder to the table.','Inspected regions around the first lamp.','Inspected regions around the second lamp.','Holder placed between the lamps. CALL_END: Success.'];
@@ -186,6 +186,15 @@
       group(ctx2, .68, () => line(ctx2, rectangle(axis, 0, 1), C.orange, .9 * f));
     });
 
+    // The failed transcript starts after the first action. Show that actual
+    // observation immediately rather than fabricating a before/after pair.
+    const firstGeminiView = gemini && SELECTED === 0;
+    if (firstGeminiView && images[1]?.naturalWidth) {
+      const im = images[1], w = L.thumb[0].w, h = w * im.naturalHeight / im.naturalWidth;
+      const y = L.narrow ? 425 : L.thumb[0].y;
+      ctx2.drawImage(im, (L.W - w) / 2, y, w, h);
+      text(ctx2, 'Observation 1', L.W / 2, y + h + 20 * f, 13.5 * f, C.muted, {align:'center'});
+    }
     // Bottom band: the decision unfolds left to right.
     const visible = phase(t, 4.2, 5.2), progress = clamp((t - 5.2) / 5.2);
     group(ctx2, visible, () => {
@@ -205,7 +214,7 @@
         stepLabel(ctx2, 'Step ' + i, P(p.x, p.y + 34 * f), 15, C.rust);
       }
       // Event markers: observation -> grounded skill -> observation.
-      const events = [
+      const events = firstGeminiView ? [] : [
         {u: .1, img: 0},
         {u: .9, img: 1}
       ];
@@ -224,8 +233,6 @@
               ctx2.strokeStyle = C.line; ctx2.lineWidth = 1;
               ctx2.strokeRect(geo.cx - iw / 2, geo.y, iw, ih);
               text(ctx2, 'Observation ' + (SELECTED + e.img), geo.cx, geo.y + ih + 20 * L.font, 13.5 * f, C.muted, {align: 'center'});
-            } else if (!im) {
-              text(ctx2, 'Initial view not recorded', geo.cx, geo.y + geo.w * .28, 20 * f, C.muted, {align:'center'});
             }
         });
       }

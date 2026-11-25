@@ -14,8 +14,8 @@
 .benchmark-table tbody + tbody { border-top:2px solid var(--rule); }
 .benchmark-table td strong { color:var(--accent); }
 .benchmark-note { margin-top:.8rem; color:var(--muted); font-size:.875rem; }
-.result-figure a, .result-figure img { display:block; }
-.result-figure img { width:100%; height:auto; margin:1rem 0 0; }
+.result-figure a, .result-figure :is(img, .webm-still) { display:block; }
+.result-figure :is(img, .webm-still) { width:100%; height:auto; margin:1rem 0 0; }
 /* Keep Level labels intact; the unassigned Example instruction column flexes. */
 .evaluation-key { table-layout:fixed; min-width:40rem; }
 .evaluation-key thead th:first-child { width:10.875rem; box-sizing:border-box; }
